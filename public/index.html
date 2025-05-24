@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Авто Финанс</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <img src="img/black_logo.jpg" alt="АВТО ФИНАНС" class="logo" id="logoHome">
+        <button class="burger" id="burgerBtn" aria-label="Открыть меню">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+    <nav class="menu-overlay" id="menuOverlay">
+        <button class="close-menu" id="closeMenu" aria-label="Закрыть меню">&times;</button>
+        <ul class="menu-list">
+            <li><a href="catalog.html">КАТАЛОГ</a></li>
+            <li><a href="rent-buyout.html">ПРОКАТ</a></li>
+            <li><a href="buyback.html">АРЕНДА</a></li>
+            <li><a href="urgent-buyout.html">ВЫКУП</a></li>
+            <li><a href="request.html">ОСТАВИТЬ ЗАЯВКУ</a></li>
+            <li><a href="contacts.html">КОНТАКТЫ</a></li>
+            <li><a href="about.html">О КОМПАНИИ</a></li>
+        </ul>
+        <div class="menu-contacts">
+            <div> <a href="tel:+78005553432" class="contacts-modern-phone">+7 800 555-34-32</a></div>
+            <div class="menu-socials">
+                <a href="#" aria-label="VK"><img src="img/vk.webp" alt="VK"></a>
+                <a href="#" aria-label="Telegram"><img src="img/telegram.webp" alt="Telegram"></a>
+                <a href="#" aria-label="WhatsApp"><img src="img/whatsapp.webp" alt="WhatsApp"></a>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <section class="hero hero-main" style="background-image: url('img/granta_main.jpeg');">
+            <div class="hero-content">
+                <h1>С НАМИ МЕЧТА О СОБСТВЕННОМ<br>АВТОМОБИЛЕ СТАНОВИТСЯ РЕАЛЬНОСТЬЮ</h1>
+                <a href="#services" class="hero-arrow" id="scrollToServices" style="margin-top: 64px;">
+                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M24 12V36" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+                        <path d="M16 28L24 36L32 28" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+                    </svg>
+                </a>
+            </div>
+        </section>
+        <section class="services" id="services">
+            <h2>КАКИЕ УСЛУГИ МЫ ПРЕДЛАГАЕМ?</h2>
+            <div class="services-list">
+                <a href="rent-buyout.html" class="service-card">
+                    <img src="img/geely/geely5.jpeg" alt="ПРОКАТ">
+                    <span>ПРОКАТ</span>
+                    <button class="service-btn">Узнать больше</button>
+                </a>
+                <a href="buyback.html" class="service-card">
+                    <img src="img/vesta694/vesta694_3.jpeg" alt="АРЕНДА">
+                    <span>АРЕНДА</span>
+                    <button class="service-btn">Узнать больше</button>
+                </a>
+                <a href="urgent-buyout.html" class="service-card">
+                    <img src="img/granta561/granta561_2.jpeg" alt="ВЫКУП">
+                    <span>ВЫКУП</span>
+                    <button class="service-btn">Узнать больше</button>
+                </a>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="img/black_logo.jpg" alt="АВТО ФИНАНС" style="height:74px; margin-bottom:10px;">
+        </div>
+        <div class="footer-links" style="margin-bottom:10px;">
+            <a href="catalog.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">Каталог</a>
+            <a href="rent-buyout.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">Прокат</a>
+            <a href="buyback.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">Аренда</a>
+            <a href="urgent-buyout.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">Выкуп</a>
+            <a href="request.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">Оставить заявку</a>
+            <a href="contacts.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">Контакты</a>
+            <a href="about.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">О компании</a>
+        </div>
+        <div class="footer-info" style="font-size:1em; color:#fff; display:flex; justify-content:center; gap:32px; flex-wrap:wrap;">
+            <span>ООО "АВТО ФИНАНС"</span>
+            <span>ИНН 7715124424 ОГРН 1227700037564</span>
+        </div>
+    </footer>
+    <a href="#" class="whatsapp-float" aria-label="WhatsApp"><img src="img/whatsapp.webp" alt="WhatsApp"></a>
+    <script src="js/script.js"></script>
+</body>
+</html>

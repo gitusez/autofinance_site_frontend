@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог | АВТО ФИНАНС</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <img src="img/black_logo.jpg" alt="АВТО ФИНАНС" class="logo" id="logoHome">
+        <button class="burger" id="burgerBtn" aria-label="Открыть меню">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+    <nav class="menu-overlay" id="menuOverlay">
+        <button class="close-menu" id="closeMenu" aria-label="Закрыть меню">&times;</button>
+        <ul class="menu-list">
+            <li><a href="catalog.html">КАТАЛОГ</a></li>
+            <li><a href="rent-buyout.html">ПРОКАТ</a></li>
+            <li><a href="buyback.html">АРЕНДА</a></li>
+            <li><a href="urgent-buyout.html">ВЫКУП</a></li>
+            <li><a href="request.html">ОСТАВИТЬ ЗАЯВКУ</a></li>
+            <li><a href="contacts.html">КОНТАКТЫ</a></li>
+            <li><a href="about.html">О КОМПАНИИ</a></li>
+        </ul>
+        <div class="menu-contacts">
+            <div> <a href="tel:+78005553432" class="contacts-modern-phone">+7 800 555-34-32</a></div>
+            <div class="menu-socials">
+                <a href="#" aria-label="VK"><img src="img/vk.webp" alt="VK"></a>
+                <a href="#" aria-label="Telegram"><img src="img/telegram.webp" alt="Telegram"></a>
+                <a href="#" aria-label="WhatsApp"><img src="img/whatsapp.webp" alt="WhatsApp"></a>
+            </div>
+        </div>
+    </nav>
+    <main style="margin-top:90px;">
+        <div class="catalog-container">
+            <div class="catalog-header">
+                <h1 class="catalog-title">Каталог автомобилей</h1>
+                <!-- <div class="catalog-search-wrap">
+                    <input type="text" id="catalogSearch" placeholder="Поиск" class="catalog-search">
+                </div> -->
+            </div>
+            <div class="catalog-qr-block">
+                <img src="img/QR_Autofinance.png" alt="QR-код Автофинанс Telegram" class="catalog-qr-img">
+                <div class="catalog-qr-text">
+                    Ознакомьтесь с полным каталогом авто в нашем приложении в Telegram!
+                    <a href="https://t.me/your_telegram_link" target="_blank" class="catalog-qr-link">Переходите!</a>
+                </div>
+            </div>
+            <div class="car-grid" id="carGrid">
+                <div class="car-card" 
+                  data-id="granta" 
+                  data-name="Lada Granta" 
+                  data-nameru="Лада Гранта" 
+                  data-price="1550" 
+                  data-pricetext="1 550 ₽ в сутки" 
+                  data-images="img/granta1/granta1.webp,img/granta1/granta2.webp,img/granta1/granta3.webp,img/granta1/granta4.webp,img/granta1/granta5.webp,img/granta1/granta6.webp,img/granta1/granta7.webp,img/granta1/granta8.webp,img/granta1/granta9.webp,img/granta1/granta10.webp,img/granta1/granta11.webp,img/granta1/granta12.webp,img/granta1/granta13.webp"
+                  data-specs='[{"label":"Марка","value":"LADA"},{"label":"Модель","value":"Granta"},{"label":"Год выпуска","value":"2023"},{"label":"Трансмиссия","value":"МКПП"},{"label":"Топливо","value":"Бензин"},{"label":"Двигатель","value":"1.6 л / 87 л.с."}]'
+                  data-description="Все наши авто прошли полную техническую проверку и предпродажную подготовку. Приобретая у нас автомобиль в аренду с выкупом, Вы можете быть уверены в состоянии выбранного авто. При внесении увеличенного первоначального взноса, сумма ежесуточного платежа будет уменьшена.">
+                  <img src="img/granta1/granta1.webp" alt="Lada Granta" class="car-image">
+                  <div class="car-title">Lada Granta</div>
+                  <div class="car-info">1 550 ₽ в сутки</div>
+                  <button class="car-detail-btn">ПОДРОБНЕЕ</button>
+                </div>
+                <div class="car-card" 
+                  data-id="vesta" 
+                  data-name="Lada Vesta" 
+                  data-nameru="Лада Веста" 
+                  data-price="1950" 
+                  data-pricetext="1 950 ₽ в сутки" 
+                  data-images="img/vesta1/vesta1.webp,img/vesta1/vesta2.webp,img/vesta1/vesta3.webp,img/vesta1/vesta4.webp,img/vesta1/vesta5.webp,img/vesta1/vesta6.webp,img/vesta1/vesta7.webp,img/vesta1/vesta8.webp,img/vesta1/vesta9.webp,img/vesta1/vesta10.webp,img/vesta1/vesta11.webp,img/vesta1/vesta12.webp,img/vesta1/vesta13.webp,img/vesta1/vesta14.webp"
+                  data-specs='[{"label":"Марка","value":"LADA"},{"label":"Модель","value":"Vesta"},{"label":"Год выпуска","value":"2022"},{"label":"Трансмиссия","value":"АКПП"},{"label":"Топливо","value":"Бензин"},{"label":"Двигатель","value":"1.6 л / 113 л.с."}]'
+                  data-description="Lada Vesta — современный и надёжный автомобиль для города и трассы. Отличное состояние, полный комплект документов, готова к эксплуатации.">
+                  <img src="img/vesta1/vesta1.webp" alt="Lada Vesta" class="car-image">
+                  <div class="car-title">Lada Vesta</div>
+                  <div class="car-info">1 950 ₽ в сутки</div>
+                  <button class="car-detail-btn">ПОДРОБНЕЕ</button>
+                </div>
+                <div class="car-card" 
+                  data-id="geely" 
+                  data-name="Geely Coolray" 
+                  data-nameru="Джили Кулрей" 
+                  data-price="2100" 
+                  data-pricetext="2 100 ₽ в сутки" 
+                  data-images="img/geely1/Geely_Card1.jpeg,img/geely1/Geely_Card2.jpeg,img/geely1/Geely_Card3.jpeg,img/geely1/Geely_Card4.jpeg,img/geely1/Geely_Card5.jpeg,img/geely1/Geely_Card6.jpeg,img/geely1/Geely_Card7.jpeg,img/geely1/Geely_Card8.jpeg,img/geely1/Geely_Card9.jpeg,img/geely1/Geely_Card10.jpeg,img/geely1/Geely_Card11.jpeg,img/geely1/Geely_Card12.jpeg,img/geely1/Geely_Card13.jpeg,img/geely1/Geely_Card14.jpeg,img/geely1/Geely_Card15.jpeg,img/geely1/Geely_Card16.jpeg"
+                  data-specs='[{"label":"Марка","value":"Geely"},{"label":"Модель","value":"Coolray"},{"label":"Год выпуска","value":"2023"},{"label":"Трансмиссия","value":"АКПП"},{"label":"Топливо","value":"Бензин"},{"label":"Двигатель","value":"1.5 л / 150 л.с."}]'
+                  data-description="Geely Coolray — современный кроссовер с отличной динамикой и комфортом. Идеален для города и путешествий.">
+                  <img src="img/geely1/Geely_Card1.jpeg" alt="Geely Coolray" class="car-image">
+                  <div class="car-title">Geely Coolray</div>
+                  <div class="car-info">2 100 ₽ в сутки</div>
+                  <button class="car-detail-btn">ПОДРОБНЕЕ</button>
+                </div>
+            </div>
+        </div>
+        <!-- Модальное окно с деталями авто -->
+        <div class="modal" id="carModal" style="display:none;">
+            <div class="modal-overlay" id="carModalOverlay"></div>
+            <div class="modal-content car-modal-content" id="carModalContent">
+                <!-- Контент авто будет добавляться скриптом -->
+            </div>
+        </div>
+        <!-- Модальное окно с формой заявки -->
+        <div class="modal" id="orderModal" style="display:none;">
+            <div class="modal-overlay" id="orderModalOverlay"></div>
+            <div class="modal-content order-modal-content" id="orderModalContent">
+                <!-- Форма заявки будет добавляться скриптом -->
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="img/black_logo.jpg" alt="АВТО ФИНАНС" style="height:74px; margin-bottom:10px;">
+        </div>
+        <div class="footer-links" style="margin-bottom:10px;">
+            <a href="catalog.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">Каталог</a>
+            <a href="rent-buyout.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">Прокат</a>
+            <a href="buyback.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">Аренда</a>
+            <a href="urgent-buyout.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">Выкуп</a>
+            <a href="request.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">Оставить заявку</a>
+            <a href="contacts.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">Контакты</a>
+            <a href="about.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">О компании</a>
+        </div>
+        <div class="footer-info" style="font-size:1em; color:#fff; display:flex; justify-content:center; gap:32px; flex-wrap:wrap;">
+            <span>ООО "АВТО ФИНАНС"</span>
+            <span>ИНН 7715124424 ОГРН 1227700037564</span>
+        </div>
+    </footer>
+    <a href="#" class="whatsapp-float" aria-label="WhatsApp"><img src="img/whatsapp.webp" alt="WhatsApp"></a>
+    <script src="js/script.js"></script>
+    <script src="js/catalog.js"></script>
+</body>
+</html> 

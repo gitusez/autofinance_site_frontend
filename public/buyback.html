@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аренда</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body style="background:#000; color:#fff;">
+    <!-- Шапка -->
+    <header class="header">
+        <img src="img/black_logo.jpg" alt="АВТО ФИНАНС" class="logo" id="logoHome">
+        <button class="burger" id="burgerBtn" aria-label="Открыть меню">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+    <!-- Меню (можно скопировать из index.html) -->
+    <nav class="menu-overlay" id="menuOverlay">
+        <button class="close-menu" id="closeMenu" aria-label="Закрыть меню">&times;</button>
+        <ul class="menu-list">
+            <li><a href="index.html">КАТАЛОГ</a></li>
+            <li><a href="rent-buyout.html">ПРОКАТ</a></li>
+            <li><a href="buyback.html">АРЕНДА</a></li>
+            <li><a href="urgent-buyout.html">ВЫКУП</a></li>
+            <li><a href="request.html">ОСТАВИТЬ ЗАЯВКУ</a></li>
+            <li><a href="contacts.html">КОНТАКТЫ</a></li>
+            <li><a href="about.html">О КОМПАНИИ</a></li>
+        </ul>
+        <div class="menu-contacts">
+            <div> <a href="tel:+78005553432" class="contacts-modern-phone">+7 800 555-34-32</a></div>
+            <div class="menu-socials">
+                <a href="#" aria-label="VK"><img src="img/vk.webp" alt="VK"></a>
+                <a href="#" aria-label="Telegram"><img src="img/telegram.webp" alt="Telegram"></a>
+                <a href="#" aria-label="WhatsApp"><img src="img/whatsapp.webp" alt="WhatsApp"></a>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <!-- Блок-герой -->
+        <section class="hero hero-buyback" style="background-image:url('img/granta1/granta12.jpeg'); background-size:cover; background-position:center 79%; background-attachment:fixed;">
+            <div class="hero-content">
+                <h1>АРЕНДА</h1>
+            </div>
+        </section>
+        <!-- Блок с описанием -->
+        <section class="buyback-desc-section">
+            <div class="desc-dots">&bull;&bull;&bull;</div>
+            <div class="desc-text">
+                Удобная аренда автомобилей в Пятигорске — для работы, отдыха и особых событий. Широкий выбор авто по выгодным тарифам и без лишних формальностей.
+            </div>
+           
+        </section>
+        <!-- Как это работает -->
+        <section class="how-works-section">
+            <div class="how-works-content">
+                <h2>Как оформить аренду?</h2>
+                <div class="line"></div>
+                <div class="text">
+                    Оформить аренду в компании «АвтоФинанс» просто и удобно. Вы можете выбрать автомобиль прямо из каталога или оставить заявку — мы подберём подходящие варианты с учётом ваших потребностей и бюджета. Оформляем договор за 15 минут.
+
+Вы можете арендовать автомобиль на любой срок — от нескольких часов до долгосрочного использования. Машина будет полностью готова к эксплуатации: чистая, заправленная и технически исправная. Вы просто садитесь за руль и наслаждаетесь поездкой.
+                </div>
+            </div>
+        </section>
+        <!-- Форма заявки -->
+        <section class="buyback-form-section">
+            <div class="form-desc">Хотите подобрать автомобиль под свои задачи? Оставьте заявку, и мы предложим лучшие варианты аренды!</div>
+            <form class="who-form" action="sendmail.php" method="POST" style="margin:0 auto;">
+                <input type="hidden" name="source" value="Аренда">
+                <input type="text" name="name" placeholder="ФИО" required>
+                <input type="tel" name="phone" placeholder="Контактный номер телефона" required>
+                <textarea name="message" placeholder="Ваш автомобиль: марка, модель, год выпуска" rows="2" required></textarea>
+                <button type="submit">Отправить</button>
+                <div class="who-policy" style="margin-top:18px;">Заполняя форму, вы соглашаетесь с нашей политикой обработки персональных данных.</div>
+            </form>
+        </section>
+    </main>
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="img/black_logo.jpg" alt="АВТО ФИНАНС" style="height:74px; margin-bottom:10px;">
+        </div>
+        <div class="footer-links" style="margin-bottom:10px;">
+            <a href="catalog.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">Каталог</a>
+            <a href="rent-buyout.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">Прокат</a>
+            <a href="buyback.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">Аренда</a>
+            <a href="urgent-buyout.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">Выкуп</a>
+            <a href="request.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">Оставить заявку</a>
+            <a href="contacts.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">Контакты</a>
+            <a href="about.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">О компании</a>
+        </div>
+        <div class="footer-info" style="font-size:1em; color:#fff; display:flex; justify-content:center; gap:32px; flex-wrap:wrap;">
+            <span>ООО "АВТО ФИНАНС"</span>
+            <span>ИНН 7715124424 ОГРН 1227700037564</span>
+        </div>
+    </footer>
+    <!-- Плавающий чат -->
+    <!-- <div class="chat-widget" style="position:fixed; left:24px; bottom:24px; background:#ff8000; color:#fff; border-radius:12px; box-shadow:0 2px 12px 0 rgba(0,0,0,0.18); display:flex; align-items:center; gap:12px; padding:10px 18px 10px 10px; z-index:300; min-width:220px; max-width:90vw; font-size:1rem;">
+        <img src="img/manager.jpg" alt="Менеджер" style="width:44px; height:44px; border-radius:50%; object-fit:cover; background:#fff;">
+        <div>
+            <div class="chat-title" style="font-weight:700; font-size:1rem; margin-bottom:2px;">Менеджер Capital Drive</div>
+            <div class="chat-desc" style="font-size:0.95rem; color:#fff;">Я отвечу на ваши вопросы.</div>
+        </div>
+    </div> -->
+    <!-- Плавающий WhatsApp -->
+    <a href="#" class="whatsapp-float" aria-label="WhatsApp"><img src="img/whatsapp.webp" alt="WhatsApp"></a>
+    <script src="js/script.js"></script>
+</body>
+</html> 

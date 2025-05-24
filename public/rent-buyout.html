@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Аренда авто с выкупом</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <img src="img/black_logo.jpg" alt="АВТО ФИНАНС" class="logo" id="logoHome">
+    <button class="burger" id="burgerBtn" aria-label="Открыть меню">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+  <nav class="menu-overlay" id="menuOverlay">
+    <button class="close-menu" id="closeMenu" aria-label="Закрыть меню">&times;</button>
+    <ul class="menu-list">
+      <li><a href="index.html">КАТАЛОГ</a></li>
+      <li><a href="rent-buyout.html">ПРОКАТ</a></li>
+      <li><a href="buyback.html">АРЕНДА</a></li>
+      <li><a href="urgent-buyout.html">ВЫКУП</a></li>
+      <li><a href="request.html">ОСТАВИТЬ ЗАЯВКУ</a></li>
+      <li><a href="contacts.html">КОНТАКТЫ</a></li>
+      <li><a href="about.html">О КОМПАНИИ</a></li>
+    </ul>
+    <div class="menu-contacts">
+      <div> <a href="tel:+78005553432" class="contacts-modern-phone">+7 800 555-34-32</a></div>
+      <div class="menu-socials">
+        <a href="#" aria-label="VK"><img src="img/vk.webp" alt="VK"></a>
+        <a href="#" aria-label="Telegram"><img src="img/telegram.webp" alt="Telegram"></a>
+        <a href="#" aria-label="WhatsApp"><img src="img/whatsapp.webp" alt="WhatsApp"></a>
+      </div>
+    </div>
+  </nav>
+  <main>
+    <!-- Hero Banner -->
+    <section class="hero hero-prokat" style="background-image: url('img/geely/geely5.jpeg');">
+      <div class="hero-content">
+        <h1>ПРОКАТ  </h1>
+        <a href="#desc" class="hero-arrow" id="scrollToDesc">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 12V36" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+            <path d="M16 28L24 36L32 28" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+    <!-- Краткое описание -->
+    <section class="buyout-desc" id="desc">
+      <div class="desc-dots">★ ★ ★</div>
+      <div class="desc-text">
+        Прокат авто в Пятигорске — удобное решение для деловых встреч, путешествий и особых случаев. Выбирайте из широкого автопарка и наслаждайтесь поездкой без лишних забот.      </div>
+    </section>
+    <!-- Преимущества -->
+    <section class="buyout-benefits">
+      <div class="benefit-grid">
+        <div class="benefit-card">
+          <div class="benefit-card-bg" style="background-image:url('img/geely/geely1.jpeg')"></div>
+          <h3>Доступность услуги</h3>
+          <p>Одобряем 95% заявок! Кредиты и просрочки в прошлом — не повод отказывать себе в комфорте. Берите авто в прокат без лишних вопросов.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-card-bg" style="background-image:url('img/tank/tank1.jpeg')"></div>
+          <h3>Простота</h3>
+          <p>Оформляем договор за 15 минут — без кучи справок и длинных анкет.
+          </p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-card-bg" style="background-image:url('img/tank/tank4.jpeg')"></div>
+          <h3>Индивидуальный подход</h3>
+          <p>Найдём авто под любой бюджет и задачу. Персональные условия проката — чтобы всё было удобно именно вам.
+          </p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-card-bg" style="background-image:url('img/cherry/cherry7.jpeg')"></div>
+          <h3>Без переплат</h3>
+          <p>Честные цены без скрытых платежей и обязательных страховок. Платите только за реальные дни аренды.
+          </p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-card-bg" style="background-image:url('img/cherry/cherry5.jpeg')"></div>
+          <h3>Широкий выбор</h3>
+          <p>Эконом, бизнес, премиум — подберём подходящее авто для вас.
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- Кому подойдет -->
+    <section class="buyout-who">
+      <div class="who-left">
+        <h2>Кому подойдёт прокат авто?</h2>
+        <ul>
+          <li>Тем, кто ищет авто на короткий срок — для деловой поездки, отпуска или выходных.</li>
+          <li>Гостям города, чтобы удобно передвигаться по Пятигорску и окрестностям.</li>
+          <li>Если ваше авто в ремонте, а без машины — никак.</li>
+          <li>  Для комфортного трансфера на важное мероприятие.</li>
+        </ul>
+        <p>Остались вопросы? Заполните форму — и наш менеджер свяжется с вами в ближайшее время, чтобы подобрать оптимальное авто для проката!</p>
+      </div>
+      <div class="who-right">
+        <form class="who-form" action="sendmail.php" method="POST">
+          <input type="text" name="name" placeholder="Имя" required>
+          <input type="tel" name="phone" placeholder="Ваш телефон" required>
+          <input type="hidden" name="source" value="Прокат">
+          <textarea name="message" placeholder="Сообщение" rows="4"></textarea>
+          <button type="submit">Отправить</button>
+          <div class="who-policy">Заполняя форму, вы соглашаетесь с нашей политикой обработки персональных данных.</div>
+        </form>
+      </div>
+    </section>
+    <!-- CTA -->
+    <section class="buyout-cta">
+      <div class="cta-text">
+        Быстро и удобно — смотрите доступные автомобили и бронируйте онлайн. Нужна помощь с выбором? Мы подскажем лучший вариант!
+
+
+      </div>
+      <a href="catalog.html" class="cta-btn">ПЕРЕЙТИ В КАТАЛОГ</a>
+    </section>
+  </main>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-logo">
+      <img src="img/black_logo.jpg" alt="АВТО ФИНАНС" style="height:74px; margin-bottom:10px;">
+    </div>
+    <div class="footer-links" style="margin-bottom:10px;">
+      <a href="catalog.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">Каталог</a>
+      <a href="rent-buyout.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">Прокат</a>
+      <a href="buyback.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">Аренда</a>
+      <a href="urgent-buyout.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">Выкуп</a>
+      <a href="request.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">Оставить заявку</a>
+      <a href="contacts.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">Контакты</a>
+      <a href="about.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">О компании</a>
+    </div>
+    <div class="footer-info" style="font-size:1em; color:#fff; display:flex; justify-content:center; gap:32px; flex-wrap:wrap;">
+      <span>ООО "АВТО ФИНАНС"</span>
+      <span>ИНН 7715124424 ОГРН 1227700037564</span>
+    </div>
+  </footer>
+  <a href="#" class="whatsapp-float" aria-label="WhatsApp"><img src="img/whatsapp.webp" alt="WhatsApp"></a>
+
+  <script src="js/script.js"></script>
+  <script>
+    // Плавный скролл к описанию
+    document.getElementById('scrollToDesc').onclick = function(e) {
+      e.preventDefault();
+      document.getElementById('desc').scrollIntoView({behavior:'smooth'});
+    };
+  </script>
+</body>
+</html> 
