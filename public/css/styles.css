@@ -1559,7 +1559,7 @@ body.scale-fade-in {
 
 .buyout-cta {
     position: relative;
-    background: url('img/tank/tank4.jpeg') center center/cover no-repeat fixed;
+    background: url('/public/img/tank/tank4.jpeg') center center/cover no-repeat fixed;
     border-radius: 0 0 24px 24px;
     overflow: hidden;
     min-height: 420px;
@@ -1637,7 +1637,7 @@ body.scale-fade-in {
     justify-content: center;
     background: #000;
     overflow: hidden;
-    background-image: url('img/vesta1/vesta1.jpg');
+    background-image: url('/public/img/vesta1/vesta1.jpg');
     background-size: cover;
     background-position: 40% center;
     background-attachment: fixed;
@@ -1757,7 +1757,7 @@ body.scale-fade-in {
     align-items: center;
     justify-content: center;
     position: relative;
-    background-image: url('img/granta561/granta561_2.jpeg');
+    background-image: url('/public/img/granta561/granta561_2.jpeg');
     background-size: cover;
     background-position: center 32%;
     background-attachment: scroll;
@@ -1784,7 +1784,7 @@ body.scale-fade-in {
 
 .urgent-form-bg {
     position: relative;
-    background-image: url('img/granta561/granta561_3.jpeg');
+    background-image: url('/public/img/granta561/granta561_3.jpeg');
     background-size: cover;
     background-position: center;
     background-attachment: scroll;
@@ -1815,7 +1815,7 @@ body.scale-fade-in {
 .request-hero {
     min-height: 70vh;
     width: 100%;
-    background: url('img/tank/tank5.jpeg') center center/cover no-repeat fixed;
+    background: url('/public/img/tank/tank5.jpeg') center center/cover no-repeat fixed;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1950,7 +1950,7 @@ body.scale-fade-in {
 .contacts-hero {
     min-height: 70vh;
     width: 100%;
-    background: url('img/lambo2.jpg') center center/cover no-repeat fixed;
+    background: url('/public/img/lambo2.jpg') center center/cover no-repeat fixed;
     display: flex;
     align-items: center;
     justify-content: center;
