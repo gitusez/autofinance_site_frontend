@@ -174,38 +174,27 @@
         <div class="catalog-container">
             <div class="catalog-header">
                 <h1 class="catalog-title">Каталог автомобилей</h1>
-                <!-- <div class="catalog-search-wrap">
-                    <input type="text" id="catalogSearch" placeholder="Поиск" class="catalog-search">
-                </div> -->
             </div>
 
-            <!-- Секция «Прокат» -->
             <section id="prokatSection" class="catalog-section">
                 <h2>Прокат</h2>
                 <div class="car-grid" id="prokatGrid">
-                    <!-- сюда динамически вставятся карточки проката -->
                 </div>
             </section>
 
-            <!-- Секция «Аренда» -->
             <section id="arendaSection" class="catalog-section">
                 <h2>Аренда</h2>
                 <div class="car-grid" id="arendaGrid">
-                    <!-- сюда динамически вставятся карточки аренды -->
                 </div>
             </section>
 
-            <!-- Секция «Выкуп» -->
             <section id="buyoutSection" class="catalog-section">
                 <h2>Выкуп</h2>
                 <div class="car-grid" id="buyoutGrid">
-                    <!-- сюда динамически вставятся карточки выкупа -->
                 </div>
             </section>
 
-            <!-- Старая заглушка/carGrid для сохранения существующей разметки -->
             <div class="car-grid" id="carGrid" style="display:none;">
-                <!-- ваши статические карточки остаются в коде, но скрыты -->
                 <div class="car-card" 
                     data-id="granta" 
                     data-name="Lada Granta" 
@@ -220,22 +209,17 @@
                     <div class="car-info">1 550 ₽ в сутки</div>
                     <button class="car-detail-btn">ПОДРОБНЕЕ</button>
                 </div>
-                <!-- … остальные ваши статические карточки … -->
             </div>
         </div>
 
-        <!-- Модальное окно с деталями авто -->
         <div class="modal" id="carModal" style="display:none;">
             <div class="modal-overlay" id="carModalOverlay"></div>
             <div class="modal-content car-modal-content" id="carModalContent">
-                <!-- Контент авто будет добавляться скриптом -->
             </div>
         </div>
-        <!-- Модальное окно с формой заявки -->
         <div class="modal" id="orderModal" style="display:none;">
             <div class="modal-overlay" id="orderModalOverlay"></div>
             <div class="modal-content order-modal-content" id="orderModalContent">
-                <!-- Форма заявки будет добавляться скриптом -->
             </div>
         </div>
     </main>
@@ -270,9 +254,8 @@
     <a href="#" class="whatsapp-float" aria-label="WhatsApp"><img src="img/whatsapp.webp" alt="WhatsApp"></a>
 
     <script  src="js/script.js"></script>
-    <!-- Ваш старый скрипт оставляем на всякий случай -->
     <script type="module" src="js/catalog.js"></script>
-    <!-- Новый модуль для трёх секций -->
     <script type="module" src="js/catalog-sections.js"></script>
 </body>
 </html>
+
