@@ -942,8 +942,7 @@ body.scale-fade-in {
     background: rgba(255,255,255,0.4);
 }
 
-/* Кнопка закрытия тоже поверх всего */
-.gallery-close {
+/* .gallery-close {
     position: absolute;
     top: 20px;
     right: 20px;
@@ -955,14 +954,14 @@ body.scale-fade-in {
     border: none;
     border-radius: 50%;
     cursor: pointer;
-    z-index: 9003;               /* самый верх */
+    z-index: 9003;
     pointer-events: auto;
 }
 
 .gallery-close:hover {
-    background: #2ecc40;
-    color: #fff;
-}
+    background: #f4c900;
+    color: #f6fd2b;
+} */
 
 /* Счётчик — над картинкой, но под стрелками/крестиком */
 .gallery-counter {
@@ -978,10 +977,6 @@ body.scale-fade-in {
     z-index: 9001;
     pointer-events: none;
 }
-
-
-
-
 
 .gallery-close {
     position: fixed;
@@ -1005,7 +1000,7 @@ body.scale-fade-in {
 }
 
 .gallery-close:hover {
-    background: #2ecc40;
+    background: #f4c900;
     color: #fff;
 }
 
@@ -2295,11 +2290,11 @@ body.scale-fade-in {
     margin-bottom: 32px;
 }
 .catalog-title {
-    font-size: 2.7rem;
+    font-size: 3.7rem;
     font-weight: 700;
     color: #fff;
     letter-spacing: 1.5px;
-    margin-bottom: 22px;
+    margin-bottom: 0px;
     text-align: center;
     text-shadow: 0 2px 16px rgba(0,0,0,0.18);
 }
@@ -3209,6 +3204,8 @@ input[type="text"]:focus, input[type="tel"]:focus {
   flex-direction: column;
   align-items: center;
   transition: transform .2s, box-shadow .2s, background .2s;
+  width: 100%;                  /* займёт всю «ячейку» сетки */
+  max-width: none;              /* сбросим прежние ограничения */
 }
 
 /* hover-эффект */
@@ -3260,4 +3257,27 @@ input[type="text"]:focus, input[type="tel"]:focus {
 .car-detail-btn:hover {
   background: linear-gradient(90deg, #ffb347, #f4c900);
   color: #222;
+}
+
+
+/* 1) Центрируем секции и задаём им чёткую «рамку» */
+.catalog-section {
+  max-width: 1200px;            /* ограничиваем ширину контента */
+  margin: 60px auto;            /* центрируем по горизонтали и даём отступ сверху/снизу */
+  padding: 30px 20px;           /* внутренние отступы */
+  /* border-top: 1px solid rgba(255,255,255,0.1); */
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* первый раздел не нуждается в верхней границе */
+.catalog-section:first-of-type {
+  border-top: none;
+}
+
+/* Заголовок секции — по центру и с отступом */
+.catalog-section h2 {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 40px;
+  color: #f4c900;
 }
