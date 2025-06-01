@@ -580,9 +580,9 @@ export function getPriceText(car, mode) {
   return car.manual_price?.[mode] || 'Цена не указана';
 }
 
-/** Создаёт элемент карточки */
 export function createCarCard(car, mode) {
   const priceText = getPriceText(car, mode);
+
   const card = document.createElement('div');
   card.className = 'car-card';
   card.innerHTML = `
@@ -594,24 +594,27 @@ export function createCarCard(car, mode) {
     <button class="car-detail-btn">ПОДРОБНЕЕ</button>
   `;
 
-  // заменяем placeholder на первую фотографию из API
+  // Асинхронно подгружаем первую фотографию через API /api/photos/${plate}
   (async () => {
     const imgEl = card.querySelector('.car-image');
-    const plate = toLatinNumber(car.number);
+    const plate = toLatinNumber(car.number || '');
     try {
       const resp = await fetch(`${config.photoApi}/api/photos/${plate}`);
-      const { success, photos } = await resp.json();
-      if (success && photos.length) {
-        imgEl.src = photos[0].startsWith('http')
-          ? photos[0]
-          : `${config.photoApi}${photos[0]}`;
+      const arr = await resp.json(); // здесь resp.json() — это массив строк
+      if (Array.isArray(arr) && arr.length > 0) {
+        const first = arr[0].startsWith('/')
+          ? arr[0]
+          : `/photos/${plate}/${arr[0]}`;
+        imgEl.src = first.startsWith('http')
+          ? first
+          : `${config.photoApi}${first}`;
       }
     } catch {
-      // оставляем placeholder
+      // если ошибка или фоток нет, оставляем placeholder
     }
   })();
 
-  // открываем модалку
+  // Навешиваем на кнопку «ПОДРОБНЕЕ» открытие модалки
   card.querySelector('.car-detail-btn')
       .addEventListener('click', e => {
         e.stopPropagation();
@@ -620,10 +623,6 @@ export function createCarCard(car, mode) {
 
   return card;
 }
-
-// —————————————————————————————————————————————————————————————
-// Вся логика модалки деталей и fullscreen
-// —————————————————————————————————————————————————————————————
 
 const carModal          = document.getElementById('carModal');
 const carModalOverlay   = document.getElementById('carModalOverlay');
@@ -634,23 +633,195 @@ const orderModalContent = document.getElementById('orderModalContent');
 
 /** Открывает модалку с деталями */
 
+// export async function openCarModal(car, mode) {
+//   const plate = toLatinNumber(car.number || '');
+//   let images = [];
+
+//   try {
+//     const resp = await fetch(`${config.photoApi}/api/photos/${plate}`);
+//     const arr = await resp.json(); // теперь resp.json() — это массив строк
+//     if (Array.isArray(arr) && arr.length > 0) {
+//       images = arr.map(item => {
+//         if (item.startsWith('/')) {
+//           return item.startsWith('http')
+//             ? item
+//             : `${config.photoApi}${item}`;
+//         }
+//         return `${config.photoApi}/photos/${plate}/${item}`;
+//       });
+//     }
+//   } catch {
+//     // если ошибка, оставляем пустой массив → попадём в fallback ниже
+//   }
+
+//   // fallback: если нет фотографий, берём avatar или placeholder
+//   if (!images.length) {
+//     images = car.avatar
+//       ? [car.avatar]
+//       : ['img/placeholder.jpg'];
+//   }
+
+//   // Сортируем массив images по номеру суффикса (_1, _2, _10 и т. д.)
+//   images.sort((a, b) => {
+//     const idx = src => {
+//       const m = src.match(/_(\d+)\.(?:jpe?g|png)$/i);
+//       return m ? +m[1] : 0;
+//     };
+//     return idx(a) - idx(b);
+//   });
+
+//   // Собираем HTML модалки:
+//   carModalContent.innerHTML = `
+//     <div class="car-modal-split">
+//       <div class="car-modal-left">
+//         <div class="car-modal-gallery">
+//           <img src="" id="modalMainImg" class="car-modal-main"
+//                title="Двойной клик — полноэкран">
+//           <div class="car-modal-thumbs">
+//             ${images.map((src,i) => `
+//               <img
+//                 src="${src}"
+//                 class="car-modal-thumb ${i===0?'active':''}"
+//                 data-idx="${i}">
+//             `).join('')}
+//           </div>
+//         </div>
+//       </div>
+//       <div class="car-modal-right">
+//         <button class="car-modal-close">&times;</button>
+//         <h2 class="car-modal-title">${car.brand} ${car.model}</h2>
+//         <div class="car-modal-price">${getPriceText(car, mode)}</div>
+//         <div class="car-modal-specs">
+//           <div><strong>Марка:</strong> ${car.brand||'—'}</div>
+//           <div><strong>Модель:</strong> ${car.model||'—'}</div>
+//           <div><strong>Год выпуска:</strong> ${car.year||'—'}</div>
+//           <div><strong>Трансмиссия:</strong> ${car.transmission||'—'}</div>
+//           <div><strong>Топливо:</strong> ${car.fuel_type||'—'}</div>
+//           <div><strong>Пробег:</strong> ${car.odometer_display||'—'}</div>
+//         </div>
+//         <p class="car-modal-desc">${car.equipment || ''}</p>
+//         <button class="car-order-btn">ОСТАВИТЬ ЗАЯВКУ</button>
+//       </div>
+//     </div>
+
+//     <div class="fullscreen-gallery" id="fsGallery" style="display:none;">
+//       <div class="fullscreen-overlay"></div>
+//       <button class="gallery-prev">&#10094;</button>
+//       <img id="fsImg" class="fullscreen-image" />
+//       <button class="gallery-next">&#10095;</button>
+//       <button class="gallery-close">&times;</button>
+//       <div class="gallery-counter" id="fsCounter"></div>
+//     </div>
+//   `;
+
+//   // Логика переключения картинок и fullscreen:
+//   const mainImg   = carModalContent.querySelector('#modalMainImg');
+//   const thumbs    = Array.from(carModalContent.querySelectorAll('.car-modal-thumb'));
+//   const fsGallery = carModalContent.querySelector('#fsGallery');
+//   const fsImg     = fsGallery.querySelector('#fsImg');
+//   const fsPrev    = fsGallery.querySelector('.gallery-prev');
+//   const fsNext    = fsGallery.querySelector('.gallery-next');
+//   const fsClose   = fsGallery.querySelector('.gallery-close');
+//   const fsOverlay = fsGallery.querySelector('.fullscreen-overlay');
+//   const fsCounter = fsGallery.querySelector('#fsCounter');
+//   let idx = 0;
+
+//   function setIndex(i) {
+//     idx = i;
+//     const url = images[i];
+//     mainImg.src = url;
+//     fsImg.src = url;
+//     fsCounter.textContent = `${i + 1} / ${images.length}`;
+//     thumbs.forEach(t => t.classList.toggle('active', +t.dataset.idx === i));
+//   }
+
+//   // Показываем первую фотографию
+//   setIndex(0);
+
+//   // Навешиваем клики на миниатюры
+//   thumbs.forEach(t => {
+//     t.addEventListener('click', () => setIndex(+t.dataset.idx));
+//     t.addEventListener('dblclick', e => {
+//       e.stopPropagation();
+//       fsGallery.style.display = 'flex';
+//       document.body.style.overflow = 'hidden';
+//       setIndex(+t.dataset.idx);
+//     });
+//   });
+
+//   // Двойной клик по «большой» картинке
+//   mainImg.addEventListener('dblclick', e => {
+//     e.stopPropagation();
+//     fsGallery.style.display = 'flex';
+//     document.body.style.overflow = 'hidden';
+//     setIndex(idx);
+//   });
+
+//   // Кнопки вперед/назад в fullscreen
+//   fsPrev.addEventListener('click', e => {
+//     e.stopPropagation();
+//     setIndex((idx - 1 + images.length) % images.length);
+//   });
+//   fsNext.addEventListener('click', e => {
+//     e.stopPropagation();
+//     setIndex((idx + 1) % images.length);
+//   });
+
+//   // Закрытие fullscreen-галереи
+//   const closeFs = () => {
+//     fsGallery.style.display = 'none';
+//     document.body.style.overflow = '';
+//   };
+//   fsClose.addEventListener('click', e => {
+//     e.stopPropagation();
+//     closeFs();
+//   });
+//   fsOverlay.addEventListener('click', e => {
+//     e.stopPropagation();
+//     closeFs();
+//   });
+
+//   // Открываем «основную» модалку с деталями:
+//   carModal.style.display = 'flex';
+//   document.body.style.overflow = 'hidden';
+//   carModalContent
+//     .querySelector('.car-modal-close')
+//     .addEventListener('click', closeCarModal);
+//   carModalOverlay.addEventListener('click', closeCarModal);
+//   carModalContent
+//     .querySelector('.car-order-btn')
+//     .addEventListener('click', () => openOrderModal(car, mode));
+// }
+
 export async function openCarModal(car, mode) {
-  // 1) загрузить все фото
   const plate = toLatinNumber(car.number || '');
   let images = [];
+
   try {
     const resp = await fetch(`${config.photoApi}/api/photos/${plate}`);
-    const { success, photos } = await resp.json();
-    if (success) images = photos;
-  } catch {}
-  // fallback
+    const arr = await resp.json(); // массив строк с именами файлов
+    if (Array.isArray(arr) && arr.length > 0) {
+      images = arr.map(item => {
+        if (item.startsWith('/')) {
+          return item.startsWith('http')
+            ? item
+            : `${config.photoApi}${item}`;
+        }
+        return `${config.photoApi}/photos/${plate}/${item}`;
+      });
+    }
+  } catch {
+    // В случае ошибки оставляем images пустым
+  }
+
+  // Если фоток нет, используем avatar или placeholder
   if (!images.length) {
     images = car.avatar
       ? [car.avatar]
       : ['img/placeholder.jpg'];
   }
 
-  // 2) отсортировать по суффиксу "_1", "_2", "_10" и т.д.
+  // Сортируем массив images по суффиксу (_1, _2, _10 и т.п.)
   images.sort((a, b) => {
     const idx = src => {
       const m = src.match(/_(\d+)\.(?:jpe?g|png)$/i);
@@ -659,54 +830,72 @@ export async function openCarModal(car, mode) {
     return idx(a) - idx(b);
   });
 
-  // 3) собрать HTML
+  // Формируем HTML модалки
   carModalContent.innerHTML = `
     <div class="car-modal-split">
-      <!-- ЛЕВАЯ КОЛОНКА -->
+      <!-- Левая колонка: галерея -->
       <div class="car-modal-left">
         <div class="car-modal-gallery">
           <img src="" id="modalMainImg" class="car-modal-main"
                title="Двойной клик — полноэкран">
           <div class="car-modal-thumbs">
-            ${images.map((src,i) => `
-              <img
-                src="${src.startsWith('http') ? src : config.photoApi+src}"
-                class="car-modal-thumb ${i===0?'active':''}"
-                data-idx="${i}">
+            ${images.map((src, i) => `
+              <img src="${src}"
+                   class="car-modal-thumb ${i === 0 ? 'active' : ''}"
+                   data-idx="${i}">
             `).join('')}
           </div>
         </div>
       </div>
-      <!-- ПРАВАЯ КОЛОНКА -->
+
+      <!-- Правая колонка: детали автомобиля -->
       <div class="car-modal-right">
         <button class="car-modal-close">&times;</button>
+
         <h2 class="car-modal-title">${car.brand} ${car.model}</h2>
-        <div class="car-modal-price">${getPriceText(car,mode)}</div>
+        <div class="car-modal-price"><span>${getPriceText(car, mode)}</span></div>
+
         <div class="car-modal-specs">
-          <div><strong>Марка:</strong>       ${car.brand||'—'}</div>
-          <div><strong>Модель:</strong>      ${car.model||'—'}</div>
-          <div><strong>Год выпуска:</strong>  ${car.year||'—'}</div>
-          <div><strong>Трансмиссия:</strong> ${car.transmission||'—'}</div>
-          <div><strong>Топливо:</strong>     ${car.fuel_type||'—'}</div>
-          <div><strong>Пробег:</strong>      ${car.odometer_display||'—'}</div>
+          <div><strong>Марка:</strong> ${car.brand || '—'}</div>
+          <div><strong>Модель:</strong> ${car.model || '—'}</div>
+          <div><strong>Год выпуска:</strong> ${car.year || '—'}</div>
+          <div><strong>Трансмиссия:</strong> ${car.transmission || '—'}</div>
+          <div><strong>Топливо:</strong> ${car.fuel_type || '—'}</div>
+          <div><strong>Пробег:</strong> ${car.odometer_display || '—'}</div>
         </div>
-        <p class="car-modal-desc">${car.equipment||''}</p>
+
+        <!-- Новое поле: Комплектация (с сохранением переносов строк) -->
+        <div class="car-modal-equipment">
+          <strong>Комплектация:</strong>
+          <div class="preformatted-text">
+            ${car.equipment ? car.equipment : '&mdash;'}
+          </div>
+        </div>
+
+        <!-- Новое поле: Описание (с сохранением переносов строк) -->
+        <div class="car-modal-description">
+          <strong>Описание:</strong>
+          <div class="preformatted-text">
+            ${car.description ? car.description : '&mdash;'}
+          </div>
+        </div>
+
         <button class="car-order-btn">ОСТАВИТЬ ЗАЯВКУ</button>
       </div>
     </div>
 
-    <!-- FULLSCREEN GALLERY -->
+    <!-- Fullscreen-галерея (скрыта по умолчанию) -->
     <div class="fullscreen-gallery" id="fsGallery" style="display:none;">
       <div class="fullscreen-overlay"></div>
       <button class="gallery-prev">&#10094;</button>
-      <img id="fsImg" class="fullscreen-image">
+      <img id="fsImg" class="fullscreen-image" />
       <button class="gallery-next">&#10095;</button>
       <button class="gallery-close">&times;</button>
       <div class="gallery-counter" id="fsCounter"></div>
     </div>
   `;
 
-  // 4) логика переключения и fullscreen
+  // Логика переключения картинок и fullscreen
   const mainImg   = carModalContent.querySelector('#modalMainImg');
   const thumbs    = Array.from(carModalContent.querySelectorAll('.car-modal-thumb'));
   const fsGallery = carModalContent.querySelector('#fsGallery');
@@ -720,19 +909,15 @@ export async function openCarModal(car, mode) {
 
   function setIndex(i) {
     idx = i;
-    const url = images[i].startsWith('http')
-      ? images[i]
-      : config.photoApi + images[i];
-    mainImg.src    = url;
-    fsImg.src      = url;
-    fsCounter.textContent = `${i+1} / ${images.length}`;
+    const url = images[i];
+    mainImg.src = url;
+    fsImg.src = url;
+    fsCounter.textContent = `${i + 1} / ${images.length}`;
     thumbs.forEach(t => t.classList.toggle('active', +t.dataset.idx === i));
   }
 
-  // показать первую
   setIndex(0);
 
-  // миниатюры
   thumbs.forEach(t => {
     t.addEventListener('click', () => setIndex(+t.dataset.idx));
     t.addEventListener('dblclick', e => {
@@ -743,7 +928,6 @@ export async function openCarModal(car, mode) {
     });
   });
 
-  // двойной клик по главной картинке
   mainImg.addEventListener('dblclick', e => {
     e.stopPropagation();
     fsGallery.style.display = 'flex';
@@ -751,7 +935,6 @@ export async function openCarModal(car, mode) {
     setIndex(idx);
   });
 
-  // навигация в fullscreen — теперь с остановкой всплытия
   fsPrev.addEventListener('click', e => {
     e.stopPropagation();
     setIndex((idx - 1 + images.length) % images.length);
@@ -774,15 +957,14 @@ export async function openCarModal(car, mode) {
     closeFs();
   });
 
-  // 5) открыть основную модалку
+  // Открываем основную модалку
   carModal.style.display = 'flex';
   document.body.style.overflow = 'hidden';
-  carModalContent.querySelector('.car-modal-close')
-                 .addEventListener('click', closeCarModal);
+  carModalContent.querySelector('.car-modal-close').addEventListener('click', closeCarModal);
   carModalOverlay.addEventListener('click', closeCarModal);
-  carModalContent.querySelector('.car-order-btn')
-                 .addEventListener('click', () => openOrderModal(car,mode));
+  carModalContent.querySelector('.car-order-btn').addEventListener('click', () => openOrderModal(car, mode));
 }
+
 
 
 /** Закрывает окно деталей */
@@ -797,26 +979,28 @@ export function openOrderModal(car, mode) {
   orderModalContent.innerHTML = `
     <h3>Ваш заказ:</h3>
     <div style="display:flex;align-items:center;gap:12px;">
-      <img src="${car.avatar||'img/placeholder.jpg'}"
-           style="width:90px;height:70px;object-fit:cover;border-radius:4px;">
+      <img
+        src="${car.avatar || 'img/placeholder.jpg'}"
+        style="width:90px;height:70px;object-fit:cover;border-radius:4px"
+      />
       <div>
-        <b>${car.brand} ${car.model}</b><br>
-        ${car.year?`Год: ${car.year}<br>`:''}
-        ${car.number?`Номер: ${car.number}`:''}
+        <b>${car.brand} ${car.model}</b><br />
+        ${car.year ? `Год: ${car.year}<br />` : ''} ${car.number ? `Номер: ${car.number}` : ''}
       </div>
     </div>
     <p>Цена: <strong>${price}</strong></p>
     <form class="order-form">
-      <label>Имя<br><input type="text" required></label><br>
-      <label>Телефон<br><input type="tel" required></label><br>
+      <label>Имя<br /><input type="text" required /></label><br />
+      <label>Телефон<br /><input type="tel" required /></label><br />
       <button type="submit">Отправить</button>
     </form>
     <button class="order-modal-close">&times;</button>
   `;
   orderModal.style.display = 'flex';
   document.body.style.overflow = 'hidden';
-  orderModalContent.querySelector('.order-modal-close')
-                   .onclick = closeOrderModal;
+  orderModalContent
+    .querySelector('.order-modal-close')
+    .onclick = closeOrderModal;
   orderModalOverlay.onclick = closeOrderModal;
   orderModalContent.querySelector('.order-form').onsubmit = e => {
     e.preventDefault();
@@ -825,7 +1009,6 @@ export function openOrderModal(car, mode) {
   };
 }
 
-/** Закрывает окно заказа */
 export function closeOrderModal() {
   orderModal.style.display = 'none';
   document.body.style.overflow = '';
