@@ -1013,3 +1013,26 @@ export function closeOrderModal() {
   orderModal.style.display = 'none';
   document.body.style.overflow = '';
 }
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const burgerBtn   = document.getElementById('burgerBtn');
+  const menuOverlay = document.getElementById('menuOverlay');
+  const closeMenuBtn = document.getElementById('closeMenu');
+  if (!burgerBtn || !menuOverlay || !closeMenuBtn) return;
+
+  burgerBtn.addEventListener('click', () => {
+    menuOverlay.classList.toggle('active');
+  });
+
+  closeMenuBtn.addEventListener('click', () => {
+    menuOverlay.classList.remove('active');
+  });
+
+  menuOverlay.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menuOverlay.classList.remove('active');
+    });
+  });
+});
+

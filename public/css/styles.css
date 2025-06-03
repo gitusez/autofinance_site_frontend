@@ -36,7 +36,7 @@ body.scale-fade-in {
     transform: scale(1);
 }
 
-.header {
+/* .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -48,56 +48,187 @@ body.scale-fade-in {
     z-index: 100;
     top: 0;
     left: 0;
+} */
+
+.header {
+  display: flex;
+  /* убираем space-between, чтобы лого и меню выстраивались слева */
+  justify-content: flex-start;
+  align-items: center;
+  height: 100px;
+  background: #000;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  /* убираем внутренние отступы здесь, перенесём их в .header-inner */
+  padding: 0;
 }
 
-.logo {
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 24px;
-    font-weight: 600;
-    cursor: pointer;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.2s;
-    max-height: 100px;
-    width: auto;
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 32px;            /* расстояние между лого и меню */
+  max-width: 1200px;    /* ограничение общей ширины шапки */
+  margin: 0 auto;       /* центрируем по горизонтали */
+  width: 100%;
+  padding: 0 32px;      /* внутренние отступы слева/справа */
 }
 
-.logo img {
-    max-height: 100%;
-    width: auto;
+
+
+/* Вставьте это в styles.css (после всех правил .header) */
+
+.logo img,
+#logoHome {
+  /* Задаём максимальную высоту картинки — 
+     например, 60px или 70px (чтобы ей оставалось небольшое пространство внутри .header) */
+  max-height: 100px;
+  /* или жёстко: height: 60px; */
+  
+  /* Сохраняем пропорции картинки */
+  width: auto;
+  
+  /* Чтобы изображение не искажалось */
+  object-fit: contain;
 }
 
-.logo:hover {
-    color: #f4c900;
+
+/* ── ПРАВИЛА ДЛЯ ДЕСKTOP-МЕНЮ И ГАМБУРГЕРА ── */
+
+/* Основная навигация (линии ссылок) */
+.main-nav {
+  display: flex;
+  gap: 24px;
 }
 
+.main-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+
+.main-nav a:hover {
+  color: #f4c900;
+}
+
+/* Кнопка-гамбургер (скрыта на широких экранах) */
 .burger {
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    z-index: 110;
-    padding: 0;
-    margin: 0;
-    height: 44px;
-    align-items: center;
-    justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: none;            /* спрячем по умолчанию (desktop) */
+  flex-direction: column;
+  gap: 5px;
+  z-index: 110;
+  padding: 0;
+  margin: 0;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
 }
 
 .burger span {
-    display: block;
-    width: 28px;
-    height: 3px;
-    background: #fff;
-    border-radius: 2px;
-    transition: 0.3s;
+  display: block;
+  width: 28px;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+  transition: 0.3s;
 }
+
+/* Мобильное меню (скрыто по умолчанию) */
+.mobile-nav {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.98);
+  display: none;            /* по умолчанию скрыто */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 200;
+  transform: translateY(-30px);
+  transition: opacity 0.4s, transform 0.5s cubic-bezier(.4,1.4,.6,1);
+}
+
+.mobile-nav.active {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
+}
+
+.mobile-nav .close-menu {
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2.2rem;
+  cursor: pointer;
+  z-index: 210;
+}
+
+.mobile-nav .menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px 0;
+  text-align: center;
+}
+
+.mobile-nav .menu-list li {
+  margin: 18px 0;
+}
+
+.mobile-nav .menu-list a {
+  display: inline-block;
+  color: #fff;
+  text-decoration: none !important;
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  transition: color 0.2s, transform 0.22s cubic-bezier(.4,1.4,.6,1);
+}
+
+.mobile-nav .menu-list a:hover {
+  color: #f4c900;
+  transform: translateY(-4px);
+}
+
+.mobile-nav .menu-contacts {
+  text-align: center;
+  margin-top: 24px;
+}
+
+.mobile-nav .menu-contacts .menu-phone {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}
+
+.mobile-nav .menu-contacts .menu-socials a {
+  display: inline-block;
+  margin: 30px 10px;
+}
+
+.mobile-nav .menu-contacts .menu-socials img {
+  width: 28px;
+  height: 28px;
+  filter: brightness(0) invert(1);
+  transition: filter 0.2s;
+}
+
+.mobile-nav .menu-contacts .menu-socials a:hover img {
+  filter: brightness(0) invert(0.6) sepia(1) hue-rotate(-30deg) saturate(5);
+}
+
+/* ── КОНЕЦ НАВИГАЦИОННЫХ СТИЛЕЙ ── */
+
 
 .menu-overlay {
     position: fixed;
@@ -822,7 +953,7 @@ body.scale-fade-in {
     color: #fff;
 }
 
-.gallery-counter {
+/* .gallery-counter {
     position: absolute;
     bottom: 40px;
     left: 50%;
@@ -837,7 +968,7 @@ body.scale-fade-in {
     letter-spacing: 1px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     pointer-events: none;
-}
+} */
 
 .car-specs {
     display: grid;
@@ -4557,6 +4688,19 @@ input[type="text"]:focus, input[type="tel"]:focus {
         padding: 12px 0;
     }
 }
+
+/* ── АДАПТИВ: ПОКАЗЫВАЕМ/СКРЫВАЕМ МЕНЮ ── */
+@media (max-width: 767px) {
+  .main-nav { display: none; }
+  .burger    { display: flex; }
+}
+
+@media (min-width: 768px) {
+  .mobile-nav { display: none !important; }
+  .main-nav   { display: flex;  }
+  .burger     { display: none;  }
+}
+
 
 .catalog-qr-block:hover {
     box-shadow: 0 8px 48px rgba(244,201,0,0.18);

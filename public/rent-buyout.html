@@ -10,7 +10,54 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Header -->
+
+  <header class="header">
+  <div class="header-inner">
+    <!-- 1) Логотип -->
+    <a href="index.html" class="logo">
+      <img src="img/black_logo.jpg" alt="АВТО ФИНАНС" id="logoHome">
+    </a>
+
+    <!-- 2) Десктопное меню (.main-nav) — видно на экранах ≥768px -->
+    <nav class="main-nav">
+      <a href="rent-buyout.html">ПРОКАТ</a>
+      <a href="buyback.html">АРЕНДА</a>
+      <a href="urgent-buyout.html">ВЫКУП</a>
+      <a href="catalog.html">КАТАЛОГ</a>
+      <a href="request.html">ОСТАВИТЬ ЗАЯВКУ</a>
+      <a href="contacts.html">КОНТАКТЫ</a>
+      <a href="about.html">О КОМПАНИИ</a>
+    </nav>
+
+    <!-- 3) Кнопка-гамбургер для мобильных (<768px) — по умолчанию скрыта на десктопе -->
+    <button class="burger" id="burgerBtn" aria-label="Открыть меню">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- 4) Блок мобильного меню (скрыт до клика по гамбургеру) -->
+<nav class="mobile-nav" id="menuOverlay">
+  <button class="close-menu" id="closeMenu" aria-label="Закрыть меню">&times;</button>
+  <ul class="menu-list">
+    <li><a href="rent-buyout.html">ПРОКАТ</a></li>
+    <li><a href="buyback.html">АРЕНДА</a></li>
+    <li><a href="urgent-buyout.html">ВЫКУП</a></li>
+    <li><a href="request.html">ОСТАВИТЬ ЗАЯВКУ</a></li>
+    <li><a href="catalog.html">КАТАЛОГ</a></li>
+    <li><a href="contacts.html">КОНТАКТЫ</a></li>
+    <li><a href="about.html">О КОМПАНИИ</a></li>
+  </ul>
+  <div class="menu-contacts">
+    <div><a href="tel:+78005553432" class="contacts-modern-phone">+7 800 555-34-32</a></div>
+    <div class="menu-socials">
+      <a href="#" aria-label="VK"><img src="img/vk.webp" alt="VK"></a>
+      <a href="#" aria-label="Telegram"><img src="img/telegram.webp" alt="Telegram"></a>
+      <a href="#" aria-label="WhatsApp"><img src="img/whatsapp.webp" alt="WhatsApp"></a>
+    </div>
+  </div>
+</nav>
+<!--
   <header class="header">
     <img src="img/black_logo.jpg" alt="АВТО ФИНАНС" class="logo" id="logoHome">
     <button class="burger" id="burgerBtn" aria-label="Открыть меню">
@@ -36,7 +83,8 @@
         <a href="#" aria-label="WhatsApp"><img src="img/whatsapp.webp" alt="WhatsApp"></a>
       </div>
     </div>
-  </nav>
+  </nav> -->
+  
   <main>
     <!-- Hero Banner -->
     <section class="hero hero-prokat" style="background-image: url('img/geely/geely5.jpeg');">
