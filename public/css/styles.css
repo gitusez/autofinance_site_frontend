@@ -1657,7 +1657,7 @@ body.scale-fade-in {
 }
 
 .buyback-form-section {
-    background: #000;
+    background: #000000;
     padding: 0 0 60px 0;
     text-align: center;
 }
@@ -1702,7 +1702,7 @@ body.scale-fade-in {
 
 .urgent-form-bg {
     position: relative;
-    background-image: url('/public/img/granta561/granta561_3.jpeg');
+    /* background-image: url('/public/img/granta561/granta561_3.jpeg'); */
     background-size: cover;
     background-position: center;
     background-attachment: scroll;
