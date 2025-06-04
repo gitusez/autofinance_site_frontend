@@ -2475,10 +2475,6 @@ body.scale-fade-in {
         padding-bottom: 60px;
     }
 
-    .car-modal-description {
-        max-height: 160px;
-    }
-
     .car-modal-title {
         font-size: 1.3rem;
         text-align: center;
@@ -2904,616 +2900,6 @@ input[type="text"]:focus, input[type="tel"]:focus {
     transform: translateY(-2px) scale(1.04);
 }
 
-/* обёртка каталога */
-.container {
-  max-width: 1200px;
-  margin: 90px auto 40px;
-  padding: 20px;
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(10px);
-  border-radius: 15px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-}
-
-/* всегда 3 равных колонки */
-.car-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;         /* отступы между карточками */
-}
-
-/* карточка автомобиля */
-.car-card {
-  background: rgba(255,255,255,0.10);
-  border: 1.5px solid rgba(255,255,255,0.10);
-  border-radius: 18px;
-  padding: 18px;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.18);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: transform .2s, box-shadow .2s, background .2s;
-  width: 100%;                  /* займёт всю «ячейку» сетки */
-  max-width: none;              /* сбросим прежние ограничения */
-}
-
-/* hover-эффект */
-.car-card:hover {
-  transform: translateY(-6px) scale(1.03);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.22);
-  background: rgba(255,255,255,0.16);
-}
-
-/* изображение */
-.car-image {
-  width: 100%;
-  aspect-ratio: 4/3;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 16px;
-}
-
-/* заголовок */
-.car-title {
-  font-size: 1.2em;
-  font-weight: 700;
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-/* цена */
-.car-info {
-  color: #f4c900;
-  font-weight: 600;
-  margin-bottom: 12px;
-  text-align: center;
-}
-
-/* кнопка детали */
-.car-detail-btn {
-  margin-top: auto;
-  width: 100%;
-  padding: 12px 0;
-  font-size: 1em;
-  font-weight: 700;
-  border: none;
-  border-radius: 8px;
-  background: linear-gradient(90deg, #f4c900, #ffb347);
-  color: #fff;
-  cursor: pointer;
-  transition: background .2s, box-shadow .2s;
-}
-.car-detail-btn:hover {
-  background: linear-gradient(90deg, #ffb347, #f4c900);
-  color: #222;
-}
-
-
-/* 1) Центрируем секции и задаём им чёткую «рамку» */
-.catalog-section {
-  max-width: 1200px;            /* ограничиваем ширину контента */
-  margin: 60px auto;            /* центрируем по горизонтали и даём отступ сверху/снизу */
-  padding: 30px 20px;           /* внутренние отступы */
-  /* border-top: 1px solid rgba(255,255,255,0.1); */
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-/* первый раздел не нуждается в верхней границе */
-.catalog-section:first-of-type {
-  border-top: none;
-}
-
-/* Заголовок секции — по центру и с отступом */
-.catalog-section h2 {
-  text-align: center;
-  font-size: 3rem;
-  margin-bottom: 40px;
-  color: #f4c900;
-}
-
-.preformatted-text {
-  white-space: pre-line;    
-  line-height: 1.4;         
-}
-
-.car-modal-description {
-    background: rgba(0, 0, 0, 0.2);
-    padding: 16px;
-    border-radius: 10px;
-    max-height: 250px;
-    overflow-y: auto;
-    margin-bottom: 16px;
-}
-
-.car-modal-description::-webkit-scrollbar {
-    width: 6px;
-}
-
-.car-modal-description::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 3px;
-}
-
-.car-modal-description::-webkit-scrollbar-thumb {
-    background: #f4c900;
-    border-radius: 3px;
-}
-
-.description-section {
-    padding: 10px 0;
-}
-
-.description-section h3 {
-    color: #f4c900;
-    font-size: 1.1rem;
-    margin-bottom: 8px;
-}
-
-.description-section p {
-    color: #fff;
-    line-height: 1.5;
-    margin-bottom: 10px;
-}
-
-.car-order-btn {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin-top: 16px;
-    padding: 14px;
-    font-size: 1.1rem;
-    background: linear-gradient(90deg, #f4c900, #ffb347 90%);
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.car-order-btn:hover {
-    background: linear-gradient(90deg, #ffb347, #f4c900 90%);
-    transform: translateY(-2px);
-}
-
-@media (max-width: 768px) {
-    .car-modal-split {
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-
-    .car-modal-right {
-        padding-bottom: 60px;
-    }
-
-    .car-modal-description {
-        max-height: 160px;
-    }
-
-    .car-modal-title {
-        font-size: 1.3rem;
-        text-align: center;
-    }
-
-    .car-modal-price {
-        text-align: center;
-    }
-}
-
-@media (max-width: 480px) {
-    .car-modal-content {
-        padding: 16px;
-    }
-
-    .description-swiper-content {
-        height: 160px;
-    }
-
-    .description-section h3 {
-        font-size: 1rem;
-    }
-}
-
-.car-modal-close {
-    position: absolute;
-    top: 18px;
-    right: 18px;
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 2.2rem;
-    cursor: pointer;
-    z-index: 10;
-    transition: color 0.2s;
-    border-radius: 50%;
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.car-modal-close:hover {
-    color: #f4c900;
-    background: rgba(255,255,255,0.08);
-}
-
-.order-modal-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 18px;
-    color: #fff;
-}
-.order-modal-car {
-    display: flex;
-    align-items: flex-start;
-    gap: 18px;
-    background: none;
-    margin-bottom: 10px;
-}
-.order-modal-car img {
-    width: 80px;
-    height: 64px;
-    object-fit: cover;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.13);
-}
-.order-modal-car > div {
-    flex: 1;
-    min-width: 0;
-}
-.order-modal-car b {
-    font-size: 1.13rem;
-    color: #fff;
-}
-.order-modal-car span, .order-modal-car .car-spec-item {
-    font-size: 1.01rem;
-    color: #fff;
-    display: block;
-    margin-bottom: 2px;
-}
-.order-qty-btn {
-    background: #232323;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    width: 32px;
-    height: 32px;
-    font-size: 1.3rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-.order-qty-btn:hover {
-    background: #f4c900;
-    color: #fff;
-}
-.order-remove-btn {
-    background: none;
-    border: none;
-    color: #888;
-    font-size: 1.3rem;
-    cursor: pointer;
-    margin-left: 8px;
-    transition: color 0.2s;
-}
-.order-remove-btn:hover {
-    color: #f4c900;
-}
-.order-modal-close {
-    position: absolute;
-    top: 18px;
-    right: 18px;
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 2rem;
-    cursor: pointer;
-    z-index: 10;
-    border-radius: 50%;
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.order-modal-close:hover {
-    color: #f4c900;
-    background: rgba(255,255,255,0.08);
-}
-.order-form {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    margin-top: 18px;
-}
-.order-form input {
-    padding: 14px 12px;
-    border-radius: 8px;
-    border: none;
-    font-size: 1.1rem;
-    background: #232323;
-    color: #fff;
-    margin-bottom: 0;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-}
-.order-form input:focus {
-    background: #181818;
-    outline: 2px solid #f4c900;
-}
-.order-form button[type="submit"] {
-    background: linear-gradient(90deg, #f4c900, #ffb347 90%);
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    padding: 16px 0;
-    font-size: 1.18rem;
-    font-weight: 700;
-    cursor: pointer;
-    margin-top: 10px;
-    box-shadow: 0 2px 12px rgba(255,128,0,0.13);
-    transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.18s;
-}
-.order-form button[type="submit"]:hover {
-    background: linear-gradient(90deg, #ffb347, #f4c900 90%);
-    color: #222;
-    box-shadow: 0 4px 24px 0 rgba(255,128,0,0.18);
-    transform: translateY(-2px) scale(1.04);
-}
-#orderTotal {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #fff;
-}
-@media (max-width: 700px) {
-    .order-modal-car {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-    }
-    .order-modal-car img {
-        width: 60px;
-        height: 48px;
-    }
-    .order-modal-close {
-        top: 8px;
-        right: 8px;
-        font-size: 1.5rem;
-        width: 32px;
-        height: 32px;
-    }
-}
-
-input[type="text"], input[type="tel"] {
-  background: #222;
-  color: #fff;
-  border: 1px solid #444;
-  border-radius: 8px;
-  padding: 12px 10px;
-  font-size: 1.1rem;
-  margin-top: 4px;
-  margin-bottom: 12px;
-  box-sizing: border-box;
-  outline: none;
-  transition: border 0.2s;
-}
-input[type="text"]:focus, input[type="tel"]:focus {
-  border: 1.5px solid #fff;
-  background: #222;
-} 
-
-.service-card:nth-child(1) img {
-  object-position: center center;
-  transform: scale(1.18);   
-
-}
-.service-card:nth-child(2) img {
-  object-position: center 70%;
-  transform: scale(1.20);   
-}
-.service-card:nth-child(3) img {
-  object-position: center 39%;
-  transform: scale(1.40); left: 10px;
-}
-
-.hero-bg-prokat {
-  object-position: center 70%;
-  filter: brightness(0.35) blur(0.2px);
-}
-.hero-bg-arenda {
-  object-position: center 40%;
-  filter: brightness(0.32) blur(0.2px) grayscale(0.08);
-}
-.hero-bg-vykup {
-  object-position: center 60%;
-  filter: brightness(0.38) blur(0.2px) grayscale(0.12);
-}
-.hero-bg-about {
-  object-position: center 50%;
-  filter: brightness(0.33) blur(0.2px) sepia(0.08);
-}
-
-.hero-bg.parallax {
-  will-change: transform;
-  transition: transform 0.1s linear;
-}
-
-.hero.hero-about {
-    background-size: 150% auto;
-    background-position: center center;
-}
-
-.about-photo-item {
-    width: 340px;
-    height: 240px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    background: #181818;
-    border-radius: 18px;
-    box-shadow: 0 4px 32px rgba(0,0,0,0.18);
-    overflow: hidden;
-    margin-bottom: 0;
-    transition: transform 0.7s cubic-bezier(.4,1.4,.6,1), box-shadow 0.22s cubic-bezier(.4,1.4,.6,1);
-}
-.about-photo-item img {
-    width: 100%;
-    height: 170px;
-    object-fit: cover;
-    border-radius: 18px 18px 0 0;
-    box-shadow: none;
-    transition: filter 0.22s cubic-bezier(.4,1.4,.6,1);
-}
-.about-photo-item:hover {
-    transform: scale(1.04);
-    box-shadow: 0 8px 40px 0 rgba(255, 242, 0, 0.18);
-    z-index: 2;
-}
-.about-photo-item:hover img {
-    filter: brightness(1.08);
-}
-.about-photo-item div {
-    margin-top: 14px;
-    color: #fff;
-    font-size: 1.1rem;
-    opacity: 0.8;
-    text-align: center;
-}
-
-.catalog-qr-block {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 36px;
-    background: rgba(255,255,255,0.04);
-    border-radius: 18px;
-    box-shadow: 0 4px 32px rgba(0,0,0,0.10);
-    padding: 32px 24px;
-    margin: 35px auto 50px auto;
-    max-width: 700px;
-    transition: box-shadow 0.5s cubic-bezier(.4,1.4,.6,1);
-}
-
-.catalog-qr-img {
-    width: 120px;
-    height: 120px;
-    border-radius: 16px;
-    background: #fff;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
-    transition: transform 0.45s cubic-bezier(.4,1.4,.6,1);
-    flex-shrink: 0;
-}
-
-.catalog-qr-text {
-    color: #fff;
-    font-size: 1.25rem;
-    line-height: 1.5;
-    text-align: left;
-    font-weight: 500;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 9px;
-}
-
-.catalog-qr-link {
-    display: inline-block;
-    margin-top: 10px;
-    background: linear-gradient(90deg, #f4c900, #ffb347 90%);
-    color: #222;
-    font-weight: 700;
-    padding: 12px 38px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-size: 1.1rem;
-    box-shadow: 0 2px 12px rgba(244,201,0,0.13);
-    transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.18s;
-    text-align: center;
-}
-
-@media (max-width: 700px) {
-    .catalog-qr-block {
-        flex-direction: column;
-        gap: 18px;
-        padding: 18px 8px;
-        max-width: 98vw;
-    }
-    .catalog-qr-img {
-        width: 90px;
-        height: 90px;
-    }
-    .catalog-qr-text {
-        font-size: 1.05rem;
-        text-align: center;
-        gap: 10px;
-    }
-    .catalog-qr-link {
-        width: 100%;
-        padding: 12px 0;
-    }
-}
-
-.catalog-qr-block:hover {
-    box-shadow: 0 8px 48px rgba(244,201,0,0.18);
-}
-.catalog-qr-block:hover .catalog-qr-img {
-    transform: scale(1.14) rotate(-2deg);
-}
-
-/* New block added at the end */
-.new-block {
-    background-color: #f4c900;
-    color: #000;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    margin-top: 20px;
-}
-
-.thankyou-section {
-    min-height: 70vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: none;
-    margin-top: 120px;
-}
-.thankyou-block {
-    background: rgba(30,30,30,0.75);
-    border-radius: 22px;
-    box-shadow: 0 8px 40px 0 rgba(244,201,0,0.10), 0 1.5px 12px 0 rgba(0,0,0,0.10);
-    padding: 48px 36px 40px 36px;
-    max-width: 420px;
-    width: 100%;
-    text-align: center;
-    margin: 48px auto;
-    border: 1.5px solid rgba(244,201,0,0.13);
-    animation: fadeIn 0.7s cubic-bezier(.4,1.4,.6,1);
-}
-.thankyou-icon {
-    font-size: 3.5rem;
-    color: #f4c900;
-    margin-bottom: 18px;
-}
-.thankyou-btn {
-    display: inline-block;
-    margin-top: 28px;
-    background: linear-gradient(90deg, #f4c900, #ffb347 90%);
-    color: #222;
-    font-weight: 700;
-    padding: 14px 38px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-size: 1.1rem;
-    box-shadow: 0 2px 12px rgba(244,201,0,0.13);
-    transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.18s;
-}
-.thankyou-btn:hover {
-    background: linear-gradient(90deg, #ffb347, #f4c900 90%);
-    color: #000;
-    box-shadow: 0 4px 24px 0 rgba(244,201,0,0.18);
-    transform: translateY(-2px) scale(1.04);
-}
 
 /* обёртка каталога */
 .container {
@@ -3627,45 +3013,6 @@ input[type="text"]:focus, input[type="tel"]:focus {
   line-height: 1.4;         
 }
 
-.car-modal-description {
-    background: rgba(0, 0, 0, 0.2);
-    padding: 16px;
-    border-radius: 10px;
-    max-height: 250px;
-    overflow-y: auto;
-    margin-bottom: 16px;
-}
-
-.car-modal-description::-webkit-scrollbar {
-    width: 6px;
-}
-
-.car-modal-description::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 3px;
-}
-
-.car-modal-description::-webkit-scrollbar-thumb {
-    background: #f4c900;
-    border-radius: 3px;
-}
-
-.description-section {
-    padding: 10px 0;
-}
-
-.description-section h3 {
-    color: #f4c900;
-    font-size: 1.1rem;
-    margin-bottom: 8px;
-}
-
-.description-section p {
-    color: #fff;
-    line-height: 1.5;
-    margin-bottom: 10px;
-}
-
 .car-order-btn {
     position: absolute;
     bottom: 0;
@@ -3697,10 +3044,6 @@ input[type="text"]:focus, input[type="tel"]:focus {
         padding-bottom: 60px;
     }
 
-    .car-modal-description {
-        max-height: 160px;
-    }
-
     .car-modal-title {
         font-size: 1.3rem;
         text-align: center;
@@ -3718,10 +3061,6 @@ input[type="text"]:focus, input[type="tel"]:focus {
 
     .description-swiper-content {
         height: 160px;
-    }
-
-    .description-section h3 {
-        font-size: 1rem;
     }
 }
 
@@ -4133,90 +3472,6 @@ input[type="text"]:focus, input[type="tel"]:focus {
     transform: translateY(-2px) scale(1.04);
 }
 
-/* обёртка каталога */
-.container {
-  max-width: 1200px;
-  margin: 90px auto 40px;
-  padding: 20px;
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(10px);
-  border-radius: 15px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-}
-
-/* всегда 3 равных колонки */
-.car-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;         /* отступы между карточками */
-}
-
-/* карточка автомобиля */
-.car-card {
-  background: rgba(255,255,255,0.10);
-  border: 1.5px solid rgba(255,255,255,0.10);
-  border-radius: 18px;
-  padding: 18px;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.18);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: transform .2s, box-shadow .2s, background .2s;
-  width: 100%;                  /* займёт всю «ячейку» сетки */
-  max-width: none;              /* сбросим прежние ограничения */
-}
-
-/* hover-эффект */
-.car-card:hover {
-  transform: translateY(-6px) scale(1.03);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.22);
-  background: rgba(255,255,255,0.16);
-}
-
-/* изображение */
-.car-image {
-  width: 100%;
-  aspect-ratio: 4/3;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 16px;
-}
-
-/* заголовок */
-.car-title {
-  font-size: 1.2em;
-  font-weight: 700;
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-/* цена */
-.car-info {
-  color: #f4c900;
-  font-weight: 600;
-  margin-bottom: 12px;
-  text-align: center;
-}
-
-/* кнопка детали */
-.car-detail-btn {
-  margin-top: auto;
-  width: 100%;
-  padding: 12px 0;
-  font-size: 1em;
-  font-weight: 700;
-  border: none;
-  border-radius: 8px;
-  background: linear-gradient(90deg, #f4c900, #ffb347);
-  color: #fff;
-  cursor: pointer;
-  transition: background .2s, box-shadow .2s;
-}
-.car-detail-btn:hover {
-  background: linear-gradient(90deg, #ffb347, #f4c900);
-  color: #222;
-}
-
 
 /* 1) Центрируем секции и задаём им чёткую «рамку» */
 .catalog-section {
@@ -4266,22 +3521,6 @@ input[type="text"]:focus, input[type="tel"]:focus {
 .car-modal-description::-webkit-scrollbar-thumb {
     background: #f4c900;
     border-radius: 3px;
-}
-
-.description-section {
-    padding: 10px 0;
-}
-
-.description-section h3 {
-    color: #f4c900;
-    font-size: 1.1rem;
-    margin-bottom: 8px;
-}
-
-.description-section p {
-    color: #fff;
-    line-height: 1.5;
-    margin-bottom: 10px;
 }
 
 .car-order-btn {
@@ -4338,9 +3577,6 @@ input[type="text"]:focus, input[type="tel"]:focus {
         height: 160px;
     }
 
-    .description-section h3 {
-        font-size: 1rem;
-    }
 }
 
 .car-modal-close {
@@ -4764,95 +4000,87 @@ input[type="text"]:focus, input[type="tel"]:focus {
     transform: translateY(-2px) scale(1.04);
 }
 
-/* обёртка каталога */
-.container {
-  max-width: 1200px;
-  margin: 90px auto 40px;
-  padding: 20px;
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(10px);
-  border-radius: 15px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-}
-
-/* всегда 3 равных колонки */
-.car-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;         /* отступы между карточками */
-}
-
-/* карточка автомобиля */
-.car-card {
-  background: rgba(255,255,255,0.10);
-  border: 1.5px solid rgba(255,255,255,0.10);
-  border-radius: 18px;
-  padding: 18px;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.18);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: transform .2s, box-shadow .2s, background .2s;
-  width: 100%;                  /* займёт всю «ячейку» сетки */
-  max-width: none;              /* сбросим прежние ограничения */
-}
-
-/* hover-эффект */
-.car-card:hover {
-  transform: translateY(-6px) scale(1.03);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.22);
-  background: rgba(255,255,255,0.16);
-}
-
-/* изображение */
-.car-image {
-  width: 100%;
-  aspect-ratio: 4/3;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 16px;
-}
-
-/* заголовок */
-.car-title {
-  font-size: 1.2em;
-  font-weight: 700;
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-/* цена */
-.car-info {
-  color: #f4c900;
-  font-weight: 600;
-  margin-bottom: 12px;
-  text-align: center;
-}
-
-/* кнопка детали */
-.car-detail-btn {
-  margin-top: auto;
-  width: 100%;
-  padding: 12px 0;
-  font-size: 1em;
-  font-weight: 700;
-  border: none;
-  border-radius: 8px;
-  background: linear-gradient(90deg, #f4c900, #ffb347);
-  color: #fff;
-  cursor: pointer;
-  transition: background .2s, box-shadow .2s;
-}
-.car-detail-btn:hover {
-  background: linear-gradient(90deg, #ffb347, #f4c900);
-  color: #222;
-}
-
-
 /* 1) Центрируем секции и задаём им чёткую «рамку» */
 .catalog-section {
   max-width: 1200px;            /* ограничиваем ширину контента */
 }
 
+/* ─── Стили для боковой панели фильтров ─── */
+
+.filters {
+  background: #1a1a1a;
+  padding: 20px;
+  border-radius: 8px;
+  width: 280px;
+  font-size: 0.95rem;
+  color: #fff;
+  margin-bottom: 30px;
+  margin-left: 80px;
+}
+.filter-section {
+  margin-bottom: 20px;
+}
+.filter-section h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #f4c900;
+}
+.filter-section input[type="number"],
+.filter-section select {
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 8px;
+  border: 1px solid #444;
+  border-radius: 4px;
+  background: #2a2a2a;
+  color: #fff;
+}
+.filter-section input[type="number"]::placeholder {
+  color: #888;
+}
+.filter-section label {
+  display: block;
+  margin-bottom: 6px;
+  cursor: pointer;
+}
+.filter-section input[type="checkbox"],
+.filter-section input[type="radio"] {
+  margin-right: 6px;
+  vertical-align: middle;
+}
+.filter-tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.filter-tab {
+  flex: 1;
+  padding: 6px;
+  background: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 0.95rem;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.2s;
+}
+.filter-tab.active {
+  background: #f4c900;
+  color: #000;
+  border-color: #f4c900;
+}
+#buttonResetFilters {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background: #f44336;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+}
 
 
