@@ -230,7 +230,7 @@ body.scale-fade-in {
 /* ── КОНЕЦ НАВИГАЦИОННЫХ СТИЛЕЙ ── */
 
 
-.menu-overlay {
+/* .menu-overlay {
     position: fixed;
     inset: 0;
     background: rgba(0,0,0,0.98) !important;
@@ -320,7 +320,7 @@ body.scale-fade-in {
 
 .menu-socials a:hover img {
     filter: brightness(0) invert(0.6) sepia(1) hue-rotate(-30deg) saturate(5);
-}
+} */
 
 .hero {
     position: relative;
