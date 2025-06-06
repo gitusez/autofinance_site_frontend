@@ -1,138 +1,3 @@
-<!-- 
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Каталог | АВТО ФИНАНС</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <header class="header">
-        <img src="img/black_logo.jpg" alt="АВТО ФИНАНС" class="logo" id="logoHome">
-        <button class="burger" id="burgerBtn" aria-label="Открыть меню">
-            <span></span><span></span><span></span>
-        </button>
-    </header>
-    <nav class="menu-overlay" id="menuOverlay">
-        <button class="close-menu" id="closeMenu" aria-label="Закрыть меню">&times;</button>
-        <ul class="menu-list">
-            <li><a href="catalog.html">КАТАЛОГ</a></li>
-            <li><a href="rent-buyout.html">ПРОКАТ</a></li>
-            <li><a href="buyback.html">АРЕНДА</a></li>
-            <li><a href="urgent-buyout.html">ВЫКУП</a></li>
-            <li><a href="request.html">ОСТАВИТЬ ЗАЯВКУ</a></li>
-            <li><a href="contacts.html">КОНТАКТЫ</a></li>
-            <li><a href="about.html">О КОМПАНИИ</a></li>
-        </ul>
-        <div class="menu-contacts">
-            <div> <a href="tel:+78005553432" class="contacts-modern-phone">+7 800 555-34-32</a></div>
-            <div class="menu-socials">
-                <a href="#" aria-label="VK"><img src="img/vk.webp" alt="VK"></a>
-                <a href="#" aria-label="Telegram"><img src="img/telegram.webp" alt="Telegram"></a>
-                <a href="#" aria-label="WhatsApp"><img src="img/whatsapp.webp" alt="WhatsApp"></a>
-            </div>
-        </div>
-    </nav>
-    <main style="margin-top:90px;">
-        <div class="catalog-container">
-            <div class="catalog-header">
-                <h1 class="catalog-title">Каталог автомобилей</h1>
-            </div>
-            <div class="catalog-qr-block">
-                <img src="img/QR_Autofinance.png" alt="QR-код Автофинанс Telegram" class="catalog-qr-img">
-                <div class="catalog-qr-text">
-                    Ознакомьтесь с полным каталогом авто в нашем приложении в Telegram!
-                    <a href="https://t.me/your_telegram_link" target="_blank" class="catalog-qr-link">Переходите!</a>
-                </div>
-            </div>
-            <div class="car-grid" id="carGrid">
-                <div class="car-card" 
-                  data-id="granta" 
-                  data-name="Lada Granta" 
-                  data-nameru="Лада Гранта" 
-                  data-price="1550" 
-                  data-pricetext="1 550 ₽ в сутки" 
-                  data-images="img/granta1/granta1.webp,img/granta1/granta2.webp,img/granta1/granta3.webp,img/granta1/granta4.webp,img/granta1/granta5.webp,img/granta1/granta6.webp,img/granta1/granta7.webp,img/granta1/granta8.webp,img/granta1/granta9.webp,img/granta1/granta10.webp,img/granta1/granta11.webp,img/granta1/granta12.webp,img/granta1/granta13.webp"
-                  data-specs='[{"label":"Марка","value":"LADA"},{"label":"Модель","value":"Granta"},{"label":"Год выпуска","value":"2023"},{"label":"Трансмиссия","value":"МКПП"},{"label":"Топливо","value":"Бензин"},{"label":"Двигатель","value":"1.6 л / 87 л.с."}]'
-                  data-description="Все наши авто прошли полную техническую проверку и предпродажную подготовку. Приобретая у нас автомобиль в аренду с выкупом, Вы можете быть уверены в состоянии выбранного авто. При внесении увеличенного первоначального взноса, сумма ежесуточного платежа будет уменьшена.">
-                  <img src="img/granta1/granta1.webp" alt="Lada Granta" class="car-image">
-                  <div class="car-title">Lada Granta</div>
-                  <div class="car-info">1 550 ₽ в сутки</div>
-                  <button class="car-detail-btn">ПОДРОБНЕЕ</button>
-                </div>
-                <div class="car-card" 
-                  data-id="vesta" 
-                  data-name="Lada Vesta" 
-                  data-nameru="Лада Веста" 
-                  data-price="1950" 
-                  data-pricetext="1 950 ₽ в сутки" 
-                  data-images="img/vesta1/vesta1.webp,img/vesta1/vesta2.webp,img/vesta1/vesta3.webp,img/vesta1/vesta4.webp,img/vesta1/vesta5.webp,img/vesta1/vesta6.webp,img/vesta1/vesta7.webp,img/vesta1/vesta8.webp,img/vesta1/vesta9.webp,img/vesta1/vesta10.webp,img/vesta1/vesta11.webp,img/vesta1/vesta12.webp,img/vesta1/vesta13.webp,img/vesta1/vesta14.webp"
-                  data-specs='[{"label":"Марка","value":"LADA"},{"label":"Модель","value":"Vesta"},{"label":"Год выпуска","value":"2022"},{"label":"Трансмиссия","value":"АКПП"},{"label":"Топливо","value":"Бензин"},{"label":"Двигатель","value":"1.6 л / 113 л.с."}]'
-                  data-description="Lada Vesta — современный и надёжный автомобиль для города и трассы. Отличное состояние, полный комплект документов, готова к эксплуатации.">
-                  <img src="img/vesta1/vesta1.webp" alt="Lada Vesta" class="car-image">
-                  <div class="car-title">Lada Vesta</div>
-                  <div class="car-info">1 950 ₽ в сутки</div>
-                  <button class="car-detail-btn">ПОДРОБНЕЕ</button>
-                </div>
-                <div class="car-card" 
-                  data-id="geely" 
-                  data-name="Geely Coolray" 
-                  data-nameru="Джили Кулрей" 
-                  data-price="2100" 
-                  data-pricetext="2 100 ₽ в сутки" 
-                  data-images="img/geely1/Geely_Card1.jpeg,img/geely1/Geely_Card2.jpeg,img/geely1/Geely_Card3.jpeg,img/geely1/Geely_Card4.jpeg,img/geely1/Geely_Card5.jpeg,img/geely1/Geely_Card6.jpeg,img/geely1/Geely_Card7.jpeg,img/geely1/Geely_Card8.jpeg,img/geely1/Geely_Card9.jpeg,img/geely1/Geely_Card10.jpeg,img/geely1/Geely_Card11.jpeg,img/geely1/Geely_Card12.jpeg,img/geely1/Geely_Card13.jpeg,img/geely1/Geely_Card14.jpeg,img/geely1/Geely_Card15.jpeg,img/geely1/Geely_Card16.jpeg"
-                  data-specs='[{"label":"Марка","value":"Geely"},{"label":"Модель","value":"Coolray"},{"label":"Год выпуска","value":"2023"},{"label":"Трансмиссия","value":"АКПП"},{"label":"Топливо","value":"Бензин"},{"label":"Двигатель","value":"1.5 л / 150 л.с."}]'
-                  data-description="Geely Coolray — современный кроссовер с отличной динамикой и комфортом. Идеален для города и путешествий.">
-                  <img src="img/geely1/Geely_Card1.jpeg" alt="Geely Coolray" class="car-image">
-                  <div class="car-title">Geely Coolray</div>
-                  <div class="car-info">2 100 ₽ в сутки</div>
-                  <button class="car-detail-btn">ПОДРОБНЕЕ</button>
-                </div>
-            </div>
-        </div>
-
-
-
-        <div class="modal" id="carModal" style="display:none;">
-            <div class="modal-overlay" id="carModalOverlay"></div>
-            <div class="modal-content car-modal-content" id="carModalContent">
-            </div>
-        </div>
-        <div class="modal" id="orderModal" style="display:none;">
-            <div class="modal-overlay" id="orderModalOverlay"></div>
-            <div class="modal-content order-modal-content" id="orderModalContent">
-            </div>
-        </div>
-
-
-        
-    </main>
-    <footer class="footer">
-        <div class="footer-logo">
-            <img src="img/black_logo.jpg" alt="АВТО ФИНАНС" style="height:74px; margin-bottom:10px;">
-        </div>
-        <div class="footer-links" style="margin-bottom:10px;">
-            <a href="catalog.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">Каталог</a>
-            <a href="rent-buyout.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">Прокат</a>
-            <a href="buyback.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">Аренда</a>
-            <a href="urgent-buyout.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">Выкуп</a>
-            <a href="request.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">Оставить заявку</a>
-            <a href="contacts.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">Контакты</a>
-            <a href="about.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">О компании</a>
-        </div>
-        <div class="footer-info" style="font-size:1em; color:#fff; display:flex; justify-content:center; gap:32px; flex-wrap:wrap;">
-            <span>ООО "АВТО ФИНАНС"</span>
-            <span>ИНН 7715124424 ОГРН 1227700037564</span>
-        </div>
-    </footer>
-    <a href="#" class="whatsapp-float" aria-label="WhatsApp"><img src="img/whatsapp.webp" alt="WhatsApp"></a>
-    <script src="js/script.js"></script>
-    <script src="js/catalog.js"></script>
-</body>
-</html>  -->
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -144,176 +9,63 @@
 </head>
 <body>
 
-    <header class="header">
-  <div class="header-inner">
-    <!-- 1) Логотип -->
-    <a href="index.html" class="logo">
-      <img src="img/black_logo.jpg" alt="АВТО ФИНАНС" id="logoHome">
-    </a>
+  <header class="header">
+    <div class="header-inner">
+      <!-- 1) Логотип -->
+      <a href="index.html" class="logo">
+        <img src="img/black_logo.jpg" alt="АВТО ФИНАНС" id="logoHome">
+      </a>
 
-    <!-- 2) Десктопное меню (.main-nav) — видно на экранах ≥768px -->
-    <nav class="main-nav">
-      <a href="rent-buyout.html">ПРОКАТ</a>
-      <a href="buyback.html">АРЕНДА</a>
-      <a href="urgent-buyout.html">ВЫКУП</a>
-      <a href="catalog.html">КАТАЛОГ</a>
-      <a href="request.html">ОСТАВИТЬ ЗАЯВКУ</a>
-      <a href="contacts.html">КОНТАКТЫ</a>
-      <a href="about.html">О КОМПАНИИ</a>
-    </nav>
+      <!-- 2) Десктопное меню (.main-nav) — видно на экранах ≥768px -->
+      <nav class="main-nav">
+        <a href="rent-buyout.html">ПРОКАТ</a>
+        <a href="buyback.html">АРЕНДА</a>
+        <a href="urgent-buyout.html">ВЫКУП</a>
+        <a href="catalog.html">КАТАЛОГ</a>
+        <a href="request.html">ОСТАВИТЬ ЗАЯВКУ</a>
+        <a href="contacts.html">КОНТАКТЫ</a>
+        <a href="about.html">О КОМПАНИИ</a>
+      </nav>
 
-    <!-- 3) Кнопка-гамбургер для мобильных (<768px) — по умолчанию скрыта на десктопе -->
-    <button class="burger" id="burgerBtn" aria-label="Открыть меню">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
-
-<!-- 4) Блок мобильного меню (скрыт до клика по гамбургеру) -->
-<nav class="mobile-nav" id="menuOverlay">
-  <button class="close-menu" id="closeMenu" aria-label="Закрыть меню">&times;</button>
-  <ul class="menu-list">
-    <li><a href="rent-buyout.html">ПРОКАТ</a></li>
-    <li><a href="buyback.html">АРЕНДА</a></li>
-    <li><a href="urgent-buyout.html">ВЫКУП</a></li>
-    <li><a href="request.html">ОСТАВИТЬ ЗАЯВКУ</a></li>
-    <li><a href="catalog.html">КАТАЛОГ</a></li>
-    <li><a href="contacts.html">КОНТАКТЫ</a></li>
-    <li><a href="about.html">О КОМПАНИИ</a></li>
-  </ul>
-  <div class="menu-contacts">
-    <div><a href="tel:+78005553432" class="contacts-modern-phone">+7 800 555-34-32</a></div>
-    <div class="menu-socials">
-      <a href="#" aria-label="VK"><img src="img/vk.webp" alt="VK"></a>
-      <a href="#" aria-label="Telegram"><img src="img/telegram.webp" alt="Telegram"></a>
-      <a href="#" aria-label="WhatsApp"><img src="img/whatsapp.webp" alt="WhatsApp"></a>
+      <!-- 3) Кнопка-гамбургер для мобильных (<768px) — по умолчанию скрыта на десктопе -->
+      <button class="burger" id="burgerBtn" aria-label="Открыть меню">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-  </div>
-</nav>
+  </header>
 
-    <!-- <header class="header">
-        <img src="img/black_logo.jpg" alt="АВТО ФИНАНС" class="logo" id="logoHome">
-        <button class="burger" id="burgerBtn" aria-label="Открыть меню">
-            <span></span><span></span><span></span>
-        </button>
-    </header>
-    <nav class="menu-overlay" id="menuOverlay">
-        <button class="close-menu" id="closeMenu" aria-label="Закрыть меню">&times;</button>
-        <ul class="menu-list">
-            <li><a href="catalog.html">КАТАЛОГ</a></li>
-            <li><a href="rent-buyout.html">ПРОКАТ</a></li>
-            <li><a href="buyback.html">АРЕНДА</a></li>
-            <li><a href="urgent-buyout.html">ВЫКУП</a></li>
-            <li><a href="request.html">ОСТАВИТЬ ЗАЯВКУ</a></li>
-            <li><a href="contacts.html">КОНТАКТЫ</a></li>
-            <li><a href="about.html">О КОМПАНИИ</a></li>
-        </ul>
-        <div class="menu-contacts">
-            <div><a href="tel:+78005553432" class="contacts-modern-phone">+7 800 555-34-32</a></div>
-            <div class="menu-socials">
-                <a href="#" aria-label="VK"><img src="img/vk.webp" alt="VK"></a>
-                <a href="#" aria-label="Telegram"><img src="img/telegram.webp" alt="Telegram"></a>
-                <a href="#" aria-label="WhatsApp"><img src="img/whatsapp.webp" alt="WhatsApp"></a>
-            </div>
-        </div>
-    </nav> -->
 
-    
+  <!-- Мобильное меню (скрыто до клика по гамбургеру) -->
+  <nav class="mobile-nav" id="menuOverlay">
+    <button class="close-menu" id="closeMenu" aria-label="Закрыть меню">&times;</button>
+    <ul class="menu-list">
+      <li><a href="rent-buyout.html">ПРОКАТ</a></li>
+      <li><a href="buyback.html">АРЕНДА</a></li>
+      <li><a href="urgent-buyout.html">ВЫКУП</a></li>
+      <li><a href="request.html">ОСТАВИТЬ ЗАЯВКУ</a></li>
+      <li><a href="catalog.html">КАТАЛОГ</a></li>
+      <li><a href="contacts.html">КОНТАКТЫ</a></li>
+      <li><a href="about.html">О КОМПАНИИ</a></li>
+    </ul>
+    <div class="menu-contacts">
+      <div><a href="tel:+78005553432" class="contacts-modern-phone">+7 800 555-34-32</a></div>
+      <div class="menu-socials">
+        <a href="#" aria-label="VK"><img src="img/vk.webp" alt="VK"></a>
+        <a href="#" aria-label="Telegram"><img src="img/telegram.webp" alt="Telegram"></a>
+        <a href="#" aria-label="WhatsApp"><img src="img/whatsapp.webp" alt="WhatsApp"></a>
+      </div>
+    </div>
+  </nav>
+
     <main style="margin-top:90px;">
-        <div class="catalog-container">
-            <div class="catalog-header">
-                <h1 class="catalog-title">Каталог автомобилей</h1>
-            </div>
+    <div class="catalog-container">
 
-        <!-- ─── Боковая панель фильтров (Новый блок) ─── -->
-        <!-- <div class="filters">
-          
-          <div class="filter-section">
-            <h3>Тип автомобиля</h3>
-            <div class="filter-tabs">
-              <button type="button" class="filter-tab active" data-filter-type="all">Все</button>
-              <button type="button" class="filter-tab" data-filter-type="used">С пробегом</button>
-              <button type="button" class="filter-tab" data-filter-type="new">Новые</button>
-            </div>
-            <label><input type="checkbox" class="filter-checkbox" data-filter-field="discount"> Со скидками</label>
-            <label><input type="checkbox" class="filter-checkbox" data-filter-field="gifts"> С подарками и акциями</label>
-            <label><input type="checkbox" class="filter-checkbox" data-filter-field="credit"> Можно в кредит</label>
-            <label><input type="checkbox" class="filter-checkbox" data-filter-field="select"> Селект</label>
-          </div>
+      <!-- Заголовок каталога -->
+      <div class="catalog-header">
+        <h1 class="catalog-title">Каталог автомобилей</h1>
+      </div>
 
-          
-          <div class="filter-section">
-            <h3>Марка</h3>
-            <select id="filterBrand">
-              <option value="any">Любая</option>
-              <option value="LADA">LADA</option>
-              <option value="Geely">Geely</option>
-              
-            </select>
-          </div>
-
-          
-          <div class="filter-section">
-            <h3>Цена, ₽</h3>
-            <input type="number" id="filterPriceMin" placeholder="От" min="0">
-            <input type="number" id="filterPriceMax" placeholder="До" min="0">
-          </div>
-
-          
-          <div class="filter-section">
-            <h3>Год выпуска</h3>
-            <input type="number" id="filterYearMin" placeholder="От" min="1900">
-            <input type="number" id="filterYearMax" placeholder="До" min="1900">
-          </div>
-
-          
-          <div class="filter-section">
-            <h3>Пробег, км</h3>
-            <input type="number" id="filterMileageMin" placeholder="От" min="0">
-            <input type="number" id="filterMileageMax" placeholder="До" min="0">
-          </div>
-
-          
-          <div class="filter-section">
-            <h3>Коробка передач</h3>
-            <label><input type="checkbox" class="filter-checkbox" data-filter-field="transmission" value="МКПП"> Механика</label>
-            <label><input type="checkbox" class="filter-checkbox" data-filter-field="transmission" value="АКПП"> Автомат</label>
-          </div>
-
-          
-          <div class="filter-section">
-            <h3>Привод</h3>
-            <label><input type="checkbox" class="filter-checkbox" data-filter-field="drive" value="Задний"> Задний</label>
-            <label><input type="checkbox" class="filter-checkbox" data-filter-field="drive" value="Передний"> Передний</label>
-            <label><input type="checkbox" class="filter-checkbox" data-filter-field="drive" value="Полный"> Полный</label>
-          </div>
-
-         
-          <div class="filter-section">
-            <h3>Тип двигателя</h3>
-            <label><input type="checkbox" class="filter-checkbox" data-filter-field="fuel" value="Бензин"> Бензин</label>
-            <label><input type="checkbox" class="filter-checkbox" data-filter-field="fuel" value="Газ"> Газ</label>
-            <label><input type="checkbox" class="filter-checkbox" data-filter-field="fuel" value="Гибрид"> Гибрид</label>
-            <label><input type="checkbox" class="filter-checkbox" data-filter-field="fuel" value="Дизель"> Дизель</label>
-            <label><input type="checkbox" class="filter-checkbox" data-filter-field="fuel" value="Электро"> Электро</label>
-          </div>
-
-          
-          <div class="filter-section">
-            <h3>Цвет</h3>
-            <label><input type="radio" name="color" class="filter-radio" value="any" checked> Любой</label>
-            <label><input type="radio" name="color" class="filter-radio" value="Белый"> Белый</label>
-            <label><input type="radio" name="color" class="filter-radio" value="Серебряный"> Серебряный</label>
-            <label><input type="radio" name="color" class="filter-radio" value="Серый"> Серый</label>
-            <label><input type="radio" name="color" class="filter-radio" value="Чёрный"> Чёрный</label>
-            <label><input type="radio" name="color" class="filter-radio" value="Коричневый"> Коричневый</label>
-          </div>
-
-          <button type="button" id="buttonResetFilters">Сбросить фильтры</button>
-        </div> -->
-
-
-              
+      <!-- ─── Фильтры + Основной контент каталога ─── -->
       <div class="catalog-body">
 
         <!-- 1) Кнопка «Фильтры» для мобильных (появится только на экранах <768px) -->
@@ -340,7 +92,7 @@
             <h3>Тип автомобиля</h3>
             <div class="filter-tabs">
               <button type="button" class="filter-tab active" data-filter-type="all">Все</button>
-              <button type="button" class="filter-tab" data-filter-type="used">С пробегом</button>
+              <button type="button" class="filter-tab" id="probegBtn" data-filter-type="used">С пробегом</button>
               <button type="button" class="filter-tab" data-filter-type="new">Новые</button>
             </div>
             <label><input type="checkbox" class="filter-checkbox" data-filter-field="discount"> Со скидками</label>
@@ -355,7 +107,13 @@
             <select id="filterBrand">
               <option value="any">Любая</option>
               <option value="LADA">LADA</option>
+              <option value="Tank">Tank</option>
               <option value="Geely">Geely</option>
+              <option value="Chery">Chery</option>
+              <option value="LADA">LADA</option>
+              <option value="LADA">LADA</option>
+              <option value="LADA">LADA</option>
+              <option value="LADA">LADA</option>
               <!-- Добавьте остальные марки из вашего каталога -->
             </select>
           </div>
@@ -399,11 +157,10 @@
           <!-- 8. Тип двигателя -->
           <div class="filter-section">
             <h3>Тип двигателя</h3>
-            <label><input type="checkbox" class="filter-checkbox" data-filter-field="fuel" value="Бензин"> Бензин</label>
-            <label><input type="checkbox" class="filter-checkbox" data-filter-field="fuel" value="Газ"> Газ</label>
-            <label><input type="checkbox" class="filter-checkbox" data-filter-field="fuel" value="Гибрид"> Гибрид</label>
             <label><input type="checkbox" class="filter-checkbox" data-filter-field="fuel" value="Дизель"> Дизель</label>
-            <label><input type="checkbox" class="filter-checkbox" data-filter-field="fuel" value="Электро"> Электро</label>
+            <label><input type="checkbox" class="filter-checkbox" data-filter-field="fuel" value="Бензин"> Бензин</label>
+            <label><input type="checkbox" class="filter-checkbox" data-filter-field="fuel" value="бензин/пропан"> Газ бензин/пропан</label>
+            <label><input type="checkbox" class="filter-checkbox" data-filter-field="fuel" value="бензин/метан"> Газ бензин/метан</label>
           </div>
 
           <!-- 9. Цвет -->
@@ -421,53 +178,103 @@
         </div>
         <!-- ─── /Левая колонка: Фильтры ─── -->
 
-            <section id="prokatSection" class="catalog-section">
-                <h2>Прокат</h2>
-                <div class="car-grid" id="prokatGrid">
-                </div>
-            </section>
+        <!-- 3) Правая колонка: Контент каталога ─── -->
+        <div class="catalog-content">
+          <!-- ========================================= -->
+<!-- Панель переключения вида (список/блоки) -->
+<div class="view-sort-bar">
 
-            <section id="arendaSection" class="catalog-section">
-                <h2>Аренда</h2>
-                <div class="car-grid" id="arendaGrid">
-                </div>
-            </section>
+  <!-- Кнопки переключения вида -->
+  <button id="listViewBtn" class="view-btn active" aria-label="Список">
+    <!-- SVG-иконка «лист»: 3 горизонтальные полоски -->
+    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+      <rect x="4"  y="5"  width="16" height="3"></rect>
+      <rect x="4"  y="10" width="16" height="3"></rect>
+      <rect x="4"  y="15" width="16" height="3"></rect>
+    </svg>
+  </button>
 
-            <section id="buyoutSection" class="catalog-section">
-                <h2>Выкуп</h2>
-                <div class="car-grid" id="buyoutGrid">
-                </div>
-            </section>
+  <button id="gridViewBtn" class="view-btn" aria-label="Блоки">
+    <!-- SVG-иконка «сетка» (4 квадратика) -->
+    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+      <rect x="3"  y="3"  width="8" height="8"></rect>
+      <rect x="13" y="3"  width="8" height="8"></rect>
+      <rect x="3"  y="13" width="8" height="8"></rect>
+      <rect x="13" y="13" width="8" height="8"></rect>
+    </svg>
+  </button>
 
-            <div class="car-grid" id="carGrid" style="display:none;">
-                <div class="car-card" 
-                    data-id="granta" 
-                    data-name="Lada Granta" 
-                    data-nameru="Лада Гранта" 
-                    data-price="1550" 
-                    data-pricetext="1 550 ₽ в сутки" 
-                    data-images="img/granta1/granta1.webp,img/granta1/granta2.webp,img/granta1/granta3.webp,..."
-                    data-specs='[{"label":"Марка","value":"LADA"},...]'
-                    data-description="Все наши авто прошли полную техническую проверку...">
-                    <img src="img/granta1/granta1.webp" alt="Lada Granta" class="car-image">
-                    <div class="car-title">Lada Granta</div>
-                    <div class="car-info">1 550 ₽ в сутки</div>
-                    <button class="car-detail-btn">ПОДРОБНЕЕ</button>
-                </div>
+  <!-- Блок сортировки -->
+  <div class="sort-container">
+    <button id="sortBtn" class="sort-btn" aria-haspopup="true" aria-expanded="false">
+      <span>Сортировать</span>
+      <!-- Стрелочка вниз -->
+      <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M7 10l5 5 5-5z"></path>
+      </svg>
+    </button>
+    <ul id="sortOptions" class="sort-options" hidden>
+      <li data-sort="priceAsc">Цена ↑</li>
+      <li data-sort="priceDesc">Цена ↓</li>
+      <li data-sort="yearAsc">Год ↑</li>
+      <li data-sort="yearDesc">Год ↓</li>
+      <li data-sort="mileageAsc">Пробег ↑</li>
+      <li data-sort="mileageDesc">Пробег ↓</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- /view-sort-bar -->
+<!-- ========================================= -->
+
+          <!-- Секция «Прокат» -->
+          <section id="prokatSection" class="catalog-section">
+            <h2>ПРОКАТ</h2>
+            <div class="car-grid" id="prokatGrid">
+              <!-- Карточки проката генерируются скриптом catalog-sections.js -->
             </div>
-        </div>
+          </section>
 
-        <div class="modal" id="carModal" style="display:none;">
-            <div class="modal-overlay" id="carModalOverlay"></div>
-            <div class="modal-content car-modal-content" id="carModalContent">
+          <!-- Секция «Аренда» -->
+          <section id="arendaSection" class="catalog-section">
+            <h2>АРЕНДА</h2>
+            <div class="car-grid" id="arendaGrid">
+              <!-- Карточки аренды генерируются скриптом catalog-sections.js -->
             </div>
-        </div>
-        <div class="modal" id="orderModal" style="display:none;">
-            <div class="modal-overlay" id="orderModalOverlay"></div>
-            <div class="modal-content order-modal-content" id="orderModalContent">
+          </section>
+
+          <!-- Секция «Выкуп» -->
+          <section id="buyoutSection" class="catalog-section">
+            <h2>ВЫКУП</h2>
+            <div class="car-grid" id="buyoutGrid">
+              <!-- Карточки выкупа генерируются скриптом catalog-sections.js -->
             </div>
+          </section>
+
+          <!-- Скрытая сетка всех машин (если нужна для фильтрации) -->
+          <div class="car-grid" id="carGrid" style="display:none;">
+            <!-- Если у вас есть изначальный HTML с <div class="car-card">…</div>,
+                 переместите его сюда и раскомментируйте, либо скрипт самостоятельно подставит. -->
+          </div>
         </div>
-    </main>
+        <!-- ─── /Правая колонка: Контент каталога ─── -->
+
+      </div>
+      <!-- ─── /catalog-body: Фильтры + Контент ─── -->
+
+      <!-- Модальные окна (карта, заказ) -->
+      <div class="modal" id="carModal" style="display:none;">
+        <div class="modal-overlay" id="carModalOverlay"></div>
+        <div class="modal-content car-modal-content" id="carModalContent"></div>
+      </div>
+      <div class="modal" id="orderModal" style="display:none;">
+        <div class="modal-overlay" id="orderModalOverlay"></div>
+        <div class="modal-content order-modal-content" id="orderModalContent"></div>
+      </div>
+
+    </div> <!-- /.catalog-container -->
+  </main>
 
                 <div class="catalog-qr-block">
                 <img src="img/QR_Autofinance.png" alt="QR-код Автофинанс Telegram" class="catalog-qr-img">
@@ -476,6 +283,58 @@
                     <a href="https://t.me/@AutoFinanceRent_Bot" target="_blank" class="catalog-qr-link">Переходите!</a>
                 </div>
             </div>
+    
+      <!-- Секция «Не нашли нужный автомобиль? Оставьте заявку…» (новая, с уникальными классами) -->
+  <section class="contact-section">
+    <div class="contact-section__inner">
+      <!-- Левая колонка: текст -->
+      <div class="contact-section__text">
+        <h2 class="contact-section__title">
+          Не нашли нужный автомобиль? <br>Оставьте заявку и мы поможем вам
+        </h2>
+        <p class="contact-section__description">
+          Заполните форму справа, и наш менеджер подберёт оптимальный вариант именно для вас.
+        </p>
+      </div>
+      <!-- Правая колонка: собственно форма -->
+          <div class="contact-section__form-wrapper">
+    <form id="contactForm" class="contact-form">
+      <input type="hidden" name="source" value="catalog">
+
+      <input
+        type="text"
+        name="name"
+        class="contact-form__input"
+        placeholder="Имя"
+        required
+      >
+
+      <!-- пишем в placeholder подсказку "+7 (___) ___-__-__" и при фокусе подставляем "+7" -->
+      <input
+        type="tel"
+        name="phone"
+        class="contact-form__input"
+        placeholder="+7 (___) ___-__-__"
+        onfocus="if (this.value === '') this.value = '+7';"
+        required
+      >
+
+      <input
+        type="text"
+        name="desired_car"
+        class="contact-form__input"
+        placeholder="Желаемая машина"
+      >
+
+      <button type="submit" class="contact-form__submit">
+        Отправить
+      </button>
+    </form>
+    <div id="contactFormError" class="contact-form__error"></div>
+
+      </div>
+    </div>
+  </section>
 
 
 
@@ -501,10 +360,13 @@
 
     <a href="#" class="whatsapp-float" aria-label="WhatsApp"><img src="img/whatsapp.webp" alt="WhatsApp"></a>
 
-    <script  src="js/script.js"></script>
-    <script type="module" src="js/catalog.js"></script>
-    <script type="module" src="js/catalog-sections.js"></script>
-    <script  src="js/filters.js"></script>
+  <!-- ─── Подключаем существующие скрипты ─── -->
+  <script src="js/script.js"></script>
+  <script type="module" src="js/catalog.js"></script>
+  <script type="module" src="js/catalog-sections.js"></script>
+
+  <!-- ─── Новый скрипт для фильтрации ─── -->
+  <script src="js/filters.js"></script>
 </body>
 </html>
 

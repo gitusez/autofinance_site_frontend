@@ -143,6 +143,88 @@
       <a href="catalog.html" class="cta-btn">ПЕРЕЙТИ В КАТАЛОГ</a>
     </section>
 
+    <section id="buybackCalculator" class="calculator-section">
+  <div class="calculator-inner">
+    <h2 class="calculator-title">Калькулятор выкупа</h2>
+    <p class="calculator-desc">
+      Настройте параметры выкупа: первый взнос, срок (в днях) и ежедневный платёж. Все три значения взаимозависимы.
+    </p>
+
+    <div class="calculator-form-wrapper">
+      <!-- Перечень трёх ползунков -->
+      <div class="calculator-inputGroup">
+        <label for="initialSlider">Первоначальный взнос</label>
+        <div class="slider-control">
+          <input 
+            type="range" 
+            id="initialSlider" 
+            class="calc-slider" 
+            min="0" 
+            max="1000000" 
+            step="10000" 
+            value="200000"
+          >
+          <div class="calc-values">
+            <span id="initialDisplay">200 000 ₽</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="calculator-inputGroup">
+        <label for="termSlider">Срок выкупа (дней)</label>
+        <div class="slider-control">
+          <input 
+            type="range" 
+            id="termSlider" 
+            class="calc-slider" 
+            min="30" 
+            max="365" 
+            step="1" 
+            value="180"
+          >
+          <div class="calc-values">
+            <span id="termDisplay">180 дн.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="calculator-inputGroup">
+        <label for="dailySlider">Ежедневный платёж</label>
+        <div class="slider-control">
+          <input 
+            type="range" 
+            id="dailySlider" 
+            class="calc-slider" 
+            min="0" 
+            max="10000" 
+            step="100" 
+            value="3000"
+          >
+          <div class="calc-values">
+            <span id="dailySliderDisplay">3 000 ₽</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─────────────────────────────────────────────────────────────────────── -->
+    <!-- Блок итогов (добавляем сразу после <div class="calculator-form-wrapper">) -->
+    <div class="calc-summary">
+      <div class="summary-item">
+        <span class="summary-label">Первоначальный взнос:</span>
+        <span id="sumInitial" class="summary-value">200 000 ₽</span>
+      </div>
+      <div class="summary-item">
+        <span class="summary-label">Ежедневный платёж:</span>
+        <span id="sumDaily" class="summary-value">3 000 ₽/дн.</span>
+      </div>
+    </div>
+    <!-- ─────────────────────────────────────────────────────────────────────── -->
+
+  </div>
+</section>
+
+
 
     <footer class="footer">
         <div class="footer-logo">

@@ -298,6 +298,20 @@ body.scale-fade-in {
   margin: 0;
 }
 
+.hero-arrow {
+    display: block;
+    margin: 120px auto 0 auto;
+    font-size: 3rem;
+    color: #f4c900;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: color 0.2s;
+    text-align: center;
+    animation: arrow-bounce 1.2s infinite alternate;
+}
+
 /* Заявка (Request) */
 .request-hero {
   position: relative;
@@ -1009,6 +1023,11 @@ body.scale-fade-in {
   text-shadow: 0 2px 16px rgba(0,0,0,0.18);
 }
 
+.preformatted-text {
+  white-space: pre-line;    
+  line-height: 1.4;         
+}
+
 @media (max-width: 600px) {
   .catalog-title {
     font-size: 1.5rem;
@@ -1105,7 +1124,7 @@ body.scale-fade-in {
 --------------------------------------------- */
 .catalog-body {
   display: flex;
-  gap: 24px;
+  gap: 100px;
   align-items: flex-start;
 }
 
@@ -1278,7 +1297,7 @@ body.scale-fade-in {
 --------------------------------------------- */
 .catalog-section {
   max-width: 1200px;
-  margin: 60px auto;
+  margin: 0px auto;
   padding: 30px 20px;
   border-bottom: 1px solid rgba(255,255,255,0.1);
 }
@@ -2929,7 +2948,7 @@ body.scale-fade-in {
 }
 
 .buyback-form-section .form-desc {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   margin: 90px 0 40px 0;
   color: #fff;
 }
@@ -3037,7 +3056,7 @@ body.scale-fade-in {
   }
   .who-form {
     margin: 0;
-    width: 100%;
+    width: 90%;
     max-width: 100%;
   }
 
@@ -3267,7 +3286,7 @@ body.scale-fade-in {
 /* ─── 1) Flex-контейнер: фильтры слева + контент справа на десктопе ─── */
 .catalog-body {
   display: flex;
-  gap: 24px;               /* расстояние между колонками */
+  gap: 100px;               /* расстояние между колонками */
   align-items: flex-start; /* выравниваем по верхнему краю */
 }
 
@@ -3319,6 +3338,10 @@ body.scale-fade-in {
   display: flex;
   gap: 6px;
   margin-bottom: 10px;
+}
+
+#probegBtn{
+  white-space: nowrap;
 }
 .filter-tab {
   flex: 1;
@@ -3456,4 +3479,621 @@ body.scale-fade-in {
   .close-filters-btn {
     display: none;
   }
+}
+
+
+
+/* ───────────────────────────────────────────────────────────────────────────── */
+/* СТИЛИ ДЛЯ СЕКЦИИ ОБРАТНОЙ СВЯЗИ (contact-section) И ЕЁ АДАПТИВ */
+/* ───────────────────────────────────────────────────────────────────────────── */
+
+.contact-section {
+  background: #1a1a1a; /* тёмно-серый фон */
+  padding: 60px 20px;  /* отступы сверху/снизу и по бокам */
+}
+
+.contact-section__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+/* Левая колонка: текст */
+.contact-section__text {
+  flex: 1 1 320px; /* минимум 320px, может расти */
+  color: #fff;
+}
+
+.contact-section__title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  color: #f4c900; /* желтый */
+}
+
+.contact-section__description {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Правая колонка: обёртка формы */
+.contact-section__form-wrapper {
+  flex: 1 1 300px; /* минимум 300px, растёт при наличии места */
+}
+
+/* Сама форма */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: #232323; /* светлее, чем фон секции */
+  padding: 24px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* Поля формы */
+.contact-form__input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 6px;
+  border: 1px solid #444;
+  background: #1f1f1f;
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.contact-form__input::placeholder {
+  color: #888;
+}
+
+.contact-form__input:focus {
+  background: #2a2a2a;
+  border-color: #f4c900;
+}
+
+/* Кнопка отправки */
+.contact-form__submit {
+  margin-top: 10px;
+  padding: 14px 0;
+  background: linear-gradient(90deg, #f4c900, #ffb347);
+  color: #222;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.18s;
+}
+
+.contact-form__submit:hover {
+  background: linear-gradient(90deg, #ffb347, #f4c900);
+  box-shadow: 0 4px 24px rgba(244, 201, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Блок под формой для вывода ошибок */
+.contact-form__error {
+  margin-top: 10px;
+  color: #ff6b6b;
+  font-size: 0.95rem;
+  display: none;
+}
+/* ───────────────────────────────────────────────────────────────────────────── */
+/* Надстройка для .contact-section при экранах ≤1000px (чтобы форма не была «слишком маленькой» и была по центру) */
+/* ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 1000px) {
+  /* Когда текст и форма уже идут друг под другом (см. ранее: flex-direction: column) */
+  .contact-section__inner {
+    flex-direction: column;
+    align-items: center; /* центрируем дочерние блоки */
+    gap: 24px;
+  }
+
+  /* Левая колонка (текст) пусть займёт всю ширину */
+  .contact-section__text {
+    flex: 1 1 100%;
+    max-width: 100%; /* растягиваем под ширину контейнера */
+    text-align: center; /* можно центрировать текст, если нужно */
+  }
+
+  /* Правая колонка (обёртка формы) также пусть займёт всю ширину, но внутри мы выровняем контент по центру */
+  .contact-section__form-wrapper {
+    flex: 1 1 100%;
+    display: flex;
+    justify-content: center; /* центрируем форму внутри этого блока */
+  }
+
+  /* Наконец, саму форму делаем «плавно расширяющейся» до 400px */
+  .contact-form {
+    width: 100%;        /* чтобы занять всё доступное пространство внутри обёртки */
+    max-width: 400px;   /* но не больше 400px */
+    margin: 0 auto;     /* дополнительно центрируем, хотя justify-content уже это делает */
+  }
+}
+
+/* ───────────────────────────────────────────────────────────────────────────── */
+/* Ещё одна подстройка для узких экранов (≤600px), если вы хотите чуть сузить форму */
+/* ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  /* Сохраняем центрирование .contact-section__inner */
+  .contact-section__inner {
+    align-items: center;
+  }
+
+  /* Введём максимальную ширину формы чуть меньше, чем при 1000px, чтобы она не расползалась во весь экран */
+  .contact-form {
+    max-width: 340px; 
+    padding: 20px 16px; /* уменьшаем внутренние отступы */
+  }
+
+  /* Уменьшаем шрифты и размеры полей для очень узких экранов */
+  .contact-section__title {
+    font-size: 2rem;
+  }
+  .contact-section__description {
+    font-size: 1rem;
+  }
+  .contact-form__input {
+    font-size: 0.95rem;
+    padding: 8px 10px;
+  }
+  .contact-form__submit {
+    font-size: 1rem;
+    padding: 12px 0;
+  }
+}
+
+
+
+
+
+/* ───────────────────────────────────────────────────────────────────────────── */
+/*                            СТИЛИ ДЛЯ КАЛЬКУЛЯТОРА                            */
+/*                   (секция #buybackCalculator, классы .calculator-*)          */
+/* ───────────────────────────────────────────────────────────────────────────── */
+
+/* 1) Базовые стили самой секции калькулятора */
+.calculator-section {
+  background: #181818;
+  padding: 60px 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.calculator-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+/* Заголовок и описание */
+.calculator-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #f4c900;
+  text-align: center;
+}
+
+.calculator-desc {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.85);
+  text-align: center;
+  max-width: 800px;
+  line-height: 1.5;
+}
+
+/* Контейнер слайдеров */
+.calculator-form-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Каждая «группа» (лейбл + контрол) */
+.calculator-inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.calculator-inputGroup label {
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+/* Обёртка для самого слайдера и блока с цифрой */
+.slider-control {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/*  Стили общего вида для всех ползунков (.calc-slider) */
+.calc-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: #444;
+  border-radius: 3px;
+  outline: none;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+
+/* Стили ползунка (thumb) в WebKit-браузерах */
+.calc-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #f4c900;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.calc-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+/* Стили thumb в Firefox */
+.calc-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #f4c900;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.calc-slider::-moz-range-thumb:hover {
+  transform: scale(1.1);
+}
+
+/* Блок, где выводится текущая цифра (рядом с ползунком) */
+.calc-values {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 1rem;
+  color: #fff;
+}
+
+/* Адаптив для узких экранов */
+@media (max-width: 768px) {
+  .calculator-inner {
+    gap: 24px;
+  }
+  .calculator-title {
+    font-size: 2rem;
+  }
+  .calculator-desc {
+    font-size: 1rem;
+  }
+  .calculator-section {
+    padding: 40px 12px;
+  }
+  .calculator-form-wrapper {
+    gap: 18px;
+  }
+  .calc-values {
+    font-size: 0.95rem;
+  }
+}
+@media (max-width: 480px) {
+  .calculator-title {
+    font-size: 1.6rem;
+  }
+  .calculator-desc {
+    font-size: 0.95rem;
+  }
+  .calc-values {
+    font-size: 0.9rem;
+  }
+}
+ 
+/* ───────────────────────────────────────────────────────────────────────────── */
+/*                           СТИЛИ ДЛЯ БЛОКА ИТОГОВ                            */
+/* ───────────────────────────────────────────────────────────────────────────── */
+.calc-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding: 24px 32px;
+  background: rgba(30, 30, 30, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  max-width: 1000px; /* совпадает с max-width .calculator-inner */
+  box-sizing: border-box;
+}
+
+.summary-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1 1 0;
+  min-width: 180px;
+}
+
+.summary-label {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 6px;
+}
+
+.summary-value {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #f4c900;
+}
+
+/* Распределяем два блока ровно наверху строки */
+.calc-summary .summary-item:first-child {
+  margin-right: 16px;
+}
+.calc-summary .summary-item:last-child {
+  margin-left: 16px;
+}
+
+/* Адаптивная версия: на узких экранах оба блока навыхрон по центру и друг под другом */
+@media (max-width: 600px) {
+  .calc-summary {
+    flex-direction: column;
+    gap: 16px;
+    padding: 18px 16px;
+  }
+  .summary-item {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+  .calc-summary .summary-item:first-child,
+  .calc-summary .summary-item:last-child {
+    margin: 0;
+  }
+  .summary-label {
+    font-size: 0.95rem;
+  }
+  .summary-value {
+    font-size: 1.2rem;
+  }
+}
+
+
+/* =============================================================== */
+/* A) Настройка панели view-sort-bar: иконки и кнопка «Сортировать» */
+/* =============================================================== */
+
+/* 1) Основной контейнер: две иконки слева, а справа — кнопка сортировки */
+.view-sort-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;               /* одинаковый отступ между любыми соседними элементами */
+  padding: 0 10px;         /* немного «внутреннего» отступа по бокам */
+}
+
+/* 2) Кнопки-иконки «список» / «сеткой» */
+.view-sort-bar .view-btn {
+  width: 36px;             /* размер самой кнопки-иконки */
+  height: 36px;
+  border: none;
+  background: rgba(255, 255, 255, 0.10);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+  color: #fff;
+}
+
+.view-sort-bar .view-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.view-sort-bar .view-btn.active {
+  background: rgba(244, 201, 0, 0.25);
+  color: #222;
+}
+
+/* 3) Блок сортировки «уезжает» вправо за счёт margin-left: auto */
+.view-sort-bar .sort-container {
+  position: relative;      /* для абсолютного выпадающего списка */
+}
+
+.view-sort-bar .sort-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.10);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.view-sort-bar .sort-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+/* 4) Выпадающий список опций сортировки */
+.view-sort-bar .sort-options {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 6px);
+  background: #1a1a1a;
+  list-style: none;
+  padding: 8px 0;
+  border-radius: 6px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  width: 160px;           /* чуть расширили, чтобы длинные надписи помещались */
+  z-index: 1000;
+}
+
+.view-sort-bar .sort-options li {
+  padding: 8px 12px;
+  font-size: 0.95rem;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.view-sort-bar .sort-options li:hover {
+  background: rgba(255, 255, 255, 0.10);
+}
+
+
+/* ================================================= */
+/* B) Режим «список» (list-view): компактные карточки */
+/* ================================================= */
+
+/* 1) Сама «решётка» карточек в режиме списка:
+      — столбец карточек
+      — выравнивание по центру
+      — внутренняя «подушка» по бокам */ 
+.catalog-content.list-view .car-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;    /* карточки станут по центру контейнера */
+  gap: 20px;              /* расстояние между строками-карточками */
+  padding: 0 10px;        /* чтобы немного не «упиралось» в края экрана */
+}
+
+/* 2) Каждая отдельная карточка в списке: 
+      — не растягивается «во всю ширину»
+      — максимум 800px
+      — вывели её как flex-блок, чтобы изображение и текст стояли в ряд */
+.catalog-content.list-view .car-grid .car-card {
+  width: 100%;
+  max-width: 800px;       /* карточка будет не шире 800px */
+  display: flex;          /* внутри сами элементы распределяем по рядам */
+  flex-direction: row;
+  gap: 16px;              /* небольшой отступ между картинкой и текстом */
+  align-items: flex-start;/* выравниваем по верхнему краю */
+  padding: 16px;          /* чтобы вокруг «контента» был небольшой отступ */
+  background: #1a1a1a;    /* можно скорректировать под ваш фон карточки */
+  border-radius: 12px;    /* скругление углов */
+}
+
+/* 3) В режиме list-view: уменьшаем размер / фиксируем ширину изображения */
+.catalog-content.list-view .car-grid .car-card .car-image {
+  width: 180px;           /* ширина превью-картинки */
+  height: auto;           /* автоматическая высота, чтобы пропорции сохранялись */
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;         /* не сужать картинку при недостатке места */
+}
+
+/* 4) Оставшиеся элементы карточки (название, информация, кнопка) 
+      автоматически встанут справа от картинки, так как .car-card — flex */
+/* .catalog-content.list-view .car-grid .car-card .car-title,
+.catalog-content.list-view .car-grid .car-card .car-info,
+.catalog-content.list-view .car-grid .car-card .car-detail-btn {
+} */
+
+/* Если у вас внутри .car-card есть ещё какие-то контейнеры, 
+   они встанут под картинкой и у них будут свои стили. */
+
+
+/* ================================================== */
+/* C) Режим «сетка» (grid-view) – остаётся без изменений */
+/* ================================================== */
+
+.catalog-content.grid-view .car-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  padding: 0 10px;
+}
+
+.catalog-content.grid-view .car-grid .car-card {
+  width: 100%;
+}
+
+@media (max-width: 992px) {
+  .catalog-content.grid-view .car-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .catalog-content.grid-view .car-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =============================
+   ️️️Стиль для кнопки «Поделиться»
+   ============================= */
+.car-share-btn {
+  /* Фиксируем размер круга */
+  width: 40px;
+  height: 40px;
+  /* Делаем фон похожим на фон модалки */
+  background-color: #2e2e2e; /* или другой тёмный цвет, подберите свой */
+  border: none;
+  border-radius: 50%;       /* полностью круглая кнопка */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12px;         /* отступ сверху от кнопки «Оставить заявку» */
+  cursor: pointer;
+
+  /* Немного тени для «приподнятого» эффекта */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s ease;
+}
+
+.car-share-btn svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+  color: #ffffff;         /* иконка будет белой (за счёт fill="currentColor") */
+}
+
+.car-share-btn:hover {
+  background-color: #3e3e3e;  /* чуть светлее при наведении */
+}
+
+/* Если нужна «прилипшая» подсказка (tooltip) */
+.car-share-btn[aria-label]:hover::after {
+  content: attr(aria-label);
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 8px;
+  background: #444;
+  color: #fff;
+  font-size: 12px;
+  white-space: nowrap;
+  border-radius: 4px;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+/* Если модалка темная, то обводка кнопки может быть более светлая */
+.car-share-btn:focus {
+  outline: 2px solid #ffc107; /* жёлтая обводка при фокусе (опционально) */
 }

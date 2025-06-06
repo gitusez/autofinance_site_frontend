@@ -64,3 +64,173 @@ function setupMenuLinks() {
   });
 }
 setupMenuLinks(); 
+
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ОТПРАВКА ФОРМЫ «contactForm» AJAX-запросом и редирект на thankyou.html
+// ─────────────────────────────────────────────────────────────────────────────
+
+document.addEventListener('DOMContentLoaded', function() {
+  const contactForm = document.getElementById('contactForm');
+  const errorBlock   = document.getElementById('contactFormError');
+
+  if (!contactForm) return;
+
+  contactForm.addEventListener('submit', async function(e) {
+    e.preventDefault(); // отменяем стандартное поведение формы
+
+    // Скрываем предыдущие ошибки (если были)
+    errorBlock.style.display = 'none';
+    errorBlock.textContent = '';
+
+    // Собираем данные из формы
+    const formData = new FormData(contactForm);
+
+    try {
+      // Обратите внимание: путь к PHP должен быть корректным относительно этой страницы
+      // Если файл лежит рядом с catalog.html — используйте './send_request.php'
+      const response = await fetch('./send_request.php', {
+        method: 'POST',
+        body: formData,
+      });
+
+      // Если сервер вернул HTTP-код 200…299, response.ok === true
+      if (!response.ok) {
+        throw new Error(`Сервер вернул статус ${response.status}`);
+      }
+
+      const text = await response.text();
+
+      // Обрезаем пробелы и сравниваем с «OK»
+      if (text.trim() === 'OK') {
+        // Успешно: делаем редирект на страницу «Спасибо»
+        window.location.href = 'thankyou.html';
+      } else {
+        // Что-то пошло не так: показываем, что вернул PHP
+        throw new Error(text || 'Не удалось отправить заявку');
+      }
+
+    } catch (err) {
+      // Ловим сетевые ошибки и выводим в блок errorBlock
+      errorBlock.textContent = 'Ошибка при отправке: ' + err.message;
+      errorBlock.style.display = 'block';
+    }
+  });
+});
+// ─────────────────────────────────────────────────────────────────────────────
+// Динамический калькулятор выкупа: три взаимозависимых ползунка
+// ─────────────────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', function() {
+  const PRICE_CONST = 1000000;
+
+  const initialSlider      = document.getElementById('initialSlider');
+  const termSlider         = document.getElementById('termSlider');
+  const dailySlider        = document.getElementById('dailySlider');
+
+  const initialDisplay     = document.getElementById('initialDisplay');
+  const termDisplay        = document.getElementById('termDisplay');
+  const dailySliderDisplay = document.getElementById('dailySliderDisplay');
+
+  // ─────────────────────────────
+  // 1) Добавьте ссылки на «итоговые» span
+  const sumInitial  = document.getElementById('sumInitial');
+  const sumDaily    = document.getElementById('sumDaily');
+  // ─────────────────────────────
+
+  function formatRub(value) {
+    return value.toLocaleString('ru-RU') + ' ₽';
+  }
+  function formatDays(value) {
+    return value.toLocaleString('ru-RU') + ' дн.';
+  }
+
+  let isSyncing = false;
+
+  // 2) Обновляем все «ленты» и итоговый блок
+  function updateDisplays() {
+    const initialValue = parseInt(initialSlider.value, 10);
+    const termValue    = parseInt(termSlider.value, 10);
+    const dailyValue   = parseInt(dailySlider.value, 10);
+
+    // Обновляем текстовые значения под слайдерами
+    initialDisplay.textContent     = formatRub(initialValue);
+    termDisplay.textContent        = formatDays(termValue);
+    dailySliderDisplay.textContent = formatRub(dailyValue);
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // Обновляем итоговый блок внизу
+    sumInitial.textContent = formatRub(initialValue);
+    sumDaily.textContent   = formatRub(dailyValue) + '/дн.';
+    // ─────────────────────────────────────────────────────────────────────────
+  }
+
+  function recalcDailyFromInitialOrTerm() {
+    if (isSyncing) return;
+    isSyncing = true;
+
+    const initialValue = parseInt(initialSlider.value, 10);
+    const termValue    = parseInt(termSlider.value, 10);
+
+    let residual = PRICE_CONST - initialValue;
+    if (residual < 0) residual = 0;
+
+    let daily = 0;
+    if (termValue > 0) {
+      daily = residual / termValue;
+    }
+    daily = Math.floor(daily);
+
+    const maxDaily = parseInt(dailySlider.max, 10) || 0;
+    if (daily > maxDaily) {
+      dailySlider.value = maxDaily;
+    } else {
+      dailySlider.value = daily;
+    }
+
+    updateDisplays();
+    isSyncing = false;
+  }
+
+  function recalcTermFromInitialOrDaily() {
+    if (isSyncing) return;
+    isSyncing = true;
+
+    const initialValue = parseInt(initialSlider.value, 10);
+    const dailyValue   = parseInt(dailySlider.value, 10);
+
+    let residual = PRICE_CONST - initialValue;
+    if (residual < 0) residual = 0;
+
+    let term = 0;
+    if (dailyValue > 0) {
+      term = residual / dailyValue;
+    }
+    term = Math.floor(term);
+
+    const minTerm = parseInt(termSlider.min, 10) || 1;
+    const maxTerm = parseInt(termSlider.max, 10) || minTerm;
+    if (term < minTerm) term = minTerm;
+    if (term > maxTerm) term = maxTerm;
+
+    termSlider.value = term;
+
+    updateDisplays();
+    isSyncing = false;
+  }
+
+  // Всегда пересчитываем при движении ползунков
+  initialSlider.addEventListener('input', function() {
+    recalcDailyFromInitialOrTerm();
+  });
+  termSlider.addEventListener('input', function() {
+    recalcDailyFromInitialOrTerm();
+  });
+  dailySlider.addEventListener('input', function() {
+    recalcTermFromInitialOrDaily();
+  });
+
+  // При загрузке страницы синхронизируем всё разово
+  updateDisplays();
+  recalcDailyFromInitialOrTerm();
+});
