@@ -1609,7 +1609,7 @@ body.scale-fade-in {
 .buyout-cta {
     position: relative;
     background: url('/public/img/tank/tank4.jpeg') center center/cover no-repeat fixed;
-    border-radius: 0 0 24px 24px;
+    border-radius: 0 0 0px 0px;
     overflow: hidden;
     min-height: 420px;
     padding: 0 16px;
