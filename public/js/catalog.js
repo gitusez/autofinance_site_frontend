@@ -200,6 +200,7 @@ else transmissionLabel = car.transmission || '—';
         </div>
 
         <button class="car-order-btn">ОСТАВИТЬ ЗАЯВКУ</button>
+        <button class="car-share-btn" style="margin-left:12px;">Поделиться</button>
       </div>
     </div>
 
@@ -213,6 +214,26 @@ else transmissionLabel = car.transmission || '—';
       <div class="gallery-counter" id="fsCounter"></div>
     </div>
   `;
+
+  // Навешиваем обработчики на кнопки внутри модалки
+carModalContent.querySelector('.car-modal-close').addEventListener('click', closeCarModal);
+carModalOverlay.addEventListener('click', closeCarModal);
+carModalContent.querySelector('.car-order-btn').addEventListener('click', () => openOrderModal(car, mode));
+
+// === ВСТАВЬТЕ СЮДА этот блок: ===
+const shareBtn = carModalContent.querySelector('.car-share-btn');
+if (shareBtn) {
+  const url = `${window.location.origin}${window.location.pathname}?car=${encodeURIComponent(car.number || '')}`;
+  shareBtn.onclick = async () => {
+    try {
+      await navigator.clipboard.writeText(url);
+      shareBtn.textContent = 'Ссылка скопирована!';
+      setTimeout(() => { shareBtn.textContent = 'Поделиться'; }, 1200);
+    } catch {
+      alert('Не удалось скопировать ссылку');
+    }
+  };
+}
 
   // Логика переключения картинок и fullscreen
   const mainImg   = carModalContent.querySelector('#modalMainImg');
@@ -282,6 +303,8 @@ else transmissionLabel = car.transmission || '—';
   carModalContent.querySelector('.car-modal-close').addEventListener('click', closeCarModal);
   carModalOverlay.addEventListener('click', closeCarModal);
   carModalContent.querySelector('.car-order-btn').addEventListener('click', () => openOrderModal(car, mode));
+
+  
 }
 
 /** Закрывает окно деталей */

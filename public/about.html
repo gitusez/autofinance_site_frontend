@@ -88,14 +88,20 @@
     <main>
         <section class="hero hero-about" style="background-image: url('img/cherry/cherry2.jpeg');">
             <div class="hero-content">
-                <h1 style="font-size:4vw; font-weight:700; letter-spacing:2px; color:#fff; margin:0;">О КОМПАНИИ</h1>
-                <button class="hero-arrow" id="scrollToAbout" aria-label="Далее">&#8595;</button>
+                <h1 style="font-weight: 700;line-height: 1.2;letter-spacing: 1px;">О КОМПАНИИ</h1>
+                <!-- <button class="hero-arrow" id="scrollToAbout" aria-label="Далее">&#8595;</button> -->
+                <a href="#desc" class="hero-arrow" id="scrollToDesc">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M24 12V36" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+                <path d="M16 28L24 36L32 28" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+                </svg>
+                </a>
             </div>
         </section>
         <section id="aboutSection" style="background:#111; color:#fff; padding:60px 0 40px 0; text-align:center;">
             <div style="max-width:900px; margin:0 auto; font-size:1.35rem; line-height:1.7;">
-                <h2 style="font-size:2.1rem; font-weight:700; margin-bottom:24px;">АВТО ФИНАНС — ваш надёжный партнёр в мире автомобилей</h2>
-                <p>Ищете автомобиль для аренды, проката или планируете покупку? Компания «АВТО ФИНАНС» — это команда экспертов, которая поможет сделать выгодный и комфортный выбор.
+                <h2 id="aboutH2">АВТО ФИНАНС — ваш надёжный партнёр в мире автомобилей</h2>
+                <p id="aboutPtext">Ищете автомобиль для аренды, проката или планируете покупку? Компания «АВТО ФИНАНС» — это команда экспертов, которая поможет сделать выгодный и комфортный выбор.
 
                     Мы ценим ваше время и доверие, поэтому предлагаем только проверенные автомобили, прозрачные условия и индивидуальный подход. С нами легко арендовать авто, оформить покупку или выкупить понравившуюся модель без лишних формальностей.
                     
@@ -104,7 +110,7 @@
             </div>
         </section>
         <section class="about-photos" style="background:#111; padding:40px 0 60px 0; text-align:center;">
-            <div style="max-width:1100px; margin:0 auto; display:flex; flex-wrap:wrap; gap:32px; justify-content:center; align-items:center;">
+            <div id="aboutDiv">
                 <div class="about-photo-item" style="flex:1 1 320px; min-width:260px; max-width:420px;">
                     <img src="img/team.jpg" alt="Наша команда" style="width:100%; border-radius:18px; box-shadow:0 4px 32px rgba(0,0,0,0.18); object-fit:cover;">
                     <div style="margin-top:14px; color:#fff; font-size:1.5rem; opacity:0.8;">Наша команда</div>
@@ -120,6 +126,8 @@
             </div>
         </section>
     </main>
+
+    
     <footer class="footer">
         <div class="footer-logo">
             <img src="img/black_logo.jpg" alt="АВТО ФИНАНС" style="height:74px; margin-bottom:10px;">

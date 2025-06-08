@@ -1,6 +1,7 @@
 
 import { config }        from './config.js';
-import { createCarCard } from './catalog.js';
+// import { createCarCard } from './catalog.js';
+import { createCarCard, openCarModal } from './catalog.js';
 
 window.originalCarsOrder = {
   prokat: [],
@@ -74,6 +75,27 @@ document.addEventListener('DOMContentLoaded', async () => {
     renderSection(rent,  'arendaGrid', 'rent');
     renderSection(buy,   'buyoutGrid','buyout');
 
+    // === ДОБАВЬ ЭТО СРАЗУ ПОСЛЕ ОТРИСОВКИ КАРТОЧЕК ===
+    const urlParams = new URLSearchParams(window.location.search);
+    const carNum = urlParams.get('car');
+    if (carNum) {
+      const search = carNum.replace(/\s/g, '').toLowerCase();
+      let carObj = pro.find(car => (car.number || '').replace(/\s/g, '').toLowerCase() === search);
+      let mode = 'prokat';
+      if (!carObj) {
+        carObj = rent.find(car => (car.number || '').replace(/\s/g, '').toLowerCase() === search);
+        mode = 'rent';
+      }
+      if (!carObj) {
+        carObj = buy.find(car => (car.number || '').replace(/\s/g, '').toLowerCase() === search);
+        mode = 'buyout';
+      }
+      if (carObj) {
+        openCarModal(carObj, mode);
+      }
+    }
+    // === /КОНЕЦ БЛОКА ===
+
     window.originalCarsOrder.prokat = Array.from(document.querySelectorAll('#prokatGrid .car-card'));
     window.originalCarsOrder.arenda = Array.from(document.querySelectorAll('#arendaGrid .car-card'));
     window.originalCarsOrder.buyout = Array.from(document.querySelectorAll('#buyoutGrid .car-card'));
@@ -81,5 +103,50 @@ document.addEventListener('DOMContentLoaded', async () => {
   } catch (e) {
     console.error(e);
   }
-
 });
+
+// document.addEventListener('DOMContentLoaded', async () => {
+//   try {
+//     const allCars = await fetchAllCars();
+//     const nums    = config.prokatNumbers.map(toLatinNumber);
+
+//     // — ПРОКАТ —
+//     let pro = [...allCars];
+//     nums.forEach(n => {
+//       if (!pro.some(c=>toLatinNumber(c.number)===n)) {
+//         const extra = allCars.find(c=>toLatinNumber(c.number)===n);
+//         if (extra) pro.push(extra);
+//       }
+//     });
+//     pro.sort((a,b)=>{
+//       const ia = nums.indexOf(toLatinNumber(a.number));
+//       const ib = nums.indexOf(toLatinNumber(b.number));
+//       if (ia===-1 && ib===-1) return 0;
+//       if (ia===-1) return 1;
+//       if (ib===-1) return -1;
+//       return ia-ib;
+//     });
+//     pro = pro.filter(car=>!hasSupplementary(car));
+
+//     // — АРЕНДА —
+//     const rent = allCars
+//       .filter(car=>!nums.includes(toLatinNumber(car.number)))
+//       .filter(car=>!hasSupplementary(car));
+
+//     // — ВЫКУП —
+//     const buy = allCars
+//       .filter(car=>!nums.includes(toLatinNumber(car.number)));
+
+//     renderSection(pro,   'prokatGrid', 'prokat');
+//     renderSection(rent,  'arendaGrid', 'rent');
+//     renderSection(buy,   'buyoutGrid','buyout');
+
+//     window.originalCarsOrder.prokat = Array.from(document.querySelectorAll('#prokatGrid .car-card'));
+//     window.originalCarsOrder.arenda = Array.from(document.querySelectorAll('#arendaGrid .car-card'));
+//     window.originalCarsOrder.buyout = Array.from(document.querySelectorAll('#buyoutGrid .car-card'));
+
+//   } catch (e) {
+//     console.error(e);
+//   }
+
+// });

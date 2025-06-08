@@ -2287,7 +2287,7 @@ body.scale-fade-in {
 }
 
 .contacts-modern-title {
-  font-size: 2.2rem;
+  font-size: 2.1rem;
   font-weight: 700;
   margin-bottom: 8px;
   letter-spacing: 1px;
@@ -2371,6 +2371,29 @@ body.scale-fade-in {
 .about-photos.visible {
   opacity: 1;
   transform: none;
+}
+
+#aboutH2{
+
+ font-size:2.1rem;
+ font-weight:700; 
+ margin-bottom:24px;
+
+
+}
+
+#aboutPtext{
+  font-size:1.5rem;
+}
+
+#aboutDiv{
+  max-width:1100px;
+  margin:0 auto;
+  display:flex;
+  flex-wrap:wrap;
+  gap:32px; 
+  justify-content:center;
+  align-items:center;
 }
 
 /* ----------------------------------------------------------------------------
@@ -3007,6 +3030,20 @@ body.scale-fade-in {
   letter-spacing: 1px;
 }
 
+#steps{
+  background:#000;
+  padding:60px 0 40px 0; 
+  text-align:center; 
+  position:relative;
+}
+
+.steps-grid{
+
+  display:flex; justify-content:center; align-items:stretch; gap:0; max-width:1400px; margin:0 auto;
+
+
+}
+
 /* ----------------------------------------------------------------------------
    19. CONTACTS GRID (страница контактов)
 ---------------------------------------------------------------------------- */
@@ -3246,11 +3283,29 @@ body.scale-fade-in {
 
 .buyback-form-section .form-desc {
   font-size: 1rem;
+  margin: 32px 0 32px 0;
+}
+
+#aboutH2{
+
+  font-size: 1.5rem;
+
+}
+
+#aboutPtext{
+  font-size:1.1rem;
+  padding: 0px 10px 0px 10px;
+}
+#aboutDiv{
+  margin: 0px 10px 0px 10px;
+}
+
+.steps-grid{
+  display:grid; justify-content:center; align-items:stretch; gap:32px; max-width:1400px; margin:0 auto;
+
 }
 
 }
-
-
 
 
 
@@ -3359,11 +3414,12 @@ body.scale-fade-in {
 }
 
 .how-works-content .text{
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 
 .buyback-form-section .form-desc {
   font-size: 1rem;
+  margin: 32px 0 32px 0;
 }
 
   .who-form {
@@ -3375,6 +3431,25 @@ body.scale-fade-in {
   .who-left h2{
     font-size: 2.4rem
   }
+
+  #aboutH2{
+
+  font-size: 1.5rem;
+
+}
+
+#aboutPtext{
+  font-size:1.1rem;
+  padding: 0px 10px 0px 10px;
+}
+#aboutDiv{
+  margin: 0px 10px 0px 10px;
+}
+
+.steps-grid{
+  display:grid; justify-content:center; align-items:stretch; gap:32px; max-width:1400px; margin:0 auto;
+
+}
 
 }
 
