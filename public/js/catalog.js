@@ -57,14 +57,26 @@ export function createCarCard(car, mode) {
   card.dataset.credit       = car.credit ? 'true' : 'false';
   card.dataset.select       = car.select ? 'true' : 'false';
 
+  // card.innerHTML = `
+  //   <img src="img/placeholder.jpg"
+  //        alt="Фото ${car.brand} ${car.model}"
+  //        class="car-image">
+  //   <div class="car-title">${car.brand || ''} ${car.model || ''}</div>
+  //   <div class="car-info">${priceText}</div>
+  //   <button class="car-detail-btn">ПОДРОБНЕЕ</button>
+  // `;
+
   card.innerHTML = `
-    <img src="img/placeholder.jpg"
-         alt="Фото ${car.brand} ${car.model}"
-         class="car-image">
+  <img src="img/placeholder.jpg"
+       alt="Фото ${car.brand} ${car.model}"
+       class="car-image">
+  <div class="car-content">
     <div class="car-title">${car.brand || ''} ${car.model || ''}</div>
     <div class="car-info">${priceText}</div>
-    <button class="car-detail-btn">ПОДРОБНЕЕ</button>
-  `;
+  </div>
+  <button class="car-detail-btn">ПОДРОБНЕЕ</button>
+`;
+
 
   // Загрузка фото
   (async () => {

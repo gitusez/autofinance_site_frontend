@@ -1,0 +1,869 @@
+@media (max-width: 900px) {
+  /* Показываем кнопку-бургер */
+  .burger {
+    display: flex;
+  }
+
+  /* Скрываем десктоп-меню */
+  .main-nav {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .main-nav { display: none; }
+  .burger    { display: flex; }
+}
+
+@media (min-width: 768px) {
+  .mobile-nav { display: none !important; }
+  .main-nav   { display: flex;  }
+  .burger     { display: none;  }
+}
+
+@media (max-width: 600px) {
+  .catalog-title {
+    font-size: 1.5rem;
+  }
+  .catalog-header {
+    margin-bottom: 18px;
+  }
+}
+
+@media (max-width: 700px) {
+  .catalog-qr-block {
+    flex-direction: column;
+    gap: 18px;
+    padding: 18px 8px;
+    max-width: 98vw;
+  }
+  .catalog-qr-img {
+    width: 90px;
+    height: 90px;
+  }
+  .catalog-qr-text {
+    font-size: 1.05rem;
+    text-align: center;
+    gap: 10px;
+  }
+  .catalog-qr-link {
+    width: 100%;
+    padding: 12px 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .catalog-body {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .filters {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #1a1a1a;
+    z-index: 1000;
+    overflow-y: auto;
+    padding: 20px 16px 40px 16px;
+  }
+  .filters.active {
+    display: block;
+  }
+  .mobile-filter-toggle {
+    display: block;
+  }
+  .close-filters-btn {
+    display: block;
+  }
+}
+
+@media (max-width: 900px) {
+  .car-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .car-card {
+    padding: 14px;
+  }
+  .car-image {
+    height: 110px;
+  }
+  .car-title {
+    font-size: 1.1rem;
+  }
+  .car-detail-btn {
+    font-size: 0.95rem;
+    padding: 10px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .car-modal-split {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 700px) {
+  .car-modal-main {
+    max-width: 98vw;
+    height: 180px;
+  }
+  .car-modal-thumb {
+    width: 44px;
+    height: 36px;
+  }
+}
+
+@media (max-width: 700px) {
+  .order-modal-car {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .order-modal-car img {
+    width: 60px;
+    height: 48px;
+  }
+  .order-modal-close {
+    top: 8px;
+    right: 8px;
+    font-size: 1.5rem;
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media (max-width: 900px) {
+  /* Services */
+  .services-list {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas:
+      "a"
+      "b"
+      "c";
+    gap: 24px;
+  }
+
+  .service-card {
+    width: 95vw;
+    max-width: 100vw;
+    height: 180px;
+    min-height: 180px;
+  }
+
+  .service-card span {
+    font-size: 1.5rem;
+    margin: 0 0 50px 0;
+  }
+
+  .service-btn {
+    opacity: 1 !important;
+    pointer-events: all !important;
+    transform: translateX(-50%) !important;
+    transition: none !important;
+    /* margin: 12px 0 24px 18px; */
+    /* font-size: 1rem; */
+  }
+
+  /* Contacts Grid */
+  .contacts-grid {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .footer-section {
+    padding: 24px 8px 32px 8px;
+  }
+
+  /* Requests */
+  .request-form {
+    min-width: 0;
+    max-width: 98vw;
+    padding: 18px 8px;
+    gap: 14px;
+  }
+
+  /* Buyout Who */
+  .buyout-who {
+    flex-direction: column;
+    gap: 32px;
+    padding: 0 0vw 32px 5vw;
+  }
+  /* .who-right {
+    justify-content: center;
+    width: 100%;
+  } */
+  .who-form {
+    margin: 0;
+    width: 95%;
+    max-width: 100%;
+  }
+
+  /* Benefit Grid */
+  .benefit-grid {
+    display: block;
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    /* grid-template-areas: none; */
+  }
+  .benefit-card {
+    min-height: 200px !important;
+    margin-bottom: 15px;
+    padding: 20px 14px 18px 14px;
+    display: block;
+  }
+
+  /* Buyout CTA */
+  .buyout-cta {
+    min-height: 260px;
+    /* border-radius: 0 0 12px 12px; */
+    background-attachment: scroll;
+  }
+  .cta-text {
+    font-size: 1.2rem;
+    margin-bottom: 22px;
+  }
+  .cta-btn {
+    font-size: 1rem;
+    padding: 14px 24px;
+  }
+
+  /* How Works */
+  /* нет изменений для How Works */
+
+  /* Contacts Hero */
+  .contacts-hero-inner {
+    padding: 60px 0 32px 0;
+    font-size: 1.05rem;
+  }
+  .contacts-title {
+    font-size: 1.5rem;
+  }
+  .contacts-block {
+    font-size: 1.05rem;
+  }
+
+  /* Contacts Split Modern */
+  .contacts-split-modern {
+    flex-direction: column;
+    min-height: unset;
+  }
+  .contacts-modern-left,
+  .contacts-modern-right {
+    width: 100vw;
+    max-width: 100vw;
+    min-width: 0;
+    padding: 32px 4vw;
+  }
+  .contacts-modern-right {
+    min-height: 700px;
+    height: 300px;
+    background-color: black;
+  }
+  .contacts-modern-inner {
+    max-width: 100vw;
+    align-items: flex-start;
+  }
+
+  /* Car Modal */
+  .car-modal-main {
+    max-width: 98vw;
+    height: 180px;
+  }
+  .car-modal-thumb {
+    width: 44px;
+    height: 36px;
+  }
+
+  /* Services & Hero Title */
+  .hero-content h1 {
+    font-size: 2.1rem;
+  }
+
+  /* Header & Footer */
+  .header {
+    padding: 16px 10px;
+  }
+  .logo {
+    font-size: 1rem;
+  }
+  .services {
+    padding: 32px 0 18px 0;
+  }
+  .footer {
+    padding: 18px 4px 12px 4px;
+  }
+
+  /* Chat & WhatsApp */
+  .chat-widget {
+    left: 8px;
+    bottom: 8px;
+    padding: 7px 10px 7px 7px;
+    min-width: 140px;
+    font-size: 0.92rem;
+  }
+  .chat-widget img {
+    width: 32px;
+    height: 32px;
+  }
+  .whatsapp-float {
+    right: 8px;
+    bottom: 8px;
+    width: 40px;
+    height: 40px;
+  }
+  .whatsapp-float img {
+    width: 32px;
+    height: 32px;
+  }
+
+  /* Catalog */
+  .catalog-title {
+    font-size: 1.5rem;
+  }
+  .catalog-search-wrap {
+    max-width: 98vw;
+  }
+  .catalog-header {
+    margin-bottom: 18px;
+  }
+
+  /* Map Container */
+  .contacts-right {
+    min-height: 300px;
+    margin-top: 2rem;
+  }
+
+  .buyback-desc-section .desc-text {
+  max-width: 700px;
+  margin: 0 auto 40px auto;
+  font-size: 20px;
+  padding: 0px 10px 0px;
+}
+
+.how-works-content h2 {
+
+  font-size: 1.5rem;
+
+}
+
+.how-works-content .text{
+  font-size: 1.1rem;
+}
+
+.buyback-form-section .form-desc {
+  font-size: 1rem;
+  margin: 32px 0 32px 0;
+}
+
+#aboutH2{
+
+  font-size: 1.5rem;
+
+}
+
+#aboutPtext{
+  font-size:1.1rem;
+  padding: 0px 10px 0px 10px;
+}
+#aboutDiv{
+  margin: 0px 10px 0px 10px;
+}
+
+.steps-grid{
+  display:grid; justify-content:center; align-items:stretch; gap:32px; max-width:1400px; margin:0 auto;
+
+}
+
+  .catalog-content.grid-view .car-grid {
+    grid-template-columns: 1fr 1fr;
+    padding: 0px 0px 0px 0px;
+  }
+
+}
+
+@media (max-width: 600px) {
+  /* Header adjustments */
+  .header {
+    padding: 16px 0px;
+  }
+
+
+  .logo {
+    font-size: 1rem;
+  }
+
+  /* Hero Title */
+  .hero-content h1 {
+    font-size: 2.1rem;
+  }
+
+  /* Services */
+  .services {
+    padding: 32px 0 18px 0;
+  }
+  .service-card {
+    width: 95vw;
+    max-width: 100vw;
+  }
+  .service-card img {
+    height: 120px;
+  }
+
+  /* Footer padding */
+  .footer {
+    padding: 18px 4px 12px 4px;
+  }
+
+  /* Chat Widget */
+  .chat-widget {
+    left: 8px;
+    bottom: 8px;
+    padding: 7px 10px 7px 7px;
+    min-width: 140px;
+    font-size: 0.92rem;
+  }
+  .chat-widget img {
+    width: 32px;
+    height: 32px;
+  }
+
+  /* WhatsApp */
+  .whatsapp-float {
+    right: 8px;
+    bottom: 8px;
+    width: 40px;
+    height: 40px;
+  }
+  .whatsapp-float img {
+    width: 32px;
+    height: 32px;
+  }
+
+  /* Request Form */
+  .request-form {
+    min-width: 0;
+    max-width: 98vw;
+    padding: 18px 8px;
+    gap: 14px;
+  }
+
+  /* Contacts Hero */
+  .contacts-hero-inner {
+    font-size: 1.05rem;
+  }
+  .contacts-title {
+    font-size: 1.5rem;
+  }
+  .contacts-block {
+    font-size: 1.05rem;
+  }
+
+  /* Catalog */
+  .catalog-title {
+    font-size: 1.5rem;
+  }
+  .catalog-search-wrap {
+    max-width: 98vw;
+  }
+  .catalog-header {
+    margin-bottom: 18px;
+  }
+
+
+    .buyback-desc-section .desc-text {
+  max-width: 700px;
+  margin: 0 auto 40px auto;
+  font-size: 20px;
+  padding: 0px 10px 0px;
+}
+
+.how-works-content h2 {
+
+  font-size: 1.5rem;
+
+}
+
+.how-works-content .text{
+  font-size: 1.1rem;
+}
+
+.buyback-form-section .form-desc {
+  font-size: 1rem;
+  margin: 32px 0 32px 0;
+}
+
+  .who-form {
+    margin: 0;
+    width: 95%;
+    max-width: 100%;
+  }
+
+  .who-left h2{
+    font-size: 2.4rem
+  }
+
+  #aboutH2{
+
+  font-size: 1.5rem;
+
+}
+
+#aboutPtext{
+  font-size:1.1rem;
+  padding: 0px 10px 0px 10px;
+}
+#aboutDiv{
+  margin: 0px 10px 0px 10px;
+}
+
+.steps-grid{
+  display:grid; justify-content:center; align-items:stretch; gap:32px; max-width:1400px; margin:0 auto;
+
+}
+
+  .catalog-content.grid-view .car-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
+
+@media (max-width: 767px) {
+  .catalog-body {
+    flex-direction: column;
+    gap: 16px; /* чуть меньше отступ между блоками */
+  }
+  .filters {
+    flex: none;
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 20px; /* отступ снизу перед каталогом */
+  }
+}
+
+@media (max-width: 767px) {
+  .main-nav { display: none; }
+  .burger   { display: flex; }
+}
+
+@media (min-width: 768px) {
+  .mobile-nav { display: none !important; }
+  .main-nav   { display: flex;        }
+  .burger     { display: none;        }
+}
+
+@media (max-width: 767px) {
+  /* 3.1. Скрываем боковую колонку фильтров */
+  .filters {
+    display: none;            /* пока не нажали «Фильтры» */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #1a1a1a;      /* тот же фон, что и у .filters */
+    z-index: 1000;            /* поверх всего */
+    overflow-y: auto;         /* прокрутка */
+    padding: 20px 16px 40px 16px;
+  }
+  /* 3.2. Когда фильтры «активны» (есть класс .active), показываем их */
+  .filters.active {
+    display: block;
+  }
+  /* 3.3. Показываем кнопку «Фильтры» наверху */
+  .mobile-filter-toggle {
+    display: block;
+  }
+  /* 3.4. Кнопка «×» */
+  .close-filters-btn {
+    display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  .mobile-filter-toggle {
+    display: none;
+  }
+  .close-filters-btn {
+    display: none;
+  }
+}
+
+@media (max-width: 1000px) {
+  /* Когда текст и форма уже идут друг под другом (см. ранее: flex-direction: column) */
+  .contact-section__inner {
+    flex-direction: column;
+    align-items: center; /* центрируем дочерние блоки */
+    gap: 24px;
+  }
+
+  /* Левая колонка (текст) пусть займёт всю ширину */
+  .contact-section__text {
+    flex: 1 1 100%;
+    max-width: 100%; /* растягиваем под ширину контейнера */
+    text-align: center; /* можно центрировать текст, если нужно */
+  }
+
+  /* Правая колонка (обёртка формы) также пусть займёт всю ширину, но внутри мы выровняем контент по центру */
+  .contact-section__form-wrapper {
+    flex: 1 1 100%;
+    display: flex;
+    justify-content: center; /* центрируем форму внутри этого блока */
+  }
+
+  /* Наконец, саму форму делаем «плавно расширяющейся» до 400px */
+  .contact-form {
+    width: 100%;        /* чтобы занять всё доступное пространство внутри обёртки */
+    max-width: 400px;   /* но не больше 400px */
+    margin: 0 auto;     /* дополнительно центрируем, хотя justify-content уже это делает */
+  }
+}
+
+@media (max-width: 600px) {
+  /* Сохраняем центрирование .contact-section__inner */
+  .contact-section__inner {
+    align-items: center;
+  }
+
+  /* Введём максимальную ширину формы чуть меньше, чем при 1000px, чтобы она не расползалась во весь экран */
+  .contact-form {
+    max-width: 340px; 
+    padding: 20px 16px; /* уменьшаем внутренние отступы */
+  }
+
+  /* Уменьшаем шрифты и размеры полей для очень узких экранов */
+  .contact-section__title {
+    font-size: 2rem;
+  }
+  .contact-section__description {
+    font-size: 1rem;
+  }
+  .contact-form__input {
+    font-size: 0.95rem;
+    padding: 8px 10px;
+  }
+  .contact-form__submit {
+    font-size: 1rem;
+    padding: 12px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .calculator-inner {
+    gap: 24px;
+  }
+  .calculator-title {
+    font-size: 2rem;
+  }
+  .calculator-desc {
+    font-size: 1rem;
+  }
+  .calculator-section {
+    padding: 40px 12px;
+  }
+  .calculator-form-wrapper {
+    gap: 18px;
+  }
+  .calc-values {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .calculator-title {
+    font-size: 1.6rem;
+  }
+  .calculator-desc {
+    font-size: 0.95rem;
+  }
+  .calc-values {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .calc-summary {
+    flex-direction: column;
+    gap: 16px;
+    padding: 18px 16px;
+  }
+  .summary-item {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+  .calc-summary .summary-item:first-child,
+  .calc-summary .summary-item:last-child {
+    margin: 0;
+  }
+  .summary-label {
+    font-size: 0.95rem;
+  }
+  .summary-value {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .catalog-content.grid-view .car-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .catalog-content.grid-view .car-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 400px) {
+  .catalog-content.grid-view .car-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Фикс: 2 карточки авто в ряд на мобильных */
+@media screen and (max-width: 767px) {
+  .car-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  /* Уменьшаем заголовки секций */
+  .catalog-section h2 {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  .catalog-title {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  .view-sort-bar {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .view-sort-bar .sort-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+
+}
+
+
+
+/* 
+@media (max-width: 768px) {
+  .catalog-content.list-view .car-card {
+    flex-wrap: wrap;
+    padding: 12px;
+  }
+
+  .catalog-content.list-view .car-image {
+    width: 100px;
+    height: 75px;
+    object-fit: cover;
+    margin-right: 12px;
+    flex-shrink: 0;
+  }
+
+  .catalog-content.list-view .car-title {
+    font-size: 1rem;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(100% - 130px);
+  }
+
+  .catalog-content.list-view .car-detail-btn {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    padding: 8px 12px;
+    width: 100%;
+  }
+
+  .modal-content .modal-close, .car-modal-close, .order-modal-close {
+    top: 0%;
+    right: 1%;
+  }
+} */
+
+
+@media (max-width: 768px) {
+  .catalog-content.list-view .car-card {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .catalog-content.list-view .car-image {
+    width: 100px;
+    height: 75px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+
+  .catalog-content.list-view .car-content {
+    flex-grow: 1;
+    min-width: 0;
+  }
+
+  .catalog-content.list-view .car-title {
+    font-size: 1rem;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .catalog-content.list-view .car-info {
+    font-size: 0.9rem;
+    color: #ffcc00;
+    margin-top: 4px;
+  }
+
+  .catalog-content.list-view .car-detail-btn {
+    margin-left: auto;
+    margin-top: 8px;
+    font-size: 0.85rem;
+    padding: 8px 12px;
+    white-space: nowrap;
+  }
+
+  .catalog-content.list-view .car-grid .car-card .car-image {
+    width: 100%;
+  }
+}
+
+
+
+
+
+
+/* @media (max-width: 900px) {
+    
+}
+
+@media (max-width: 900px) {}
+
+@media (max-width: 900px) {}
+
+@media (max-width: 900px) {} */
