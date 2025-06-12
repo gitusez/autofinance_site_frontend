@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Авто под заказ</title>
+  <link rel="stylesheet" href="css/stylesCLear.css">
+  <link rel="stylesheet" href="css/media.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-inner">
+      <!-- 1) Логотип -->
+      <a href="index.html" class="logo">
+        <img src="img/black_logo.jpg" alt="АВТО ФИНАНС" id="logoHome">
+      </a>
+
+      <!-- 2) Десктопное меню (.main-nav) — видно на экранах ≥768px -->
+      <nav class="main-nav">
+        <a href="rent-buyout.html">ПРОКАТ</a>
+        <a href="buyback.html">АРЕНДА</a>
+        <a href="urgent-buyout.html">ВЫКУП</a>
+        <a href="cartoorder.html">АВТО ПОД ЗАКАЗ</a>
+        <a href="catalog.html">КАТАЛОГ</a>
+        <a href="request.html">ОСТАВИТЬ ЗАЯВКУ</a>
+        <a href="contacts.html">КОНТАКТЫ</a>
+        <a href="about.html">О КОМПАНИИ</a>
+      </nav>
+
+      <!-- 3) Кнопка-гамбургер для мобильных (<768px) — по умолчанию скрыта на десктопе -->
+      <button class="burger" id="burgerBtn" aria-label="Открыть меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+
+  <!-- Мобильное меню (скрыто до клика по гамбургеру) -->
+  <nav class="mobile-nav" id="menuOverlay">
+    <button class="close-menu" id="closeMenu" aria-label="Закрыть меню">&times;</button>
+    <ul class="menu-list">
+      <li><a href="rent-buyout.html">ПРОКАТ</a></li>
+      <li><a href="buyback.html">АРЕНДА</a></li>
+      <li><a href="urgent-buyout.html">ВЫКУП</a></li>
+      <li><a href="cartoorder.html">АВТО ПОД ЗАКАЗ</a></li>
+      <li><a href="request.html">ОСТАВИТЬ ЗАЯВКУ</a></li>
+      <li><a href="catalog.html">КАТАЛОГ</a></li>
+      <li><a href="contacts.html">КОНТАКТЫ</a></li>
+      <li><a href="about.html">О КОМПАНИИ</a></li>
+    </ul>
+    <div class="menu-contacts">
+      <div><a href="tel:+78005553432" class="contacts-modern-phone">+7 800 555-34-32</a></div>
+      <div class="menu-socials">
+        <a href="#" aria-label="VK"><img src="img/vk.webp" alt="VK"></a>
+        <a href="#" aria-label="Telegram"><img src="img/telegram.webp" alt="Telegram"></a>
+        <a href="#" aria-label="WhatsApp"><img src="img/whatsapp.webp" alt="WhatsApp"></a>
+      </div>
+    </div>
+  </nav>
+
+  
+  <main>
+    <!-- Hero Banner -->
+    <section class="hero hero-prokat" style="background-image: url('img/geely/geely5.jpeg');">
+      <div class="hero-content">
+        <h1>АВТО ПОД ЗАКАЗ</h1>
+        <a href="#desc" class="hero-arrow" id="scrollToDesc">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 12V36" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+            <path d="M16 28L24 36L32 28" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- Краткое описание -->
+    <section class="buyout-desc" id="desc">
+          <div class="desc-text">Не переживайте! Если вы не увидели в наличии ту самую машину своей мечты — просто оставьте заявку. Мы подберём авто под ваш вкус, бюджет и требования.
+           Мы сделаем всё, чтобы вы сели за руль идеального автомобиля — без лишних хлопот и неожиданностей. Просто расскажите нам, что ищете — и мы всё устроим!
+          </div>
+    </section>
+
+    
+    <!-- Вставьте вместо текущей секции cars-marquee вот это -->
+<section class="cars-marquee">
+  <div class="marquee">
+    <div class="car-card">
+      <img src="img/chery8.jpg" alt="Chery Tiggo 8 Pro Max">
+      <h3>Chery Tiggo 8 Pro Max</h3>
+      <p class="price">от 6000 рублей / сутки</p>
+      <a href="chery8.html" class="btn">ПОДРОБНЕЕ</a>
+    </div>
+    <div class="car-card">
+      <img src="img/tank300.jpg" alt="Tank 300">
+      <h3>Tank 300</h3>
+      <p class="price">от 9000 рублей / сутки</p>
+      <a href="tank300.html" class="btn">ПОДРОБНЕЕ</a>
+    </div>
+    <div class="car-card">
+      <img src="img/vesta3100.jpg" alt="LADA (VAZ) Vesta">
+      <h3>LADA (VAZ) Vesta</h3>
+      <p class="price">от 3100 рублей / сутки</p>
+      <a href="vesta3100.html" class="btn">ПОДРОБНЕЕ</a>
+    </div>
+    <div class="car-card">
+      <img src="img/vesta2800.jpg" alt="LADA (VAZ) Vesta">
+      <h3>LADA (VAZ) Vesta</h3>
+      <p class="price">от 2800 рублей / сутки</p>
+      <a href="vesta2800.html" class="btn">ПОДРОБНЕЕ</a>
+    </div>
+    <!-- и т.д. -->
+  </div>
+</section>
+
+<!-- Авто под заказ -->
+<section class="buyout-who">
+  <div class="who-left">
+    <h2>Авто под заказ</h2>
+    <p>Не нашли в каталоге модель своей мечты? Оставьте заявку — и мы подберём для вас автомобиль по индивидуальным требованиям.</p>
+    
+    <ul>
+      <li>Подберём машину по бюджету, марке, цвету и комплектации</li>
+      <li>Найдём редкие или новые модели, которых нет в наличии</li>
+      <li>Учтём ваши пожелания по срокам и месту доставки</li>
+      <li>Оформим все документы быстро и без лишней бюрократии</li>
+    </ul>
+    <p>Оставьте свои контактные данные в форме справа — наш менеджер свяжется с вами в течение часа.</p>
+  </div>
+  <div class="who-right">
+    <form class="who-form" action="sendmail.php" method="POST">
+      <input type="text" name="name" placeholder="Ваше имя" required>
+      <input type="tel" name="phone" placeholder="Ваш телефон" required>
+      <input type="hidden" name="source" value="Авто под заказ">
+      <textarea name="message" placeholder="Что именно вы ищете?" rows="4"></textarea>
+      <button type="submit">Оставить заявку</button>
+      <div class="who-policy">
+        Заполняя форму, вы соглашаетесь с нашей политикой обработки персональных данных.
+      </div>
+    </form>
+  </div>
+</section>
+
+    <!-- CTA -->
+    <section class="buyout-cta">
+      <div class="cta-text">
+        Быстро и удобно — смотрите доступные автомобили и бронируйте онлайн. Нужна помощь с выбором? Мы подскажем лучший вариант!
+
+
+      </div>
+      <a href="catalog.html" class="cta-btn">ПЕРЕЙТИ В КАТАЛОГ</a>
+    </section>
+
+  </main>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-logo">
+      <img src="img/black_logo.jpg" alt="АВТО ФИНАНС" style="height:74px; margin-bottom:10px;">
+    </div>
+    <div class="footer-links" style="margin-bottom:10px;">
+      <a href="catalog.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">Каталог</a>
+      <a href="rent-buyout.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">Прокат</a>
+      <a href="buyback.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">Аренда</a>
+      <a href="urgent-buyout.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">Выкуп</a>
+      <a href="request.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">Оставить заявку</a>
+      <a href="contacts.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">Контакты</a>
+      <a href="about.html" style="color:#ccc; font-size:0.98em; margin:0 8px; text-decoration:none;">О компании</a>
+    </div>
+    <div class="footer-info" style="font-size:1em; color:#fff; display:flex; justify-content:center; gap:32px; flex-wrap:wrap;">
+      <span>ООО "АВТО ФИНАНС"</span>
+      <span>ИНН 7715124424 ОГРН 1227700037564</span>
+    </div>
+  </footer>
+  <a href="#" class="whatsapp-float" aria-label="WhatsApp"><img src="img/whatsapp.webp" alt="WhatsApp"></a>
+
+  <script src="js/script.js"></script>
+  <script>
+    // Плавный скролл к описанию
+    document.getElementById('scrollToDesc').onclick = function(e) {
+      e.preventDefault();
+      document.getElementById('desc').scrollIntoView({behavior:'smooth'});
+    };
+  </script>
+</body>
+</html> 

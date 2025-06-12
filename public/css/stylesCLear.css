@@ -21,6 +21,20 @@ html,body {
   max-width: 100%;
 }
 
+
+body::-webkit-scrollbar {
+  width: 9px;               /* ширина всей полосы прокрутки */
+}
+
+body::-webkit-scrollbar-track {
+  background: rgb(0, 0, 0);        /* цвет зоны отслеживания */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #f4c900;    /* цвет бегунка */
+  border-radius: 20px;       /* округлось бегунка */
+}
+
 body.fade-out {
   opacity: 0;
   transition: opacity 0.5s cubic-bezier(.4,1.4,.6,1);
@@ -47,7 +61,7 @@ body.scale-fade-in {
   z-index: 100;
 }
 
-.header-inner {
+/* .header-inner {
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
@@ -55,11 +69,11 @@ body.scale-fade-in {
   display: flex;
   align-items: center;
   gap: 32px;
-}
+} */
 
 .logo img,
 #logoHome {
-  max-height: 100px;
+  max-height: 80px;
   width: auto;
   object-fit: contain;
 }
@@ -380,7 +394,20 @@ body.scale-fade-in {
   box-shadow: 0 2px 12px 0 rgba(0,0,0,0.10);
   transition: background 0.22s, box-shadow 0.22s;
   outline: none;
+
+
+  
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
 }
+
+.request-form select option {
+  background: #1e1e1e;
+  color: #fff;
+}
+
 .request-form input:focus,
 .request-form select:focus {
   background: rgba(255,255,255,0.22);
@@ -498,7 +525,7 @@ body.scale-fade-in {
   grid-template-rows: 1fr 1fr;
   grid-template-areas:
     "a b"
-    "c c";
+    "c d";
   gap: 14px;
   margin-top: 52px;
   justify-content: center;
@@ -850,6 +877,8 @@ body.scale-fade-in {
 }
 
 .header-inner {
+  white-space: nowrap;
+  flex-wrap: nowrap;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -860,12 +889,12 @@ body.scale-fade-in {
   padding: 0 32px;
 }
 
-.logo img,
+/* .logo img,
 #logoHome {
   max-height: 100px;
   width: auto;
   object-fit: contain;
-}
+} */
 
 /* Desktop menu */
 .main-nav {
@@ -1086,7 +1115,7 @@ body.scale-fade-in {
 --------------------------------------------- */
 .catalog-body {
   display: flex;
-  gap: 100px;
+  gap: 10%;
   align-items: flex-start;
 }
 
@@ -1209,16 +1238,16 @@ body.scale-fade-in {
   z-index: 1001;
 }
 
-/* Catalog content (right column) */
-/* .catalog-content {
-  flex: 1;
-} */
-
 .catalog-content {
   display: grid;
   grid-template-columns: 1fr;
   /* gap или margin между секциями — по желанию */
 }
+
+
+
+
+
 
 
 /* ---------------------------------------------
@@ -1227,7 +1256,7 @@ body.scale-fade-in {
 .catalog-section {
   max-width: 1200px;
   margin: 0px auto;
-  padding: 30px 10px;
+  padding: 30px 0px;
   border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
@@ -1299,7 +1328,7 @@ body.scale-fade-in {
 .car-detail-btn {
   margin-top: auto;
   width: 100%;
-  padding: 12px 0;
+  padding: 12px 30px;
   font-size: 1em;
   font-weight: 700;
   border: none;
@@ -1492,7 +1521,7 @@ body.scale-fade-in {
   padding: 16px;
   border-radius: 10px;
   max-height: 250px;
-  overflow-y: auto;
+  overflow :auto;
   margin-bottom: 16px;
 }
 
@@ -1709,7 +1738,7 @@ body.scale-fade-in {
 .main-image img {
   width: 100%;
   height: 400px;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 8px;
   cursor: pointer;
 }
@@ -1760,9 +1789,19 @@ body.scale-fade-in {
 }
 
 .fullscreen-image {
-  position: relative;
+  /* position: relative;
   max-width: 80vw;
   max-height: 70vh;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+  z-index: 9001; */
+  position: relative;
+  max-width: 85vw;
+  max-height: 85vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  touch-action: none;
   border-radius: 16px;
   box-shadow: 0 8px 32px rgba(0,0,0,0.35);
   z-index: 9001;
@@ -2561,6 +2600,7 @@ body.scale-fade-in {
   color: #fff;
   max-width: 1100px;
   line-height: 1.5;
+  padding: 0 10px 0 10px;
   margin: 0 auto;
 }
 
@@ -2895,135 +2935,11 @@ body.scale-fade-in {
 
 
 
-
-
-
-
-
-/* ────────────────────────────────────────────────────────────────────────── */
-/* ─── 1) Flex-контейнер: фильтры слева + контент справа на десктопе ─── */
-.catalog-body {
-  display: flex;
-  gap: 100px;               /* расстояние между колонками */
-  align-items: flex-start; /* выравниваем по верхнему краю */
-}
-
-/* Левая колонка: Фильтры */
-.filters {
-  flex: 0 0 280px;         /* фиксированной ширины 280px на десктопе */
-  margin-left: 80px;       /* сохраняем ваш прежний отступ слева */
-  background: #1a1a1a;     /* фон фильтров */
-  padding: 20px;
-  border-radius: 8px;
-  font-size: 0.95rem;
-  color: #fff;
-}
-
-/* Секции внутри фильтров */
-.filter-section {
-  margin-bottom: 20px;
-}
-.filter-section h3 {
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 10px;
-  color: #f4c900;
-}
-.filter-section input[type="number"],
-.filter-section select {
-  width: 100%;
-  padding: 8px 10px;
-  margin-bottom: 8px;
-  border: 1px solid #444;
-  border-radius: 4px;
-  background: #2a2a2a;
-  color: #fff;
-}
-.filter-section input[type="number"]::placeholder {
-  color: #888;
-}
-.filter-section label {
-  display: block;
-  margin-bottom: 6px;
-  cursor: pointer;
-}
-.filter-section input[type="checkbox"],
-.filter-section input[type="radio"] {
-  margin-right: 6px;
-  vertical-align: middle;
-}
-.filter-tabs {
-  display: flex;
-  gap: 6px;
-  margin-bottom: 10px;
-}
-
 #probegBtn{
   white-space: nowrap;
 }
-.filter-tab {
-  flex: 1;
-  padding: 6px;
-  background: #2a2a2a;
-  border: 1px solid #444;
-  border-radius: 4px;
-  color: #fff;
-  font-size: 0.95rem;
-  cursor: pointer;
-  text-align: center;
-  transition: background 0.2s;
-}
-.filter-tab.active {
-  background: #f4c900;
-  color: #000;
-  border-color: #f4c900;
-}
-#buttonResetFilters {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  background: #f44336;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  font-weight: 600;
-  cursor: pointer;
-}
 
-/* ─── 4) Стандартные стили для .car-grid и .catalog-section оставляем без изменений ─── */
-/*     Ваши существующие правила ниже (от .catalog-section, .car-grid, .car-card и т.д.) остаются нетронутыми. */
 
-/* ─────────────────────────── */
-/*  ДОБАВЛЕНИЕ СТИЛЕЙ ДЛЯ МОБИЛЬНОГО «ФИЛЬТРЫ»  */
-/* ─────────────────────────── */
-
-/* 1. Кнопка «Фильтры» */
-.mobile-filter-toggle {
-  display: none;              /* спрятана по умолчанию */
-  margin: 0 auto 16px auto;
-  padding: 10px 20px;
-  background: #f4c900;
-  color: #000;
-  border: none;
-  border-radius: 4px;
-  font-weight: 600;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-/* 2. Кнопка «×» в панели фильтров */
-.close-filters-btn {
-  display: none;
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  background: none;
-  border: none;
-  font-size: 2rem;
-  color: #fff;
-  cursor: pointer;
-  z-index: 1001;
-}
 
 
 /* ───────────────────────────────────────────────────────────────────────────── */
@@ -3405,7 +3321,7 @@ body.scale-fade-in {
   flex-direction: column;
   align-items: center;    /* карточки станут по центру контейнера */
   gap: 20px;              /* расстояние между строками-карточками */
-  padding: 0 0px;        /* чтобы немного не «упиралось» в края экрана */
+  padding: 15px 15px;        /* чтобы немного не «упиралось» в края экрана */
   overflow-x: hidden;
   max-width: 100%;
 
@@ -3422,7 +3338,7 @@ body.scale-fade-in {
   flex-direction: row;
   gap: 16px;              /* небольшой отступ между картинкой и текстом */
   align-items: flex-start;/* выравниваем по верхнему краю */
-  padding: 16px;          /* чтобы вокруг «контента» был небольшой отступ */
+  padding: 16px 150px 16px 16px;          /* чтобы вокруг «контента» был небольшой отступ */
   background: #1a1a1a;    /* можно скорректировать под ваш фон карточки */
   border-radius: 12px;    /* скругление углов */
 }
@@ -3443,7 +3359,7 @@ body.scale-fade-in {
 
 .catalog-content.grid-view .car-grid {
   display: grid;
-  gap: 20px;
+  gap: 10px 2%;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   padding: 0 10px;
 }
@@ -3506,3 +3422,85 @@ body.scale-fade-in {
 .car-share-btn:focus {
   outline: 2px solid #ffc107; /* жёлтая обводка при фокусе (опционально) */
 }
+
+
+/* ——— Карусель ——— */
+.cars-marquee {
+  overflow: hidden;
+  background: #000;
+  padding: 60px 0;
+}
+
+.cars-marquee .marquee {
+  display: flex;
+  gap: 24px;               /* расстояние между карточками */
+  transform: translateX(0); /* стартовая позиция */
+  will-change: transform;   /* для плавной анимации */
+}
+
+
+
+
+
+
+
+/* По умолчанию — скрыто в grid-view */
+.car-snippet {
+  display: none;
+}
+/* Две колонки */
+.list-view .car-content {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  column-gap: 20px;
+  align-items: start;
+  padding: 0 20px;
+}
+
+/* Левая часть */
+.list-view .car-left {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Правая часть */
+.list-view .car-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 100%;
+}
+
+/* Описание */
+.list-view .car-snippet {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.4;
+  min-width: 0;
+}
+
+@media (max-width: 767px) {
+  .list-view .car-snippet {
+    display: none;
+  }
+}
+
+/* Кнопка */
+.list-view .car-detail-btn {
+  align-self: flex-start;
+  margin-top: auto;
+  white-space: nowrap;
+}
+
+
+
+
+
+

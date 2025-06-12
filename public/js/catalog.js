@@ -2,6 +2,26 @@
 
 import { config } from './config.js';
 
+
+function loadCachedPhotos(plate) {
+  try {
+    const cache = JSON.parse(localStorage.getItem('photosCache') || '{}');
+    return cache[plate] || null;
+  } catch {
+    return null;
+  }
+}
+
+function saveCachedPhotos(plate, urls) {
+  try {
+    const cache = JSON.parse(localStorage.getItem('photosCache') || '{}');
+    cache[plate] = urls;
+    localStorage.setItem('photosCache', JSON.stringify(cache));
+  } catch (e) {
+    console.error('Failed to save photo cache:', e);
+  }
+}
+
 /** Утилита: кириллица → латиница */
 function toLatinNumber(plate) {
   const map = {
@@ -66,37 +86,92 @@ export function createCarCard(car, mode) {
   //   <button class="car-detail-btn">ПОДРОБНЕЕ</button>
   // `;
 
-  card.innerHTML = `
+
+
+
+// card.innerHTML = `
+//   <img src="img/placeholder.jpg"
+//        alt="Фото ${car.brand} ${car.model}"
+//        class="car-image">
+       
+//   <div class="car-content">
+//     <div class="car-left">
+//       <div class="car-title">${car.brand || ''} ${car.model || ''}</div>
+//       <div class="car-info">${priceText}</div>
+//     </div>
+//     <div class="car-snippet">
+//       ${(car.description || '').slice(0, 350)}
+//     </div>
+//   </div>
+
+//   <button class="car-detail-btn">ПОДРОБНЕЕ</button>
+// `;
+
+
+card.innerHTML = `
   <img src="img/placeholder.jpg"
        alt="Фото ${car.brand} ${car.model}"
        class="car-image">
+       
   <div class="car-content">
-    <div class="car-title">${car.brand || ''} ${car.model || ''}</div>
-    <div class="car-info">${priceText}</div>
+    <div class="car-left">
+      <div class="car-title">${car.brand || ''} ${car.model || ''}</div>
+      <div class="car-info">${priceText}</div>
+    </div>
+    <div class="car-right">
+      <div class="car-snippet">${(car.description || '').slice(0, 350)}</div>
+      <button class="car-detail-btn">ПОДРОБНЕЕ</button>
+    </div>
   </div>
-  <button class="car-detail-btn">ПОДРОБНЕЕ</button>
 `;
 
 
-  // Загрузка фото
+  // Загрузка фото с учётом кэша
   (async () => {
     const imgEl = card.querySelector('.car-image');
     const plate = toLatinNumber(car.number || '');
+    const cached = loadCachedPhotos(plate);
+    if (Array.isArray(cached) && cached.length > 0) {
+      imgEl.src = cached[0];
+      return;
+    }
     try {
       const resp = await fetch(`${config.photoApi}/api/photos/${plate}`);
       const arr = await resp.json();
       if (Array.isArray(arr) && arr.length > 0) {
-        const first = arr[0].startsWith('/')
-          ? arr[0]
-          : `/photos/${plate}/${arr[0]}`;
-        imgEl.src = first.startsWith('http')
-          ? first
-          : `${config.photoApi}${first}`;
+        const urls = arr.map(item => {
+          const path = item.startsWith('/') ? item : `/photos/${plate}/${item}`;
+          return path.startsWith('http') ? path : `${config.photoApi}${path}`;
+        });
+        imgEl.src = urls[0];
+        saveCachedPhotos(plate, urls);
       }
     } catch {
       // Оставляем placeholder
     }
   })();
+
+
+
+  // // Загрузка фото
+  // (async () => {
+  //   const imgEl = card.querySelector('.car-image');
+  //   const plate = toLatinNumber(car.number || '');
+  //   try {
+  //     const resp = await fetch(`${config.photoApi}/api/photos/${plate}`);
+  //     const arr = await resp.json();
+  //     if (Array.isArray(arr) && arr.length > 0) {
+  //       const first = arr[0].startsWith('/')
+  //         ? arr[0]
+  //         : `/photos/${plate}/${arr[0]}`;
+  //       imgEl.src = first.startsWith('http')
+  //         ? first
+  //         : `${config.photoApi}${first}`;
+  //     }
+  //   } catch {
+  //     // Оставляем placeholder
+  //   }
+  // })();
 
   // Навешиваем на кнопку «ПОДРОБНЕЕ» открытие модалки
   card.querySelector('.car-detail-btn')
@@ -119,24 +194,46 @@ const orderModalContent = document.getElementById('orderModalContent');
 
 export async function openCarModal(car, mode) {
   const plate = toLatinNumber(car.number || '');
-  let images = [];
+  let images = loadCachedPhotos(plate) || [];
 
-  try {
-    const resp = await fetch(`${config.photoApi}/api/photos/${plate}`);
-    const arr = await resp.json(); // массив строк с именами файлов
-    if (Array.isArray(arr) && arr.length > 0) {
-      images = arr.map(item => {
-        if (item.startsWith('/')) {
-          return item.startsWith('http')
-            ? item
-            : `${config.photoApi}${item}`;
-        }
-        return `${config.photoApi}/photos/${plate}/${item}`;
-      });
+  if (!images.length) {
+    try {
+      const resp = await fetch(`${config.photoApi}/api/photos/${plate}`);
+      const arr = await resp.json(); // массив строк с именами файлов
+      if (Array.isArray(arr) && arr.length > 0) {
+        images = arr.map(item => {
+          const path = item.startsWith('/') ? item : `/photos/${plate}/${item}`;
+          return path.startsWith('http') ? path : `${config.photoApi}${path}`;
+        });
+        saveCachedPhotos(plate, images);
+      }
+    } catch {
+      // В случае ошибки оставляем images пустым
     }
-  } catch {
-    // В случае ошибки оставляем images пустым
   }
+
+// /** Открывает модалку с деталями */
+
+// export async function openCarModal(car, mode) {
+//   const plate = toLatinNumber(car.number || '');
+//   let images = [];
+
+//   try {
+//     const resp = await fetch(`${config.photoApi}/api/photos/${plate}`);
+//     const arr = await resp.json(); // массив строк с именами файлов
+//     if (Array.isArray(arr) && arr.length > 0) {
+//       images = arr.map(item => {
+//         if (item.startsWith('/')) {
+//           return item.startsWith('http')
+//             ? item
+//             : `${config.photoApi}${item}`;
+//         }
+//         return `${config.photoApi}/photos/${plate}/${item}`;
+//       });
+//     }
+//   } catch {
+//     // В случае ошибки оставляем images пустым
+//   }
 
   // Если фоток нет, используем avatar или placeholder
   if (!images.length) {
@@ -212,7 +309,15 @@ else transmissionLabel = car.transmission || '—';
         </div>
 
         <button class="car-order-btn">ОСТАВИТЬ ЗАЯВКУ</button>
-        <button class="car-share-btn" style="margin-left:12px;">Поделиться</button>
+
+        <button class="car-share-btn" aria-label="Поделиться" style="margin-left:12px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="17 8 12 3 7 8" />
+            <line x1="12" y1="3" x2="12" y2="15" />
+          </svg>
+        </button>
+
       </div>
     </div>
 
@@ -227,6 +332,8 @@ else transmissionLabel = car.transmission || '—';
     </div>
   `;
 
+  // <button class="car-share-btn" style="margin-left:12px;">Поделиться</button>
+
   // Навешиваем обработчики на кнопки внутри модалки
 carModalContent.querySelector('.car-modal-close').addEventListener('click', closeCarModal);
 carModalOverlay.addEventListener('click', closeCarModal);
@@ -236,16 +343,30 @@ carModalContent.querySelector('.car-order-btn').addEventListener('click', () => 
 const shareBtn = carModalContent.querySelector('.car-share-btn');
 if (shareBtn) {
   const url = `${window.location.origin}${window.location.pathname}?car=${encodeURIComponent(car.number || '')}`;
-  shareBtn.onclick = async () => {
+
+
+    shareBtn.onclick = async () => {
     try {
       await navigator.clipboard.writeText(url);
-      shareBtn.textContent = 'Ссылка скопирована!';
-      setTimeout(() => { shareBtn.textContent = 'Поделиться'; }, 1200);
+      shareBtn.setAttribute('aria-label', 'Ссылка скопирована!');
+      setTimeout(() => {
+        shareBtn.setAttribute('aria-label', 'Поделиться');
+      }, 1200);
     } catch {
       alert('Не удалось скопировать ссылку');
     }
   };
 }
+//   shareBtn.onclick = async () => {
+//     try {
+//       await navigator.clipboard.writeText(url);
+//       shareBtn.textContent = 'Ссылка скопирована!';
+//       setTimeout(() => { shareBtn.textContent = 'Поделиться'; }, 1200);
+//     } catch {
+//       alert('Не удалось скопировать ссылку');
+//     }
+//   };
+// }
 
   // Логика переключения картинок и fullscreen
   const mainImg   = carModalContent.querySelector('#modalMainImg');
@@ -258,6 +379,8 @@ if (shareBtn) {
   const fsOverlay = fsGallery.querySelector('.fullscreen-overlay');
   const fsCounter = fsGallery.querySelector('#fsCounter');
   let idx = 0;
+  let pinchStartDist = 0;
+  let pinchStartScale = 1;
 
   function setIndex(i) {
     idx = i;
@@ -270,22 +393,40 @@ if (shareBtn) {
 
   setIndex(0);
 
-  thumbs.forEach(t => {
-    t.addEventListener('click', () => setIndex(+t.dataset.idx));
-    t.addEventListener('dblclick', e => {
-      e.stopPropagation();
-      fsGallery.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-      setIndex(+t.dataset.idx);
-    });
-  });
-
-  mainImg.addEventListener('dblclick', e => {
-    e.stopPropagation();
+    const openFs = i => {
     fsGallery.style.display = 'flex';
     document.body.style.overflow = 'hidden';
-    setIndex(idx);
+    setIndex(i);
+  };
+
+  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+  thumbs.forEach(t => {
+    t.addEventListener('click', () => setIndex(+t.dataset.idx));
+    if (isTouchDevice) {
+      t.addEventListener('click', e => {
+        e.stopPropagation();
+        openFs(+t.dataset.idx);
+      });
+    } else {
+      t.addEventListener('dblclick', e => {
+        e.stopPropagation();
+        openFs(+t.dataset.idx);
+      });
+    }
   });
+
+  if (isTouchDevice) {
+    mainImg.addEventListener('click', e => {
+      e.stopPropagation();
+      openFs(idx);
+    });
+  } else {
+    mainImg.addEventListener('dblclick', e => {
+      e.stopPropagation();
+      openFs(idx);
+    });
+  }
 
   fsPrev.addEventListener('click', e => {
     e.stopPropagation();
@@ -294,6 +435,32 @@ if (shareBtn) {
   fsNext.addEventListener('click', e => {
     e.stopPropagation();
     setIndex((idx + 1) % images.length);
+  });
+
+  // pinch zoom for fullscreen image on touch devices
+  const getDist = (t1, t2) => {
+    const dx = t2.clientX - t1.clientX;
+    const dy = t2.clientY - t1.clientY;
+    return Math.hypot(dx, dy);
+  };
+  fsImg.addEventListener('touchstart', e => {
+    if (e.touches.length === 2) {
+      e.preventDefault();
+      pinchStartDist = getDist(e.touches[0], e.touches[1]);
+      pinchStartScale = parseFloat(fsImg.dataset.scale || '1');
+    }
+  });
+  fsImg.addEventListener('touchmove', e => {
+    if (e.touches.length === 2 && pinchStartDist) {
+      e.preventDefault();
+      const scale = Math.min(3, Math.max(1,
+        pinchStartScale * getDist(e.touches[0], e.touches[1]) / pinchStartDist));
+      fsImg.dataset.scale = scale;
+      fsImg.style.transform = `scale(${scale})`;
+    }
+  });
+  fsImg.addEventListener('touchend', e => {
+    if (e.touches.length < 2) pinchStartDist = 0;
   });
 
   const closeFs = () => {
@@ -308,6 +475,102 @@ if (shareBtn) {
     e.stopPropagation();
     closeFs();
   });
+
+  //   const openFs = i => {
+  //   fsGallery.style.display = 'flex';
+  //   document.body.style.overflow = 'hidden';
+  //   setIndex(i);
+  // };
+
+  // const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+  // thumbs.forEach(t => {
+  //   t.addEventListener('click', () => setIndex(+t.dataset.idx));
+  //   if (isTouchDevice) {
+  //     t.addEventListener('click', e => {
+  //       e.stopPropagation();
+  //       openFs(+t.dataset.idx);
+  //     });
+  //   } else {
+  //     t.addEventListener('dblclick', e => {
+  //       e.stopPropagation();
+  //       openFs(+t.dataset.idx);
+  //     });
+  //   }
+  // });
+
+  // if (isTouchDevice) {
+  //   mainImg.addEventListener('click', e => {
+  //     e.stopPropagation();
+  //     openFs(idx);
+  //   });
+  // } else {
+  //   mainImg.addEventListener('dblclick', e => {
+  //     e.stopPropagation();
+  //     openFs(idx);
+  //   });
+  // }
+
+  // fsPrev.addEventListener('click', e => {
+  //   e.stopPropagation();
+  //   setIndex((idx - 1 + images.length) % images.length);
+  // });
+  // fsNext.addEventListener('click', e => {
+  //   e.stopPropagation();
+  //   setIndex((idx + 1) % images.length);
+  // });
+
+  // const closeFs = () => {
+  //   fsGallery.style.display = 'none';
+  //   document.body.style.overflow = '';
+  // };
+  // fsClose.addEventListener('click', e => {
+  //   e.stopPropagation();
+  //   closeFs();
+  // });
+  // fsOverlay.addEventListener('click', e => {
+  //   e.stopPropagation();
+  //   closeFs();
+  // });
+
+  // thumbs.forEach(t => {
+  //   t.addEventListener('click', () => setIndex(+t.dataset.idx));
+  //   t.addEventListener('dblclick', e => {
+  //     e.stopPropagation();
+  //     fsGallery.style.display = 'flex';
+  //     document.body.style.overflow = 'hidden';
+  //     setIndex(+t.dataset.idx);
+  //   });
+  // });
+
+  // mainImg.addEventListener('dblclick', e => {
+  //   e.stopPropagation();
+  //   fsGallery.style.display = 'flex';
+  //   document.body.style.overflow = 'hidden';
+  //   setIndex(idx);
+  // });
+
+  // fsPrev.addEventListener('click', e => {
+  //   e.stopPropagation();
+  //   setIndex((idx - 1 + images.length) % images.length);
+  // });
+  // fsNext.addEventListener('click', e => {
+  //   e.stopPropagation();
+  //   setIndex((idx + 1) % images.length);
+  // });
+
+  // const closeFs = () => {
+  //   fsGallery.style.display = 'none';
+  //   document.body.style.overflow = '';
+  // };
+  // fsClose.addEventListener('click', e => {
+  //   e.stopPropagation();
+  //   closeFs();
+  // });
+  // fsOverlay.addEventListener('click', e => {
+  //   e.stopPropagation();
+  //   closeFs();
+  // });
 
   // Открываем основную модалку
   carModal.style.display = 'flex';

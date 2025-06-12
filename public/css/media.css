@@ -88,10 +88,10 @@
 
 @media (max-width: 700px) {
   .car-card {
-    padding: 14px;
+    padding: 16px;
   }
   .car-image {
-    height: 110px;
+    height: 120px;
   }
   .car-title {
     font-size: 1.1rem;
@@ -194,7 +194,7 @@
   .buyout-who {
     flex-direction: column;
     gap: 32px;
-    padding: 0 0vw 32px 5vw;
+    padding: 0 5vw 32px 5vw;
   }
   /* .who-right {
     justify-content: center;
@@ -384,7 +384,7 @@
 
   .catalog-content.grid-view .car-grid {
     grid-template-columns: 1fr 1fr;
-    padding: 0px 0px 0px 0px;
+    padding: 0px 2% 0px 2%;
   }
 
 }
@@ -709,6 +709,55 @@
   .summary-value {
     font-size: 1.2rem;
   }
+
+
+  .request-form label {
+    font-size: 1rem;
+  }
+
+  .request-form input,
+  .request-form select {
+    font-size: 1rem;
+  }
+
+  .request-form button {
+    font-size: 1.05rem;
+    padding: 14px 0;
+  }
+
+
+    /* Скрываем кастомную стрелку у select на маленьких экранах */
+  .request-form select {
+    background-image: none;
+    padding-right: 14px; /* меньше отступ, раз стрелки нет */
+  }
+
+  /* Улучшаем отступы внутри формы */
+  .request-form {
+    padding: 18px 10px;
+    max-width: 95vw;
+    gap: 16px;
+  }
+
+  .request-hero-inner {
+    padding: 80px 0 60px 0;
+    gap: 24px;
+  }
+
+  .request-hero-text {
+    font-size: 1.2rem;
+    padding: 0 12px;
+  }
+
+
+    .catalog-content.list-view .car-grid  {
+
+  padding: 2% 2% 2% 2%         
+
+  }
+
+
+
 }
 
 @media (max-width: 992px) {
@@ -761,54 +810,18 @@
     justify-content: center;
   }
 
+  
+
 
 }
 
-
-
-/* 
-@media (max-width: 768px) {
-  .catalog-content.list-view .car-card {
-    flex-wrap: wrap;
-    padding: 12px;
-  }
-
-  .catalog-content.list-view .car-image {
-    width: 100px;
-    height: 75px;
-    object-fit: cover;
-    margin-right: 12px;
-    flex-shrink: 0;
-  }
-
-  .catalog-content.list-view .car-title {
-    font-size: 1rem;
-    font-weight: 600;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: calc(100% - 130px);
-  }
-
-  .catalog-content.list-view .car-detail-btn {
-    margin-top: 8px;
-    font-size: 0.85rem;
-    padding: 8px 12px;
-    width: 100%;
-  }
-
-  .modal-content .modal-close, .car-modal-close, .order-modal-close {
-    top: 0%;
-    right: 1%;
-  }
-} */
 
 
 @media (max-width: 768px) {
   .catalog-content.list-view .car-card {
     display: flex;
     align-items: center;
-    padding: 12px;
+    padding: 16px;
     gap: 12px;
     flex-wrap: wrap;
   }
@@ -849,9 +862,56 @@
   }
 
   .catalog-content.list-view .car-grid .car-card .car-image {
+
     width: 100%;
   }
+
+  .catalog-content.list-view .car-grid .car-card {
+  width: 100%;
+  max-width: 800px;       /* карточка будет не шире 800px */
+  display: flex;          /* внутри сами элементы распределяем по рядам */
+  flex-direction: row;
+  gap: 16px;              /* небольшой отступ между картинкой и текстом */
+  align-items: flex-start;/* выравниваем по верхнему краю */
+  padding: 2% 2% 2% 2%;          /* чтобы вокруг «контента» был небольшой отступ */
+  background: #1a1a1a;    /* можно скорректировать под ваш фон карточки */
+  border-radius: 12px;    /* скругление углов */
+  }
+
+    .request-hero-inner {
+    flex-direction: column;
+    padding: 100px 10px 80px 10px;
+    gap: 32px;
+  }
+
+  .request-hero-left, .request-hero-right {
+    padding: 0 16px;
+  }
+
+  .request-hero-text {
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 32px 0 0 0px;
+  }
+
+
+  .modal-content .modal-close, .car-modal-close, .order-modal-close {
+    top: 5%;
+    right: 1%;
+  }
+
+
+
+  .gallery-prev, .gallery-next {
+
+    font-size: 1rem;
+
+  }
+
+
 }
+
+
 
 
 
