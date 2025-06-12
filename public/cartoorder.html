@@ -88,31 +88,7 @@
     <!-- Вставьте вместо текущей секции cars-marquee вот это -->
 <section class="cars-marquee">
   <div class="marquee">
-    <div class="car-card">
-      <img src="img/chery8.jpg" alt="Chery Tiggo 8 Pro Max">
-      <h3>Chery Tiggo 8 Pro Max</h3>
-      <p class="price">от 6000 рублей / сутки</p>
-      <a href="chery8.html" class="btn">ПОДРОБНЕЕ</a>
-    </div>
-    <div class="car-card">
-      <img src="img/tank300.jpg" alt="Tank 300">
-      <h3>Tank 300</h3>
-      <p class="price">от 9000 рублей / сутки</p>
-      <a href="tank300.html" class="btn">ПОДРОБНЕЕ</a>
-    </div>
-    <div class="car-card">
-      <img src="img/vesta3100.jpg" alt="LADA (VAZ) Vesta">
-      <h3>LADA (VAZ) Vesta</h3>
-      <p class="price">от 3100 рублей / сутки</p>
-      <a href="vesta3100.html" class="btn">ПОДРОБНЕЕ</a>
-    </div>
-    <div class="car-card">
-      <img src="img/vesta2800.jpg" alt="LADA (VAZ) Vesta">
-      <h3>LADA (VAZ) Vesta</h3>
-      <p class="price">от 2800 рублей / сутки</p>
-      <a href="vesta2800.html" class="btn">ПОДРОБНЕЕ</a>
-    </div>
-    <!-- и т.д. -->
+    <div class="car-card" id="manualCarCard" style="display:none;"></div>
   </div>
 </section>
 
@@ -177,6 +153,7 @@
   <a href="#" class="whatsapp-float" aria-label="WhatsApp"><img src="img/whatsapp.webp" alt="WhatsApp"></a>
 
   <script src="js/script.js"></script>
+  <script src="js/cartoorder.js"></script>
   <script>
     // Плавный скролл к описанию
     document.getElementById('scrollToDesc').onclick = function(e) {

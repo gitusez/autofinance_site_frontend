@@ -630,24 +630,24 @@ export function closeOrderModal() {
 }
 
 
-document.addEventListener('DOMContentLoaded', () => {
-  const burgerBtn   = document.getElementById('burgerBtn');
-  const menuOverlay = document.getElementById('menuOverlay');
-  const closeMenuBtn = document.getElementById('closeMenu');
-  if (!burgerBtn || !menuOverlay || !closeMenuBtn) return;
+// document.addEventListener('DOMContentLoaded', () => {
+//   const burgerBtn   = document.getElementById('burgerBtn');
+//   const menuOverlay = document.getElementById('menuOverlay');
+//   const closeMenuBtn = document.getElementById('closeMenu');
+//   if (!burgerBtn || !menuOverlay || !closeMenuBtn) return;
 
-  burgerBtn.addEventListener('click', () => {
-    menuOverlay.classList.toggle('active');
-  });
+//   burgerBtn.addEventListener('click', () => {
+//     menuOverlay.classList.toggle('active');
+//   });
 
-  closeMenuBtn.addEventListener('click', () => {
-    menuOverlay.classList.remove('active');
-  });
+//   closeMenuBtn.addEventListener('click', () => {
+//     menuOverlay.classList.remove('active');
+//   });
 
-  menuOverlay.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      menuOverlay.classList.remove('active');
-    });
-  });
-});
+//   menuOverlay.querySelectorAll('a').forEach(link => {
+//     link.addEventListener('click', () => {
+//       menuOverlay.classList.remove('active');
+//     });
+//   });
+// });
 

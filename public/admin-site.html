@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Админ панель</title>
+  <link rel="stylesheet" href="css/stylesCLear.css">
+  <link rel="stylesheet" href="css/media.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+
+  <main style="padding:40px 20px; max-width:600px; margin:0 auto;">
+    <h1 style="margin-bottom:20px;">Настройка карточки авто</h1>
+    <form id="adminCarForm" class="contact-form" style="display:flex; flex-direction:column; gap:12px;">
+      <label>Марка: <input type="text" name="brand" required></label>
+      <label>Модель: <input type="text" name="model" required></label>
+      <label>Год выпуска: <input type="text" name="year"></label>
+      <label>Трансмиссия: <input type="text" name="transmission"></label>
+      <label>Топливо: <input type="text" name="fuel"></label>
+      <label>Пробег: <input type="text" name="mileage"></label>
+      <label>Комплектация:<br><textarea name="equipment" rows="3"></textarea></label>
+      <label>Описание:<br><textarea name="description" rows="4"></textarea></label>
+      <button type="submit" class="cta-btn" style="align-self:flex-start;">Сохранить</button>
+    </form>
+  </main>
+
+  <script src="js/script.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
