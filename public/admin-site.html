@@ -8,12 +8,15 @@
   <link rel="stylesheet" href="css/media.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-
-
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
   <main style="padding:40px 20px; max-width:600px; margin:0 auto;">
-    <h1 style="margin-bottom:20px;">Настройка карточки авто</h1>
+    <h1 style="margin-bottom:20px;">Настройка карточек авто</h1>
     <form id="adminCarForm" class="contact-form" style="display:flex; flex-direction:column; gap:12px;">
+
+      <label>Цена:<br><input type="text" name="price"></label>
+
       <label>Марка: <input type="text" name="brand" required></label>
       <label>Модель: <input type="text" name="model" required></label>
       <label>Год выпуска: <input type="text" name="year"></label>
@@ -22,11 +25,16 @@
       <label>Пробег: <input type="text" name="mileage"></label>
       <label>Комплектация:<br><textarea name="equipment" rows="3"></textarea></label>
       <label>Описание:<br><textarea name="description" rows="4"></textarea></label>
+      <label>Ссылка на изображение:<br><input type="url" name="image" placeholder="https://example.com/car.jpg"></label>
+
       <button type="submit" class="cta-btn" style="align-self:flex-start;">Сохранить</button>
     </form>
+    <h2 style="margin:20px 0 10px;">Сохранённые авто</h2>
+    <ul id="carList" style="list-style:none; padding:0; display:flex; flex-direction:column; gap:6px;"></ul>
   </main>
 
   <script src="js/script.js"></script>
   <script src="js/admin.js"></script>
 </body>
 </html>
+

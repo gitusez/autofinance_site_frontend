@@ -271,8 +271,13 @@ window.addEventListener('load', () => {
   const marquee   = container.querySelector('.marquee');
   if (!container || !marquee) return;
 
-  // 1) Дублируем набор карточек один раз — теперь внутри .marquee две копии
-  marquee.innerHTML += marquee.innerHTML;
+  // 1) Дублируем карточки до тех пор, пока общая ширина не перекроет экран как
+  // минимум дважды. Это позволяет избежать пустого пространства.
+  const original = marquee.innerHTML;
+  marquee.innerHTML += original; // минимум две копии
+  while (marquee.scrollWidth < container.offsetWidth * 2) {
+    marquee.innerHTML += original;
+  }
 
   // 2) Задаём начальные параметры
   let offset   = 0;                      // текущий сдвиг
