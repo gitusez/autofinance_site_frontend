@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
@@ -14,12 +14,10 @@
 
   <header class="header">
     <div class="header-inner">
-      <!-- 1) Логотип -->
       <a href="index.html" class="logo">
         <img src="img/black_logo.jpg" alt="АВТО ФИНАНС" id="logoHome">
       </a>
 
-      <!-- 2) Десктопное меню (.main-nav) — видно на экранах ≥768px -->
       <nav class="main-nav">
         <a href="rent-buyout.html">ПРОКАТ</a>
         <a href="buyback.html">АРЕНДА</a>
@@ -31,7 +29,6 @@
         <a href="about.html">О КОМПАНИИ</a>
       </nav>
 
-      <!-- 3) Кнопка-гамбургер для мобильных (<768px) — по умолчанию скрыта на десктопе -->
       <button class="burger" id="burgerBtn" aria-label="Открыть меню">
         <span></span><span></span><span></span>
       </button>
@@ -39,7 +36,6 @@
   </header>
 
 
-  <!-- Мобильное меню (скрыто до клика по гамбургеру) -->
   <nav class="mobile-nav" id="menuOverlay">
     <button class="close-menu" id="closeMenu" aria-label="Закрыть меню">&times;</button>
     <ul class="menu-list">
@@ -64,7 +60,6 @@
 
   
   <main>
-    <!-- Hero Banner -->
     <section class="hero hero-prokat" style="background-image: url('img/geely/geely5.jpeg');">
       <div class="hero-content">
         <h1>АВТО ПОД ЗАКАЗ</h1>
@@ -77,7 +72,6 @@
       </div>
     </section>
 
-    <!-- Краткое описание -->
     <section class="buyout-desc" id="desc">
           <div class="desc-text">Не переживайте! Если вы не увидели в наличии ту самую машину своей мечты — просто оставьте заявку. Мы подберём авто под ваш вкус, бюджет и требования.
            Мы сделаем всё, чтобы вы сели за руль идеального автомобиля — без лишних хлопот и неожиданностей. Просто расскажите нам, что ищете — и мы всё устроим!
@@ -85,14 +79,12 @@
     </section>
 
     
-    <!-- Вставьте вместо текущей секции cars-marquee вот это -->
 <section class="cars-marquee">
   <div class="marquee">
     <div class="car-card" id="manualCarsContainer" style="display:none;"></div>
   </div>
 </section>
 
-<!-- Авто под заказ -->
 <section class="buyout-who">
   <div class="who-left">
     <h2>Авто под заказ</h2>
@@ -120,7 +112,6 @@
   </div>
 </section>
 
-    <!-- CTA -->
     <section class="buyout-cta">
       <div class="cta-text">
         Быстро и удобно — смотрите доступные автомобили и бронируйте онлайн. Нужна помощь с выбором? Мы подскажем лучший вариант!
@@ -131,7 +122,7 @@
     </section>
 
   </main>
-  <!-- Footer -->
+
   <footer class="footer">
     <div class="footer-logo">
       <img src="img/black_logo.jpg" alt="АВТО ФИНАНС" style="height:74px; margin-bottom:10px;">
@@ -155,7 +146,6 @@
   <script src="js/script.js"></script>
   <script src="js/cartoorder.js"></script>
   <script>
-    // Плавный скролл к описанию
     document.getElementById('scrollToDesc').onclick = function(e) {
       e.preventDefault();
       document.getElementById('desc').scrollIntoView({behavior:'smooth'});
@@ -164,4 +154,360 @@
 
   
 </body>
-</html> 
+</html>  -->
+
+
+<!-- <!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Авто под заказ</title>
+  <link rel="stylesheet" href="css/stylesCLear.css"/>
+  <link rel="stylesheet" href="css/media.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+
+
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo"><img src="img/black_logo.jpg" alt="АВТО ФИНАНС" id="logoHome" /></a>
+      <nav class="main-nav">
+        <a href="rent-buyout.html">ПРОКАТ</a>
+        <a href="buyback.html">АРЕНДА</a>
+        <a href="urgent-buyout.html">ВЫКУП</a>
+        <a href="cartoorder.html">АВТО ПОД ЗАКАЗ</a>
+        <a href="catalog.html">КАТАЛОГ</a>
+        <a href="request.html">ОСТАВИТЬ ЗАЯВКУ</a>
+        <a href="contacts.html">КОНТАКТЫ</a>
+        <a href="about.html">О КОМПАНИИ</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero hero-prokat" style="background-image: url('img/geely/geely5.jpeg');">
+    <div class="hero-content">
+      <h1>АВТО ПОД ЗАКАЗ</h1>
+    </div>
+  </section>
+
+  <section class="buyout-desc" id="desc">
+    <div class="desc-text">
+      Не переживайте! Если вы не увидели в наличии ту самую машину своей мечты — просто оставьте заявку. Мы подберём авто под ваш вкус, бюджет и требования.
+    </div>
+  </section>
+
+<section class="cars-marquee">
+  <div class="marquee" id="marqueeContainer">
+  </div>
+</section>
+
+
+  <section class="buyout-cta">
+    <div class="cta-text">
+      Быстро и удобно — смотрите доступные автомобили и бронируйте онлайн. Нужна помощь с выбором? Мы подскажем лучший вариант!
+    </div>
+    <a href="catalog.html" class="cta-btn">ПЕРЕЙТИ В КАТАЛОГ</a>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-logo">
+      <img src="img/black_logo.jpg" alt="АВТО ФИНАНС" style="height:74px; margin-bottom:10px;">
+    </div>
+    <div class="footer-info" style="font-size:1em; color:#fff; display:flex; justify-content:center; gap:32px; flex-wrap:wrap;">
+      <span>ООО "АВТО ФИНАНС"</span>
+      <span>ИНН 7715124424 ОГРН 1227700037564</span>
+    </div>
+  </footer>
+
+<div id="carModal" class="modal">
+  <div id="carModalContent" class="modal-content"></div>
+</div>
+<div id="carModalOverlay" class="modal-overlay"></div>
+
+
+<script type="module">
+  import { createCarCard, openCarModal } from './js/catalog.js';
+
+  const container = document.getElementById('marqueeContainer');
+
+  fetch('/data/manualCars.json')
+    .then(res => res.json())
+    .then(cars => {
+      const originalCards = [];
+
+      cars.forEach(car => {
+        const card = createCarCard(car, 'buy');
+        originalCards.push(card);
+        container.appendChild(card);
+      });
+
+      // 🔁 Дублируем карточки, чтобы они прокручивались бесконечно
+      originalCards.forEach(card => {
+        const clone = card.cloneNode(true);
+        container.appendChild(clone);
+      });
+
+      // 🎞 Прокрутка
+      let offset = 0;
+      const speed = 40; // скорость в px/сек
+      let lastTime = performance.now();
+
+      function step(now) {
+        const dt = (now - lastTime) / 1000;
+        lastTime = now;
+        offset += speed * dt;
+
+        if (offset >= container.scrollWidth / 2) {
+          offset = 0;
+        }
+
+        container.style.transform = `translateX(-${offset}px)`;
+        requestAnimationFrame(step);
+      }
+
+      requestAnimationFrame(step);
+    })
+    .catch(err => {
+      console.error('❌ Ошибка загрузки машин с сервера:', err);
+    });
+</script>
+
+
+
+
+
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Авто под заказ</title>
+  <link rel="stylesheet" href="css/stylesCLear.css"/>
+  <link rel="stylesheet" href="css/media.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
+</head>
+
+
+<body>
+
+<div class="modal" id="carModal" style="display:none;">
+  <div class="modal-overlay" id="carModalOverlay"></div>
+  <div class="modal-content car-modal-content" id="carModalContent"></div>
+</div>
+<div class="modal" id="orderModal" style="display:none;">
+  <div class="modal-overlay" id="orderModalOverlay"></div>
+  <div class="modal-content order-modal-content" id="orderModalContent"></div>
+</div>
+
+
+<!-- Хедер -->
+<header class="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo"><img src="img/black_logo.jpg" alt="АВТО ФИНАНС" id="logoHome" /></a>
+    <nav class="main-nav">
+      <a href="rent-buyout.html">ПРОКАТ</a>
+      <a href="buyback.html">АРЕНДА</a>
+      <a href="urgent-buyout.html">ВЫКУП</a>
+      <a href="cartoorder.html">АВТО ПОД ЗАКАЗ</a>
+      <a href="catalog.html">КАТАЛОГ</a>
+      <a href="request.html">ОСТАВИТЬ ЗАЯВКУ</a>
+      <a href="contacts.html">КОНТАКТЫ</a>
+      <a href="about.html">О КОМПАНИИ</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Баннер -->
+<section class="hero hero-prokat" style="background-image: url('img/geely/geely5.jpeg');">
+  <div class="hero-content">
+    <h1>АВТО ПОД ЗАКАЗ</h1>
+    <a href="#desc" class="hero-arrow" id="scrollToDesc">
+      <svg width="48" height="48" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="4"><path d="M24 12V36" stroke-linecap="round"/><path d="M16 28L24 36L32 28" stroke-linecap="round"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- Описание -->
+<section class="buyout-desc" id="desc">
+  <div class="desc-text">
+    Не переживайте! Если вы не увидели в наличии ту самую машину своей мечты — просто оставьте заявку. Мы подберём авто под ваш вкус, бюджет и требования.
+  </div>
+</section>
+
+<!-- Бегущая строка карточек -->
+<section class="cars-marquee">
+  <div class="marquee" id="marqueeContainer">
+    <!-- Карточки вставляются скриптом -->
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="buyout-cta">
+  <div class="cta-text">
+    Быстро и удобно — смотрите доступные автомобили и бронируйте онлайн. Нужна помощь с выбором? Мы подскажем лучший вариант!
+  </div>
+  <a href="catalog.html" class="cta-btn">ПЕРЕЙТИ В КАТАЛОГ</a>
+</section>
+
+<!-- Футер -->
+<footer class="footer">
+  <div class="footer-logo">
+    <img src="img/black_logo.jpg" alt="АВТО ФИНАНС" style="height:74px; margin-bottom:10px;">
+  </div>
+  <div class="footer-info" style="font-size:1em; color:#fff; display:flex; justify-content:center; gap:32px; flex-wrap:wrap;">
+    <span>ООО "АВТО ФИНАНС"</span>
+    <span>ИНН 7715124424 ОГРН 1227700037564</span>
+  </div>
+</footer>
+
+<!-- JS -->
+<!-- <script type="module">
+import { createCarCard, openCarModal, openOrderModal } from './js/catalog.js';
+
+const container = document.getElementById('marqueeContainer');
+
+fetch('/data/manualCars.json')
+  .then(res => res.json())
+  .then(cars => {
+    const originalCards = [];
+
+    // 1. Создаём оригинальные карточки
+    cars.forEach(car => {
+      const card = createCarCard(car, 'buy');
+      originalCards.push(card);
+      container.appendChild(card);
+    });
+
+    // 2. Дублируем карточки пока ширина контейнера не станет хотя бы в 2 раза больше экрана
+    const minWidth = window.innerWidth * 2;
+    let totalWidth = container.scrollWidth;
+    let cloneIdx = 0;
+    while (totalWidth < minWidth && originalCards.length) {
+      const origIdx = cloneIdx % originalCards.length;
+      const clone = originalCards[origIdx].cloneNode(true);
+      // Повторно навешиваем обработчик "Подробнее"
+      const btn = clone.querySelector('.car-detail-btn');
+      if (btn) {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          openCarModal(cars[origIdx], 'buy');
+        });
+      }
+      container.appendChild(clone);
+      totalWidth = container.scrollWidth;
+      cloneIdx++;
+    }
+
+    // 3. Запускаем автопрокрутку
+    let offset = 0;
+    const speed = 40; // скорость в px/сек
+    let lastTime = performance.now();
+
+    function step(now) {
+      const dt = (now - lastTime) / 1000;
+      lastTime = now;
+      offset += speed * dt;
+
+      // Сброс при достижении максимального скролла
+      const maxScroll = container.scrollWidth - container.offsetWidth;
+      if (offset >= maxScroll) {
+        offset = 0;
+      }
+
+      container.style.transform = `translateX(-${offset}px)`;
+      requestAnimationFrame(step);
+    }
+
+    requestAnimationFrame(step);
+  })
+  .catch(err => {
+    console.error('❌ Ошибка загрузки машин с сервера:', err);
+  });
+
+  // Плавный скролл по кнопке
+  document.getElementById('scrollToDesc')?.addEventListener('click', e => {
+    e.preventDefault();
+    document.getElementById('desc')?.scrollIntoView({ behavior: 'smooth' });
+  });
+</script> -->
+
+<script type="module">
+import { createManualCarCard, openManualCarModal } from './js/cartoorder.js';
+
+const container = document.getElementById('marqueeContainer');
+
+fetch('/data/manualCars.json')
+  .then(res => res.json())
+  .then(cars => {
+    const originalCards = [];
+
+    // 1. Создаём оригинальные карточки
+    cars.forEach(car => {
+      const card = createManualCarCard(car);
+      originalCards.push(card);
+      container.appendChild(card);
+    });
+
+    // 2. Дублируем карточки пока ширина контейнера не станет хотя бы в 2 раза больше экрана
+    const minWidth = window.innerWidth * 2;
+    let totalWidth = container.scrollWidth;
+    let cloneIdx = 0;
+    while (totalWidth < minWidth && originalCards.length) {
+      const origIdx = cloneIdx % originalCards.length;
+      const clone = originalCards[origIdx].cloneNode(true);
+      // Повторно навешиваем обработчик "Подробнее"
+      const btn = clone.querySelector('.car-detail-btn');
+      if (btn) {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          openManualCarModal(cars[origIdx]);
+        });
+      }
+      container.appendChild(clone);
+      totalWidth = container.scrollWidth;
+      cloneIdx++;
+    }
+
+    // 3. Запускаем автопрокрутку
+    let offset = 0;
+    const speed = 40; // скорость в px/сек
+    let lastTime = performance.now();
+
+    function step(now) {
+      const dt = (now - lastTime) / 1000;
+      lastTime = now;
+      offset += speed * dt;
+
+      // Сброс при достижении максимального скролла
+      const maxScroll = container.scrollWidth - container.offsetWidth;
+      if (offset >= maxScroll) {
+        offset = 0;
+      }
+
+      container.style.transform = `translateX(-${offset}px)`;
+      requestAnimationFrame(step);
+    }
+
+    requestAnimationFrame(step);
+  })
+  .catch(err => {
+    console.error('❌ Ошибка загрузки машин с сервера:', err);
+  });
+
+  // Плавный скролл по кнопке
+  document.getElementById('scrollToDesc')?.addEventListener('click', e => {
+    e.preventDefault();
+    document.getElementById('desc')?.scrollIntoView({ behavior: 'smooth' });
+  });
+</script>
+
+
+</body>
+</html>

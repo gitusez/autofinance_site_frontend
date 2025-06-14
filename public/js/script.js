@@ -266,38 +266,74 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+// window.addEventListener('load', () => {
+//   const container = document.querySelector('.cars-marquee');
+//   const marquee   = container.querySelector('.marquee');
+//   if (!container || !marquee) return;
+
+//   // 1) Дублируем карточки до тех пор, пока общая ширина не перекроет экран как
+//   // минимум дважды. Это позволяет избежать пустого пространства.
+//   const original = marquee.innerHTML;
+//   marquee.innerHTML += original; // минимум две копии
+//   while (marquee.scrollWidth < container.offsetWidth * 2) {
+//     marquee.innerHTML += original;
+//   }
+
+//   // 2) Задаём начальные параметры
+//   let offset   = 0;                      // текущий сдвиг
+//   const total  = marquee.scrollWidth;    // общая ширина (две копии)
+//   const half   = total / 2;              // ширина одной копии
+//   const speed  = 80;                     // px в секунду (регулируйте)
+//   let lastTime = performance.now();
+
+//   // 3) Запускаем requestAnimationFrame-цикл
+//   function step(now) {
+//     const dt = (now - lastTime) / 1000;  // время в секундах
+//     lastTime = now;
+
+//     // двигаем
+//     offset += speed * dt;
+//     // как только прошли одну копию — вычитаем её длину, чтобы не расти бесконечно
+//     if (offset >= half) offset -= half;
+
+//     marquee.style.transform = `translateX(-${offset}px)`;
+
+//     requestAnimationFrame(step);
+//   }
+
+//   requestAnimationFrame(step);
+// });
+
+
 window.addEventListener('load', () => {
   const container = document.querySelector('.cars-marquee');
-  const marquee   = container.querySelector('.marquee');
-  if (!container || !marquee) return;
+  if (!container) return;
 
-  // 1) Дублируем карточки до тех пор, пока общая ширина не перекроет экран как
-  // минимум дважды. Это позволяет избежать пустого пространства.
+  const marquee = container.querySelector('.marquee');
+  if (!marquee) return;
+
+  // Остальной код...
   const original = marquee.innerHTML;
-  marquee.innerHTML += original; // минимум две копии
+  marquee.innerHTML += original;
+
   while (marquee.scrollWidth < container.offsetWidth * 2) {
     marquee.innerHTML += original;
   }
 
-  // 2) Задаём начальные параметры
-  let offset   = 0;                      // текущий сдвиг
-  const total  = marquee.scrollWidth;    // общая ширина (две копии)
-  const half   = total / 2;              // ширина одной копии
-  const speed  = 80;                     // px в секунду (регулируйте)
+  let offset = 0;
+  const total = marquee.scrollWidth;
+  const half = total / 2;
+  const speed = 80;
   let lastTime = performance.now();
 
-  // 3) Запускаем requestAnimationFrame-цикл
   function step(now) {
-    const dt = (now - lastTime) / 1000;  // время в секундах
+    const dt = (now - lastTime) / 1000;
     lastTime = now;
 
-    // двигаем
     offset += speed * dt;
-    // как только прошли одну копию — вычитаем её длину, чтобы не расти бесконечно
     if (offset >= half) offset -= half;
 
     marquee.style.transform = `translateX(-${offset}px)`;
-
     requestAnimationFrame(step);
   }
 
