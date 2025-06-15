@@ -750,9 +750,9 @@
   }
 
 
-    .catalog-content.list-view .car-grid  {
+  .catalog-content.list-view .car-grid  {
 
-  padding: 2% 2% 2% 2%         
+  padding: 2% 4% 2% 4%         
 
   }
 
@@ -909,7 +909,7 @@
   }
 
   .header-inner{
-    gap: 32%;
+    gap: 20%;
   }
 
 

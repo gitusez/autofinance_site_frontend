@@ -3452,7 +3452,7 @@ body.scale-fade-in {
 .list-view .car-content {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
-  column-gap: 20px;
+  column-gap: 3%;
   align-items: start;
   padding: 0 20px;
 }
@@ -3505,7 +3505,6 @@ body.scale-fade-in {
 .modal-overlay.active {
   display: flex;
 }
-
 
 
 

@@ -25,7 +25,10 @@
       <label>Пробег: <input type="text" name="mileage"></label>
       <label>Комплектация:<br><textarea name="equipment" rows="3"></textarea></label>
       <label>Описание:<br><textarea name="description" rows="4"></textarea></label>
-      <label>Фото авто:<br><input type="file" name="imageFile" accept="image/*"></label>
+      <label>Фотографии (можно выбрать несколько):<br>
+      <input type="file" name="images" id="imageUpload" accept="image/*" multiple>
+      </label>
+      <div id="imagePreview" style="display:flex; gap:8px; flex-wrap:wrap;"></div>
 
       <button type="submit" class="cta-btn" style="align-self:flex-start;">Сохранить</button>
     </form>
