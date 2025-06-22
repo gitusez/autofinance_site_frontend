@@ -6,18 +6,19 @@
     <title>Каталог | АВТО ФИНАНС</title>
     <link rel="stylesheet" href="css/stylesCLear.css">
     <link rel="stylesheet" href="css/media.css">
+    <link rel="icon" href="/img/favicon-32x32.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
   <header class="header">
     <div class="header-inner">
-      <!-- 1) Логотип -->
+       <!--1) Логотип -->
       <a href="index.html" class="logo">
         <img src="img/black_logo.jpg" alt="АВТО ФИНАНС" id="logoHome">
       </a>
 
-      <!-- 2) Десктопное меню (.main-nav) — видно на экранах ≥768px -->
+       <!--2) Десктопное меню (.main-nav) — видно на экранах ≥768px -->
       <nav class="main-nav">
         <a href="rent-buyout.html">ПРОКАТ</a>
         <a href="buyback.html">АРЕНДА</a>
@@ -29,7 +30,7 @@
         <a href="about.html">О КОМПАНИИ</a>
       </nav>
 
-      <!-- 3) Кнопка-гамбургер для мобильных (<768px) — по умолчанию скрыта на десктопе -->
+       <!--3) Кнопка-гамбургер для мобильных (<768px) — по умолчанию скрыта на десктопе -->
       <button class="burger" id="burgerBtn" aria-label="Открыть меню">
         <span></span><span></span><span></span>
       </button>
@@ -37,7 +38,7 @@
   </header>
 
 
-  <!-- Мобильное меню (скрыто до клика по гамбургеру) -->
+   <!--Мобильное меню (скрыто до клика по гамбургеру) -->
   <nav class="mobile-nav" id="menuOverlay">
     <button class="close-menu" id="closeMenu" aria-label="Закрыть меню">&times;</button>
     <ul class="menu-list">
@@ -63,15 +64,15 @@
     <main style="margin-top:90px;">
     <div class="catalog-container">
 
-      <!-- Заголовок каталога -->
+       <!--Заголовок каталога -->
       <div class="catalog-header">
         <h1 class="catalog-title">Каталог автомобилей</h1>
       </div>
 
-      <!-- ─── Фильтры + Основной контент каталога ─── -->
+       <!--─── Фильтры + Основной контент каталога ─── -->
       <div class="catalog-body">
 
-        <!-- 1) Кнопка «Фильтры» для мобильных (появится только на экранах <768px) -->
+         <!--1) Кнопка «Фильтры» для мобильных (появится только на экранах <768px) -->
         <button
           type="button"
           id="mobileFilterToggle"
@@ -79,9 +80,9 @@
           Фильтры
         </button>
 
-        <!-- 2) Левая колонка: Панель фильтров -->
+         <!--2) Левая колонка: Панель фильтров -->
         <div id="filterPanel" class="filters">
-          <!-- Кнопка «×» для закрытия панели на мобильном -->
+           <!--Кнопка «×» для закрытия панели на мобильном -->
           <button
             type="button"
             id="closeFilters"
@@ -90,7 +91,7 @@
             &times;
           </button>
 
-          <!-- 1. Тип автомобиля -->
+           <!--1. Тип автомобиля -->
           <div class="filter-section">
             <h3>Тип автомобиля</h3>
             <div class="filter-tabs">
@@ -99,12 +100,12 @@
               <button type="button" class="filter-tab" data-filter-type="new">Новые</button>
             </div>
             <label><input type="checkbox" class="filter-checkbox" data-filter-field="discount"> Со скидками</label>
-            <label><input type="checkbox" class="filter-checkbox" data-filter-field="gifts"> С подарками и акциями</label>
-            <label><input type="checkbox" class="filter-checkbox" data-filter-field="credit"> Можно в кредит</label>
-            <label><input type="checkbox" class="filter-checkbox" data-filter-field="select"> Селект</label>
+            <!--<label><input type="checkbox" class="filter-checkbox" data-filter-field="gifts"> С подарками и акциями</label>-->
+            <!--<label><input type="checkbox" class="filter-checkbox" data-filter-field="credit"> Можно в кредит</label>-->
+            <!--<label><input type="checkbox" class="filter-checkbox" data-filter-field="select"> Селект</label>-->
           </div>
 
-          <!-- 2. Марка -->
+           <!--2. Марка -->
           <div class="filter-section">
             <h3>Марка</h3>
             <select id="filterBrand">
@@ -112,52 +113,47 @@
               <option value="LADA">LADA</option>
               <option value="Tank">Tank</option>
               <option value="Geely">Geely</option>
-              <option value="Chery">Chery</option>
-              <option value="LADA">LADA</option>
-              <option value="LADA">LADA</option>
-              <option value="LADA">LADA</option>
-              <option value="LADA">LADA</option>
-              <!-- Добавьте остальные марки из вашего каталога -->
+
             </select>
           </div>
 
-          <!-- 3. Цена -->
+           <!--3. Цена -->
           <div class="filter-section">
             <h3>Цена, ₽</h3>
             <input type="number" id="filterPriceMin" placeholder="От" min="0">
             <input type="number" id="filterPriceMax" placeholder="До" min="0">
           </div>
 
-          <!-- 4. Год выпуска -->
+           <!--4. Год выпуска -->
           <div class="filter-section">
             <h3>Год выпуска</h3>
             <input type="number" id="filterYearMin" placeholder="От" min="1900">
             <input type="number" id="filterYearMax" placeholder="До" min="1900">
           </div>
 
-          <!-- 5. Пробег -->
+           <!--5. Пробег -->
           <div class="filter-section">
             <h3>Пробег, км</h3>
             <input type="number" id="filterMileageMin" placeholder="От" min="0">
             <input type="number" id="filterMileageMax" placeholder="До" min="0">
           </div>
 
-          <!-- 6. Коробка передач -->
+           <!--6. Коробка передач -->
           <div class="filter-section">
             <h3>Коробка передач</h3>
             <label><input type="checkbox" class="filter-checkbox" data-filter-field="transmission" value="МКПП"> Механика</label>
             <label><input type="checkbox" class="filter-checkbox" data-filter-field="transmission" value="АКПП"> Автомат</label>
           </div>
 
-          <!-- 7. Привод -->
-          <div class="filter-section">
-            <h3>Привод</h3>
-            <label><input type="checkbox" class="filter-checkbox" data-filter-field="drive" value="Задний"> Задний</label>
-            <label><input type="checkbox" class="filter-checkbox" data-filter-field="drive" value="Передний"> Передний</label>
-            <label><input type="checkbox" class="filter-checkbox" data-filter-field="drive" value="Полный"> Полный</label>
-          </div>
+           <!--7. Привод -->
+          <!--<div class="filter-section">-->
+          <!--  <h3>Привод</h3>-->
+          <!--  <label><input type="checkbox" class="filter-checkbox" data-filter-field="drive" value="Задний"> Задний</label>-->
+          <!--  <label><input type="checkbox" class="filter-checkbox" data-filter-field="drive" value="Передний"> Передний</label>-->
+          <!--  <label><input type="checkbox" class="filter-checkbox" data-filter-field="drive" value="Полный"> Полный</label>-->
+          <!--</div>-->
 
-          <!-- 8. Тип двигателя -->
+           <!--8. Тип двигателя -->
           <div class="filter-section">
             <h3>Тип двигателя</h3>
             <label><input type="checkbox" class="filter-checkbox" data-filter-field="fuel" value="Дизель"> Дизель</label>
@@ -166,7 +162,7 @@
             <label><input type="checkbox" class="filter-checkbox" data-filter-field="fuel" value="бензин/метан"> Газ бензин/метан</label>
           </div>
 
-          <!-- 9. Цвет -->
+           <!--9. Цвет -->
           <div class="filter-section">
             <h3>Цвет</h3>
             <label><input type="radio" name="color" class="filter-radio" value="any" checked> Любой</label>
@@ -179,17 +175,17 @@
 
           <button type="button" id="buttonResetFilters">Сбросить фильтры</button>
         </div>
-        <!-- ─── /Левая колонка: Фильтры ─── -->
+         <!--─── /Левая колонка: Фильтры ─── -->
 
-        <!-- 3) Правая колонка: Контент каталога ─── -->
+         <!--3) Правая колонка: Контент каталога ─── -->
         <div class="catalog-content">
-          <!-- ========================================= -->
-<!-- Панель переключения вида (список/блоки) -->
+           <!--========================================= -->
+ <!--Панель переключения вида (список/блоки) -->
 <div class="view-sort-bar">
 
-  <!-- Кнопки переключения вида -->
+   <!--Кнопки переключения вида -->
   <button id="listViewBtn" class="view-btn active" aria-label="Список">
-    <!-- SVG-иконка «лист»: 3 горизонтальные полоски -->
+     <!--SVG-иконка «лист»: 3 горизонтальные полоски -->
     <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
       <rect x="4"  y="5"  width="16" height="3"></rect>
       <rect x="4"  y="10" width="16" height="3"></rect>
@@ -198,7 +194,7 @@
   </button>
 
   <button id="gridViewBtn" class="view-btn" aria-label="Блоки">
-    <!-- SVG-иконка «сетка» (4 квадратика) -->
+     <!--SVG-иконка «сетка» (4 квадратика) -->
     <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
       <rect x="3"  y="3"  width="8" height="8"></rect>
       <rect x="13" y="3"  width="8" height="8"></rect>
@@ -207,11 +203,11 @@
     </svg>
   </button>
 
-  <!-- Блок сортировки -->
+   <!--Блок сортировки -->
   <div class="sort-container">
     <button id="sortBtn" class="sort-btn" aria-haspopup="true" aria-expanded="false">
       <span>Сортировать</span>
-      <!-- Стрелочка вниз -->
+       <!--Стрелочка вниз -->
       <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24">
         <path d="M7 10l5 5 5-5z"></path>
       </svg>
@@ -228,45 +224,45 @@
 
 </div>
 
-<!-- /view-sort-bar -->
-<!-- ========================================= -->
+ <!--/view-sort-bar -->
+ <!--========================================= -->
 
-          <!-- Секция «Прокат» -->
+           <!--Секция «Прокат» -->
           <section id="prokatSection" class="catalog-section">
             <h2>ПРОКАТ</h2>
             <div class="car-grid" id="prokatGrid">
-              <!-- Карточки проката генерируются скриптом catalog-sections.js -->
+               <!--Карточки проката генерируются скриптом catalog-sections.js -->
             </div>
           </section>
 
-          <!-- Секция «Аренда» -->
+           <!--Секция «Аренда» -->
           <section id="arendaSection" class="catalog-section">
             <h2>АРЕНДА</h2>
             <div class="car-grid" id="arendaGrid">
-              <!-- Карточки аренды генерируются скриптом catalog-sections.js -->
+               <!--Карточки аренды генерируются скриптом catalog-sections.js -->
             </div>
           </section>
 
-          <!-- Секция «Выкуп» -->
+           <!--Секция «Выкуп» -->
           <section id="buyoutSection" class="catalog-section">
             <h2>ВЫКУП</h2>
             <div class="car-grid" id="buyoutGrid">
-              <!-- Карточки выкупа генерируются скриптом catalog-sections.js -->
+               <!--Карточки выкупа генерируются скриптом catalog-sections.js -->
             </div>
           </section>
 
-          <!-- Скрытая сетка всех машин (если нужна для фильтрации) -->
+           <!--Скрытая сетка всех машин (если нужна для фильтрации) -->
           <div class="car-grid" id="carGrid" style="display:none;">
-            <!-- Если у вас есть изначальный HTML с <div class="car-card">…</div>,
-                 переместите его сюда и раскомментируйте, либо скрипт самостоятельно подставит. -->
+             <!--Если у вас есть изначальный HTML с <div class="car-card">…</div>,-->
+             <!--    переместите его сюда и раскомментируйте, либо скрипт самостоятельно подставит. -->
           </div>
         </div>
-        <!-- ─── /Правая колонка: Контент каталога ─── -->
+         <!--─── /Правая колонка: Контент каталога ─── -->
 
       </div>
-      <!-- ─── /catalog-body: Фильтры + Контент ─── -->
+       <!--─── /catalog-body: Фильтры + Контент ─── -->
 
-      <!-- Модальные окна (карта, заказ) -->
+       <!--Модальные окна (карта, заказ) -->
       <div class="modal" id="carModal" style="display:none;">
         <div class="modal-overlay" id="carModalOverlay"></div>
         <div class="modal-content car-modal-content" id="carModalContent"></div>
@@ -276,7 +272,7 @@
         <div class="modal-content order-modal-content" id="orderModalContent"></div>
       </div>
 
-    </div> <!-- /.catalog-container -->
+    </div> 
   </main>
 
                 <div class="catalog-qr-block">
@@ -287,59 +283,57 @@
                 </div>
             </div>
     
-      <!-- Секция «Не нашли нужный автомобиль? Оставьте заявку…» (новая, с уникальными классами) -->
-  <section class="contact-section">
-    <div class="contact-section__inner">
-      <!-- Левая колонка: текст -->
-      <div class="contact-section__text">
-        <h2 class="contact-section__title">
-          Не нашли нужный автомобиль? <br>Оставьте заявку и мы поможем вам
-        </h2>
-        <p class="contact-section__description">
-          Заполните форму справа, и наш менеджер подберёт оптимальный вариант именно для вас.
-        </p>
-      </div>
-      <!-- Правая колонка: собственно форма -->
-          <div class="contact-section__form-wrapper">
-    <form id="contactForm" class="contact-form">
-      <input type="hidden" name="source" value="catalog">
-
-      <input
-        type="text"
-        name="name"
-        class="contact-form__input"
-        placeholder="Имя"
-        required
-      >
-
-      <!-- пишем в placeholder подсказку "+7 (___) ___-__-__" и при фокусе подставляем "+7" -->
-      <input
-        type="tel"
-        name="phone"
-        class="contact-form__input"
-        placeholder="+7 (___) ___-__-__"
-        onfocus="if (this.value === '') this.value = '+7';"
-        required
-      >
-
-      <input
-        type="text"
-        name="desired_car"
-        class="contact-form__input"
-        placeholder="Желаемая машина"
-      >
-
-      <button type="submit" class="contact-form__submit">
-        Отправить
-      </button>
-    </form>
-    <div id="contactFormError" class="contact-form__error"></div>
-
-      </div>
+       <!--Секция «Не нашли нужный автомобиль? Оставьте заявку…» (новая, с уникальными классами) -->
+       
+         <section class="contact-section">
+  <div class="contact-section__inner">
+    <!-- Левая колонка: текст -->
+    <div class="contact-section__text">
+      <h2 class="contact-section__title">
+        Не нашли нужный автомобиль? <br>Оставьте заявку и мы поможем вам
+      </h2>
+      <p class="contact-section__description">
+        Заполните форму справа, и наш менеджер подберёт оптимальный вариант именно для вас.
+      </p>
     </div>
-  </section>
 
+    <!-- Правая колонка: форма -->
+    <div class="contact-section__form-wrapper">
+      <form id="contactForm" class="contact-form" action="sendmail.php" method="POST">
+        <input type="hidden" name="source" value="Каталог 'Не нашли нужный автомобиль'">
 
+        <input
+          type="text"
+          name="name"
+          class="contact-form__input"
+          placeholder="Имя"
+          required
+        >
+
+        <input
+          type="tel"
+          name="phone"
+          class="contact-form__input"
+          placeholder="+7 (___) ___-__-__"
+          onfocus="if (this.value === '') this.value = '+7';"
+          required
+        >
+
+        <input
+          type="text"
+          name="desired_car"
+          class="contact-form__input"
+          placeholder="Желаемая машина"
+        >
+
+        <button type="submit" class="contact-form__submit">
+          Отправить
+        </button>
+      </form>
+      <div id="contactFormError" class="contact-form__error"></div>
+    </div>
+  </div>
+</section>
 
 
     <footer class="footer">
@@ -361,15 +355,20 @@
         </div>
     </footer>
 
-    <a href="#" class="whatsapp-float" aria-label="WhatsApp"><img src="img/whatsapp.webp" alt="WhatsApp"></a>
+    <a href="https://wa.me/79300357432" class="whatsapp-float" aria-label="WhatsApp"><img src="img/whatsapp.webp" alt="WhatsApp"></a>
 
-  <!-- ─── Подключаем существующие скрипты ─── -->
+   <!--─── Подключаем существующие скрипты ─── -->
   <script src="js/script.js"></script>
   <script type="module" src="js/catalog.js"></script>
   <script type="module" src="js/catalog-sections.js"></script>
 
-  <!-- ─── Новый скрипт для фильтрации ─── -->
+   <!--─── Новый скрипт для фильтрации ─── -->
   <script src="js/filters.js"></script>
+
+   <!--Лоадер -->
+<div id="loader" class="loader-overlay">
+  <div class="spinner"></div>
+</div>
+
 </body>
 </html>
-

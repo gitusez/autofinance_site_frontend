@@ -1,27 +1,3 @@
-
-
-// --- Гамбургер-меню ---
-// const burgerBtn = document.getElementById('burgerBtn');
-// const menuOverlay = document.getElementById('menuOverlay');
-// const closeMenu = document.getElementById('closeMenu');
-
-// if (burgerBtn && menuOverlay && closeMenu) {
-//   burgerBtn.addEventListener('click', function() {
-//     menuOverlay.classList.add('active');
-//     document.body.style.overflow = 'hidden';
-//   });
-//   closeMenu.addEventListener('click', function() {
-//     menuOverlay.classList.remove('active');
-//     document.body.style.overflow = '';
-//   });
-//   menuOverlay.addEventListener('click', function(e) {
-//     if (e.target === menuOverlay) {
-//       menuOverlay.classList.remove('active');
-//       document.body.style.overflow = '';
-//     }
-//   });
-// }
-
 document.addEventListener('DOMContentLoaded', function() {
   const burgerBtn = document.getElementById('burgerBtn');
   const menuOverlay = document.getElementById('menuOverlay');
@@ -44,11 +20,25 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.overflow = '';
       }
     });
+
+    function setupMenuLinks() {
+      const selector = '.menu-list a, .service-card, .cta-btn, .footer-link, .hero-arrow, .back-button';
+      document.querySelectorAll(selector).forEach(link => {
+        if (link.tagName === 'A' && link.href && !link.href.endsWith('#')) {
+          link.addEventListener('click', function() {
+            if (menuOverlay.classList.contains('active')) {
+              menuOverlay.classList.remove('active');
+              document.body.style.overflow = '';
+            }
+          });
+        }
+      });
+    }
+
+    setupMenuLinks();
   }
 });
 
-
-// --- Плавный скролл к услугам по клику на стрелку ---
 const scrollToServices = document.getElementById('scrollToServices');
 const servicesSection = document.getElementById('services');
 if (scrollToServices && servicesSection) {
@@ -58,7 +48,6 @@ if (scrollToServices && servicesSection) {
   });
 }
 
-// --- Клик по логотипу возвращает на главную ---
 const logoHome = document.getElementById('logoHome');
 if (logoHome) {
   logoHome.addEventListener('click', function(e) {
@@ -67,87 +56,44 @@ if (logoHome) {
   });
 }
 
-// Плавное появление about-photos
 window.addEventListener('DOMContentLoaded', function() {
   const aboutPhotos = document.querySelector('.about-photos');
   if (aboutPhotos) setTimeout(() => aboutPhotos.classList.add('visible'), 200);
 });
 
-// Навешиваем на все ссылки меню и основные навигационные ссылки (теперь обычный переход)
-function setupMenuLinks() {
-  const selector = '.menu-list a, .service-card, .cta-btn, .footer-link, .hero-arrow, .back-button';
-  document.querySelectorAll(selector).forEach(link => {
-    if (link.tagName === 'A' && link.href && !link.href.endsWith('#')) {
-      // обычный переход
-      link.addEventListener('click', function() {
-        // Закрыть меню при переходе по ссылке
-        if (menuOverlay && menuOverlay.classList.contains('active')) {
-          menuOverlay.classList.remove('active');
-          document.body.style.overflow = '';
-        }
-      });
-    } else if (link.classList.contains('service-card')) {
-      // обычный переход
-    }
-  });
-}
-setupMenuLinks(); 
-
-
-// ─────────────────────────────────────────────────────────────────────────────
-// ОТПРАВКА ФОРМЫ «contactForm» AJAX-запросом и редирект на thankyou.html
-// ─────────────────────────────────────────────────────────────────────────────
-
 document.addEventListener('DOMContentLoaded', function() {
   const contactForm = document.getElementById('contactForm');
-  const errorBlock   = document.getElementById('contactFormError');
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
 
-  if (!contactForm) return;
+      const formData = new FormData(contactForm);
+      const errorBlock = document.getElementById('contactFormError');
 
-  contactForm.addEventListener('submit', async function(e) {
-    e.preventDefault(); // отменяем стандартное поведение формы
+      try {
+        const response = await fetch('/sendmail.php', {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'X-Requested-With': 'XMLHttpRequest' // 💡 важно для правильной работы PHP
+          }
+        });
 
-    // Скрываем предыдущие ошибки (если были)
-    errorBlock.style.display = 'none';
-    errorBlock.textContent = '';
+        const result = await response.text();
 
-    // Собираем данные из формы
-    const formData = new FormData(contactForm);
-
-    try {
-      // Обратите внимание: путь к PHP должен быть корректным относительно этой страницы
-      // Если файл лежит рядом с catalog.html — используйте './send_request.php'
-      const response = await fetch('./send_request.php', {
-        method: 'POST',
-        body: formData,
-      });
-
-      // Если сервер вернул HTTP-код 200…299, response.ok === true
-      if (!response.ok) {
-        throw new Error(`Сервер вернул статус ${response.status}`);
+        if (result.trim() === 'OK') {
+          window.location.href = 'thankyou.html';
+        } else {
+          errorBlock.textContent = 'Ошибка при отправке. Пожалуйста, попробуйте ещё раз.';
+        }
+      } catch (error) {
+        errorBlock.textContent = 'Ошибка соединения. Проверьте интернет.';
       }
-
-      const text = await response.text();
-
-      // Обрезаем пробелы и сравниваем с «OK»
-      if (text.trim() === 'OK') {
-        // Успешно: делаем редирект на страницу «Спасибо»
-        window.location.href = 'thankyou.html';
-      } else {
-        // Что-то пошло не так: показываем, что вернул PHP
-        throw new Error(text || 'Не удалось отправить заявку');
-      }
-
-    } catch (err) {
-      // Ловим сетевые ошибки и выводим в блок errorBlock
-      errorBlock.textContent = 'Ошибка при отправке: ' + err.message;
-      errorBlock.style.display = 'block';
-    }
-  });
+    });
+  }
 });
-// ─────────────────────────────────────────────────────────────────────────────
-// Динамический калькулятор выкупа: три взаимозависимых ползунка
-// ─────────────────────────────────────────────────────────────────────────────
+
+
 document.addEventListener('DOMContentLoaded', function() {
   const PRICE_CONST = 1000000;
 
@@ -159,11 +105,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const termDisplay        = document.getElementById('termDisplay');
   const dailySliderDisplay = document.getElementById('dailySliderDisplay');
 
-  // ─────────────────────────────
-  // 1) Добавьте ссылки на «итоговые» span
   const sumInitial  = document.getElementById('sumInitial');
   const sumDaily    = document.getElementById('sumDaily');
-  // ─────────────────────────────
 
   function formatRub(value) {
     return value.toLocaleString('ru-RU') + ' ₽';
@@ -174,22 +117,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
   let isSyncing = false;
 
-  // 2) Обновляем все «ленты» и итоговый блок
   function updateDisplays() {
     const initialValue = parseInt(initialSlider.value, 10);
     const termValue    = parseInt(termSlider.value, 10);
     const dailyValue   = parseInt(dailySlider.value, 10);
 
-    // Обновляем текстовые значения под слайдерами
     initialDisplay.textContent     = formatRub(initialValue);
     termDisplay.textContent        = formatDays(termValue);
     dailySliderDisplay.textContent = formatRub(dailyValue);
 
-    // ─────────────────────────────────────────────────────────────────────────
-    // Обновляем итоговый блок внизу
     sumInitial.textContent = formatRub(initialValue);
     sumDaily.textContent   = formatRub(dailyValue) + '/дн.';
-    // ─────────────────────────────────────────────────────────────────────────
   }
 
   function recalcDailyFromInitialOrTerm() {
@@ -202,18 +140,10 @@ document.addEventListener('DOMContentLoaded', function() {
     let residual = PRICE_CONST - initialValue;
     if (residual < 0) residual = 0;
 
-    let daily = 0;
-    if (termValue > 0) {
-      daily = residual / termValue;
-    }
-    daily = Math.floor(daily);
+    let daily = termValue > 0 ? Math.floor(residual / termValue) : 0;
 
     const maxDaily = parseInt(dailySlider.max, 10) || 0;
-    if (daily > maxDaily) {
-      dailySlider.value = maxDaily;
-    } else {
-      dailySlider.value = daily;
-    }
+    dailySlider.value = (daily > maxDaily) ? maxDaily : daily;
 
     updateDisplays();
     isSyncing = false;
@@ -229,16 +159,11 @@ document.addEventListener('DOMContentLoaded', function() {
     let residual = PRICE_CONST - initialValue;
     if (residual < 0) residual = 0;
 
-    let term = 0;
-    if (dailyValue > 0) {
-      term = residual / dailyValue;
-    }
-    term = Math.floor(term);
+    let term = dailyValue > 0 ? Math.floor(residual / dailyValue) : 0;
 
     const minTerm = parseInt(termSlider.min, 10) || 1;
     const maxTerm = parseInt(termSlider.max, 10) || minTerm;
-    if (term < minTerm) term = minTerm;
-    if (term > maxTerm) term = maxTerm;
+    term = Math.max(minTerm, Math.min(term, maxTerm));
 
     termSlider.value = term;
 
@@ -246,96 +171,73 @@ document.addEventListener('DOMContentLoaded', function() {
     isSyncing = false;
   }
 
-  // --- Добавлено! Оборачиваем обработчики в проверку ---
   if (initialSlider && termSlider && dailySlider && initialDisplay && termDisplay && dailySliderDisplay && sumInitial && sumDaily) {
-    // Всегда пересчитываем при движении ползунков
-    initialSlider.addEventListener('input', function() {
-      recalcDailyFromInitialOrTerm();
-    });
-    termSlider.addEventListener('input', function() {
-      recalcDailyFromInitialOrTerm();
-    });
-    dailySlider.addEventListener('input', function() {
-      recalcTermFromInitialOrDaily();
-    });
+    initialSlider.addEventListener('input', recalcDailyFromInitialOrTerm);
+    termSlider.addEventListener('input', recalcDailyFromInitialOrTerm);
+    dailySlider.addEventListener('input', recalcTermFromInitialOrDaily);
 
-    // При загрузке страницы синхронизируем всё разово
     updateDisplays();
     recalcDailyFromInitialOrTerm();
   }
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+  if (!document.body.classList.contains('cartoorder-page')) return;
 
-// window.addEventListener('load', () => {
-//   const container = document.querySelector('.cars-marquee');
-//   const marquee   = container.querySelector('.marquee');
-//   if (!container || !marquee) return;
-
-//   // 1) Дублируем карточки до тех пор, пока общая ширина не перекроет экран как
-//   // минимум дважды. Это позволяет избежать пустого пространства.
-//   const original = marquee.innerHTML;
-//   marquee.innerHTML += original; // минимум две копии
-//   while (marquee.scrollWidth < container.offsetWidth * 2) {
-//     marquee.innerHTML += original;
-//   }
-
-//   // 2) Задаём начальные параметры
-//   let offset   = 0;                      // текущий сдвиг
-//   const total  = marquee.scrollWidth;    // общая ширина (две копии)
-//   const half   = total / 2;              // ширина одной копии
-//   const speed  = 80;                     // px в секунду (регулируйте)
-//   let lastTime = performance.now();
-
-//   // 3) Запускаем requestAnimationFrame-цикл
-//   function step(now) {
-//     const dt = (now - lastTime) / 1000;  // время в секундах
-//     lastTime = now;
-
-//     // двигаем
-//     offset += speed * dt;
-//     // как только прошли одну копию — вычитаем её длину, чтобы не расти бесконечно
-//     if (offset >= half) offset -= half;
-
-//     marquee.style.transform = `translateX(-${offset}px)`;
-
-//     requestAnimationFrame(step);
-//   }
-
-//   requestAnimationFrame(step);
-// });
-
-
-window.addEventListener('load', () => {
-  const container = document.querySelector('.cars-marquee');
+  const container = document.getElementById('marqueeContainer');
   if (!container) return;
 
-  const marquee = container.querySelector('.marquee');
-  if (!marquee) return;
+  fetch('/data/manualCars.json')
+    .then(res => res.json())
+    .then(cars => {
+      const originalCards = [];
 
-  // Остальной код...
-  const original = marquee.innerHTML;
-  marquee.innerHTML += original;
+      cars.forEach((car, index) => {
+        const card = window.createManualCarCard(car);
+        if (!card) return;
+        container.appendChild(card);
+        originalCards.push(card);
+      });
+    
 
-  while (marquee.scrollWidth < container.offsetWidth * 2) {
-    marquee.innerHTML += original;
-  }
 
-  let offset = 0;
-  const total = marquee.scrollWidth;
-  const half = total / 2;
-  const speed = 80;
-  let lastTime = performance.now();
 
-  function step(now) {
-    const dt = (now - lastTime) / 1000;
-    lastTime = now;
+      const minWidth = window.innerWidth * 2;
+      let totalWidth = container.scrollWidth;
+      let cloneIdx = 0;
+      while (totalWidth < minWidth && originalCards.length) {
+        const origIdx = cloneIdx % originalCards.length;
+        const clone = originalCards[origIdx].cloneNode(true);
+        const btn = clone.querySelector('.car-detail-btn');
+        if (btn) {
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            window.openManualCarModal(cars[origIdx]);
+          });
+        }
+        container.appendChild(clone);
+        totalWidth = container.scrollWidth;
+        cloneIdx++;
+      }
 
-    offset += speed * dt;
-    if (offset >= half) offset -= half;
+      let offset = 0;
+      const speed = 40;
+      let lastTime = performance.now();
 
-    marquee.style.transform = `translateX(-${offset}px)`;
-    requestAnimationFrame(step);
-  }
+      function step(now) {
+        const dt = (now - lastTime) / 1000;
+        lastTime = now;
+        offset += speed * dt;
 
-  requestAnimationFrame(step);
+        const maxScroll = container.scrollWidth - container.offsetWidth;
+        if (offset >= maxScroll) {
+          offset = 0;
+        }
+
+        container.style.transform = `translateX(-${offset}px)`;
+        requestAnimationFrame(step);
+      }
+
+      requestAnimationFrame(step);
+    });
 });

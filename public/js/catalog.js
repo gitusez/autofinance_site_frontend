@@ -72,46 +72,19 @@ export function createCarCard(car, mode) {
 
   card.dataset.drive        = car.drive || '';
   card.dataset.color        = car.color || '';
-  card.dataset.discount     = car.discount ? 'true' : 'false';
+//   card.dataset.discount     = car.discount ? 'true' : 'false';
+
+const isDiscount = car.discount || (car.manual_price && car.manual_price.discount);
+card.dataset.discount = isDiscount ? 'true' : 'false';
+
   card.dataset.gifts        = car.gifts ? 'true' : 'false';
   card.dataset.credit       = car.credit ? 'true' : 'false';
   card.dataset.select       = car.select ? 'true' : 'false';
 
-  // card.innerHTML = `
-  //   <img src="img/placeholder.jpg"
-  //        alt="Фото ${car.brand} ${car.model}"
-  //        class="car-image">
-  //   <div class="car-title">${car.brand || ''} ${car.model || ''}</div>
-  //   <div class="car-info">${priceText}</div>
-  //   <button class="car-detail-btn">ПОДРОБНЕЕ</button>
-  // `;
-
-
-
-
-// card.innerHTML = `
-//   <img src="img/placeholder.jpg"
-//        alt="Фото ${car.brand} ${car.model}"
-//        class="car-image">
-       
-//   <div class="car-content">
-//     <div class="car-left">
-//       <div class="car-title">${car.brand || ''} ${car.model || ''}</div>
-//       <div class="car-info">${priceText}</div>
-//     </div>
-//     <div class="car-snippet">
-//       ${(car.description || '').slice(0, 350)}
-//     </div>
-//   </div>
-
-//   <button class="car-detail-btn">ПОДРОБНЕЕ</button>
-// `;
-
-
 card.innerHTML = `
   <img src="img/placeholder.jpg"
-       alt="Фото ${car.brand} ${car.model}"
-       class="car-image">
+      alt="Фото ${car.brand} ${car.model}"
+      class="car-image">
        
   <div class="car-content">
     <div class="car-left">
@@ -127,51 +100,36 @@ card.innerHTML = `
 
 
   // Загрузка фото с учётом кэша
-  (async () => {
-    const imgEl = card.querySelector('.car-image');
-    const plate = toLatinNumber(car.number || '');
-    const cached = loadCachedPhotos(plate);
-    if (Array.isArray(cached) && cached.length > 0) {
-      imgEl.src = cached[0];
-      return;
+(async () => {
+  const imgEl = card.querySelector('.car-image');
+  const plate = toLatinNumber(car.number || '');
+  const cached = loadCachedPhotos(plate);
+  if (Array.isArray(cached) && cached.length > 0) {
+    imgEl.src = cached[0];
+    document.getElementById('loader').style.display = 'none';
+    return;
+  }
+  try {
+    const resp = await fetch(`${config.photoApi}/api/photos/${plate}`);
+    const arr = await resp.json();
+    if (Array.isArray(arr) && arr.length > 0) {
+      const urls = arr.map(item => {
+        const path = item.startsWith('/') ? item : `/photos/${plate}/${item}`;
+        return path.startsWith('http') ? path : `${config.photoApi}${path}`;
+      });
+      imgEl.src = urls[0];
+      saveCachedPhotos(plate, urls);
     }
-    try {
-      const resp = await fetch(`${config.photoApi}/api/photos/${plate}`);
-      const arr = await resp.json();
-      if (Array.isArray(arr) && arr.length > 0) {
-        const urls = arr.map(item => {
-          const path = item.startsWith('/') ? item : `/photos/${plate}/${item}`;
-          return path.startsWith('http') ? path : `${config.photoApi}${path}`;
-        });
-        imgEl.src = urls[0];
-        saveCachedPhotos(plate, urls);
-      }
-    } catch {
-      // Оставляем placeholder
-    }
-  })();
+  } catch {
+    // Оставляем placeholder
+  } finally {
+    document.getElementById('loader').style.display = 'none';
+  }
+})();
 
 
 
-  // // Загрузка фото
-  // (async () => {
-  //   const imgEl = card.querySelector('.car-image');
-  //   const plate = toLatinNumber(car.number || '');
-  //   try {
-  //     const resp = await fetch(`${config.photoApi}/api/photos/${plate}`);
-  //     const arr = await resp.json();
-  //     if (Array.isArray(arr) && arr.length > 0) {
-  //       const first = arr[0].startsWith('/')
-  //         ? arr[0]
-  //         : `/photos/${plate}/${arr[0]}`;
-  //       imgEl.src = first.startsWith('http')
-  //         ? first
-  //         : `${config.photoApi}${first}`;
-  //     }
-  //   } catch {
-  //     // Оставляем placeholder
-  //   }
-  // })();
+
 
   // Навешиваем на кнопку «ПОДРОБНЕЕ» открытие модалки
   card.querySelector('.car-detail-btn')
@@ -195,6 +153,7 @@ const orderModalContent = document.getElementById('orderModalContent');
 export async function openCarModal(car, mode) {
   const plate = toLatinNumber(car.number || '');
   let images = loadCachedPhotos(plate) || [];
+  document.body.classList.add('no-scroll'); // ← добавь сюда
 
   if (!images.length) {
     try {
@@ -213,27 +172,6 @@ export async function openCarModal(car, mode) {
   }
 
 // /** Открывает модалку с деталями */
-
-// export async function openCarModal(car, mode) {
-//   const plate = toLatinNumber(car.number || '');
-//   let images = [];
-
-//   try {
-//     const resp = await fetch(`${config.photoApi}/api/photos/${plate}`);
-//     const arr = await resp.json(); // массив строк с именами файлов
-//     if (Array.isArray(arr) && arr.length > 0) {
-//       images = arr.map(item => {
-//         if (item.startsWith('/')) {
-//           return item.startsWith('http')
-//             ? item
-//             : `${config.photoApi}${item}`;
-//         }
-//         return `${config.photoApi}/photos/${plate}/${item}`;
-//       });
-//     }
-//   } catch {
-//     // В случае ошибки оставляем images пустым
-//   }
 
   // Если фоток нет, используем avatar или placeholder
   if (!images.length) {
@@ -265,12 +203,12 @@ else transmissionLabel = car.transmission || '—';
       <div class="car-modal-left">
         <div class="car-modal-gallery">
           <img src="" id="modalMainImg" class="car-modal-main"
-               title="Двойной клик — полноэкран">
+              title="Двойной клик — полноэкран">
           <div class="car-modal-thumbs">
             ${images.map((src, i) => `
               <img src="${src}"
-                   class="car-modal-thumb ${i === 0 ? 'active' : ''}"
-                   data-idx="${i}">
+                  class="car-modal-thumb ${i === 0 ? 'active' : ''}"
+                  data-idx="${i}">
             `).join('')}
           </div>
         </div>
@@ -307,16 +245,28 @@ else transmissionLabel = car.transmission || '—';
             ${car.description ? car.description : '&mdash;'}
           </div>
         </div>
+        
 
-        <button class="car-order-btn">ОСТАВИТЬ ЗАЯВКУ</button>
 
-        <button class="car-share-btn" aria-label="Поделиться" style="margin-left:12px;">
+
+
+        <button class="car-share-btn" style="margin-left:12px;">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
             <polyline points="17 8 12 3 7 8" />
             <line x1="12" y1="3" x2="12" y2="15" />
           </svg>
         </button>
+        
+        <div class="car-action-buttons">
+  <button class="car-order-btn">ОСТАВИТЬ ЗАЯВКУ</button>
+  <a href="tel:+78005553432" class="car-call-btn" title="Позвонить">
+    Позвонить
+  </a>
+  <a href="https://wa.me/78005553432" class="car-whatsapp-btn" title="Написать в WhatsApp" target="_blank">
+    WhatsApp
+  </a>
+</div>
 
       </div>
     </div>
@@ -332,41 +282,33 @@ else transmissionLabel = car.transmission || '—';
     </div>
   `;
 
-  // <button class="car-share-btn" style="margin-left:12px;">Поделиться</button>
 
   // Навешиваем обработчики на кнопки внутри модалки
 carModalContent.querySelector('.car-modal-close').addEventListener('click', closeCarModal);
 carModalOverlay.addEventListener('click', closeCarModal);
 carModalContent.querySelector('.car-order-btn').addEventListener('click', () => openOrderModal(car, mode));
 
-// === ВСТАВЬТЕ СЮДА этот блок: ===
+
 const shareBtn = carModalContent.querySelector('.car-share-btn');
 if (shareBtn) {
   const url = `${window.location.origin}${window.location.pathname}?car=${encodeURIComponent(car.number || '')}`;
 
-
-    shareBtn.onclick = async () => {
+  shareBtn.onclick = async () => {
     try {
       await navigator.clipboard.writeText(url);
-      shareBtn.setAttribute('aria-label', 'Ссылка скопирована!');
+
+      // Добавляем временный эффект "нажатия"
+      shareBtn.classList.add('clicked');
       setTimeout(() => {
-        shareBtn.setAttribute('aria-label', 'Поделиться');
-      }, 1200);
+        shareBtn.classList.remove('clicked');
+      }, 180); // короткое время — имитация клика
     } catch {
       alert('Не удалось скопировать ссылку');
     }
   };
 }
-//   shareBtn.onclick = async () => {
-//     try {
-//       await navigator.clipboard.writeText(url);
-//       shareBtn.textContent = 'Ссылка скопирована!';
-//       setTimeout(() => { shareBtn.textContent = 'Поделиться'; }, 1200);
-//     } catch {
-//       alert('Не удалось скопировать ссылку');
-//     }
-//   };
-// }
+
+
 
   // Логика переключения картинок и fullscreen
   const mainImg   = carModalContent.querySelector('#modalMainImg');
@@ -393,11 +335,39 @@ if (shareBtn) {
 
   setIndex(0);
 
-    const openFs = i => {
-    fsGallery.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-    setIndex(i);
-  };
+
+const openFs = i => {
+  fsGallery.style.display = 'flex';
+  document.body.classList.add('no-scroll');  // 👈 добавь это
+  setIndex(i);
+
+  // 👇 свайп-влево/вправо
+  let startX = 0;
+  let deltaX = 0;
+
+  fsImg.addEventListener('touchstart', e => {
+    if (e.touches.length === 1) {
+      startX = e.touches[0].clientX;
+    }
+  });
+
+  fsImg.addEventListener('touchmove', e => {
+    if (e.touches.length === 1) {
+      deltaX = e.touches[0].clientX - startX;
+    }
+  });
+
+  fsImg.addEventListener('touchend', e => {
+    if (Math.abs(deltaX) > 50) {
+      idx = deltaX > 0
+        ? (idx - 1 + images.length) % images.length
+        : (idx + 1) % images.length;
+      setIndex(idx);
+    }
+    deltaX = 0;
+  });
+};
+
 
   const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
@@ -463,10 +433,17 @@ if (shareBtn) {
     if (e.touches.length < 2) pinchStartDist = 0;
   });
 
-  const closeFs = () => {
-    fsGallery.style.display = 'none';
+
+const closeFs = () => {
+  fsGallery.style.display = 'none';
+
+  // Проверяем: если основная модалка всё ещё открыта, не разблокируем прокрутку
+  if (carModal.style.display === 'none') {
     document.body.style.overflow = '';
-  };
+    document.body.classList.remove('no-scroll');
+  }
+};
+
   fsClose.addEventListener('click', e => {
     e.stopPropagation();
     closeFs();
@@ -475,102 +452,6 @@ if (shareBtn) {
     e.stopPropagation();
     closeFs();
   });
-
-  //   const openFs = i => {
-  //   fsGallery.style.display = 'flex';
-  //   document.body.style.overflow = 'hidden';
-  //   setIndex(i);
-  // };
-
-  // const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-
-  // thumbs.forEach(t => {
-  //   t.addEventListener('click', () => setIndex(+t.dataset.idx));
-  //   if (isTouchDevice) {
-  //     t.addEventListener('click', e => {
-  //       e.stopPropagation();
-  //       openFs(+t.dataset.idx);
-  //     });
-  //   } else {
-  //     t.addEventListener('dblclick', e => {
-  //       e.stopPropagation();
-  //       openFs(+t.dataset.idx);
-  //     });
-  //   }
-  // });
-
-  // if (isTouchDevice) {
-  //   mainImg.addEventListener('click', e => {
-  //     e.stopPropagation();
-  //     openFs(idx);
-  //   });
-  // } else {
-  //   mainImg.addEventListener('dblclick', e => {
-  //     e.stopPropagation();
-  //     openFs(idx);
-  //   });
-  // }
-
-  // fsPrev.addEventListener('click', e => {
-  //   e.stopPropagation();
-  //   setIndex((idx - 1 + images.length) % images.length);
-  // });
-  // fsNext.addEventListener('click', e => {
-  //   e.stopPropagation();
-  //   setIndex((idx + 1) % images.length);
-  // });
-
-  // const closeFs = () => {
-  //   fsGallery.style.display = 'none';
-  //   document.body.style.overflow = '';
-  // };
-  // fsClose.addEventListener('click', e => {
-  //   e.stopPropagation();
-  //   closeFs();
-  // });
-  // fsOverlay.addEventListener('click', e => {
-  //   e.stopPropagation();
-  //   closeFs();
-  // });
-
-  // thumbs.forEach(t => {
-  //   t.addEventListener('click', () => setIndex(+t.dataset.idx));
-  //   t.addEventListener('dblclick', e => {
-  //     e.stopPropagation();
-  //     fsGallery.style.display = 'flex';
-  //     document.body.style.overflow = 'hidden';
-  //     setIndex(+t.dataset.idx);
-  //   });
-  // });
-
-  // mainImg.addEventListener('dblclick', e => {
-  //   e.stopPropagation();
-  //   fsGallery.style.display = 'flex';
-  //   document.body.style.overflow = 'hidden';
-  //   setIndex(idx);
-  // });
-
-  // fsPrev.addEventListener('click', e => {
-  //   e.stopPropagation();
-  //   setIndex((idx - 1 + images.length) % images.length);
-  // });
-  // fsNext.addEventListener('click', e => {
-  //   e.stopPropagation();
-  //   setIndex((idx + 1) % images.length);
-  // });
-
-  // const closeFs = () => {
-  //   fsGallery.style.display = 'none';
-  //   document.body.style.overflow = '';
-  // };
-  // fsClose.addEventListener('click', e => {
-  //   e.stopPropagation();
-  //   closeFs();
-  // });
-  // fsOverlay.addEventListener('click', e => {
-  //   e.stopPropagation();
-  //   closeFs();
-  // });
 
   // Открываем основную модалку
   carModal.style.display = 'flex';
@@ -586,68 +467,75 @@ if (shareBtn) {
 export function closeCarModal() {
   carModal.style.display = 'none';
   document.body.style.overflow = '';
+  document.body.classList.remove('no-scroll');
+
 }
 
-/** Открывает окно заказа */
+
+// /** Открывает окно заказа */ <h3>Ваш заказ:</h3>
+
 export function openOrderModal(car, mode) {
   const price = getPriceText(car, mode);
   orderModalContent.innerHTML = `
-    <h3>Ваш заказ:</h3>
-    <div style="display:flex;align-items:center;gap:12px;">
-      <img
-        src="${car.avatar || 'img/placeholder.jpg'}"
-        style="width:90px;height:70px;object-fit:cover;border-radius:4px"
-      />
-      <div>
-        <b>${car.brand} ${car.model}</b><br />
-        ${car.year ? `Год: ${car.year}<br />` : ''} ${car.number ? `Номер: ${car.number}` : ''}
-      </div>
+    <div>
+      <b>${car.brand} ${car.model}</b><br />
+      ${car.year ? `Год: ${car.year}<br />` : ''}
+      ${car.number ? `Номер: ${car.number}` : ''}
     </div>
     <p>Цена: <strong>${price}</strong></p>
-    <form class="order-form">
-      <label>Имя<br /><input type="text" required /></label><br />
-      <label>Телефон<br /><input type="tel" required /></label><br />
+
+    <form class="order-form" method="POST">
+      <input type="hidden" name="source" value="Каталог - ${car.brand} ${car.model}" />
+      <input type="hidden" name="car" value="${car.brand} ${car.model}, ${car.year || ''}, ${car.number || ''}" />
+      <input type="hidden" name="price" value="${price}" />
+
+      <label>Имя<br /><input type="text" name="name" required /></label><br />
+      <label>Телефон<br /><input type="tel" name="phone" required /></label><br />
       <button type="submit">Отправить</button>
     </form>
+
     <button class="order-modal-close">&times;</button>
   `;
+
   orderModal.style.display = 'flex';
   document.body.style.overflow = 'hidden';
-  orderModalContent
-    .querySelector('.order-modal-close')
-    .onclick = closeOrderModal;
+
+  orderModalContent.querySelector('.order-modal-close').onclick = closeOrderModal;
   orderModalOverlay.onclick = closeOrderModal;
-  orderModalContent.querySelector('.order-form').onsubmit = e => {
+
+  const form = orderModalContent.querySelector('.order-form');
+  form.onsubmit = async (e) => {
     e.preventDefault();
-    orderModalContent.innerHTML = `<p>Спасибо! Мы свяжемся с вами.</p>`;
-    setTimeout(closeOrderModal, 1500);
+
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch('/sendmail.php', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest'
+        }
+      });
+
+      const result = await response.text();
+
+      if (result.trim() === 'OK') {
+        orderModalContent.innerHTML = `<p>Спасибо! Мы свяжемся с вами.</p>`;
+        setTimeout(closeOrderModal, 2000);
+      } else {
+        orderModalContent.innerHTML = `<p>Ошибка при отправке. Попробуйте позже.</p>`;
+      }
+    } catch (err) {
+      orderModalContent.innerHTML = `<p>Ошибка соединения. Проверьте интернет.</p>`;
+    }
   };
 }
+
 
 export function closeOrderModal() {
   orderModal.style.display = 'none';
   document.body.style.overflow = '';
 }
 
-
-// document.addEventListener('DOMContentLoaded', () => {
-//   const burgerBtn   = document.getElementById('burgerBtn');
-//   const menuOverlay = document.getElementById('menuOverlay');
-//   const closeMenuBtn = document.getElementById('closeMenu');
-//   if (!burgerBtn || !menuOverlay || !closeMenuBtn) return;
-
-//   burgerBtn.addEventListener('click', () => {
-//     menuOverlay.classList.toggle('active');
-//   });
-
-//   closeMenuBtn.addEventListener('click', () => {
-//     menuOverlay.classList.remove('active');
-//   });
-
-//   menuOverlay.querySelectorAll('a').forEach(link => {
-//     link.addEventListener('click', () => {
-//       menuOverlay.classList.remove('active');
-//     });
-//   });
-// });
 

@@ -1,5 +1,5 @@
+
 @media (max-width: 900px) {
-  /* Показываем кнопку-бургер */
   .burger {
     display: flex;
   }
@@ -10,12 +10,12 @@
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1200px) {
   .main-nav { display: none; }
   .burger    { display: flex; }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
   .mobile-nav { display: none !important; }
   .main-nav   { display: flex;  }
   .burger     { display: none;  }
@@ -548,12 +548,12 @@
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1200px) {
   .main-nav { display: none; }
   .burger   { display: flex; }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
   .mobile-nav { display: none !important; }
   .main-nav   { display: flex;        }
   .burger     { display: none;        }
@@ -750,9 +750,9 @@
   }
 
 
-  .catalog-content.list-view .car-grid  {
+    .catalog-content.list-view .car-grid  {
 
-  padding: 2% 4% 2% 4%         
+  padding: 4% 4% 4% 4%         
 
   }
 
@@ -868,14 +868,14 @@
 
   .catalog-content.list-view .car-grid .car-card {
   width: 100%;
-  max-width: 800px;       /* карточка будет не шире 800px */
-  display: flex;          /* внутри сами элементы распределяем по рядам */
+  max-width: 800px;
+  display: flex;         
   flex-direction: row;
-  gap: 16px;              /* небольшой отступ между картинкой и текстом */
-  align-items: flex-start;/* выравниваем по верхнему краю */
-  padding: 2% 2% 2% 2%;          /* чтобы вокруг «контента» был небольшой отступ */
-  background: #1a1a1a;    /* можно скорректировать под ваш фон карточки */
-  border-radius: 12px;    /* скругление углов */
+  gap: 16px;              
+  align-items: flex-start;
+  padding: 2% 2% 2% 2%;         
+  background: #1a1a1a;    
+  border-radius: 12px;   
   }
 
     .request-hero-inner {
@@ -909,25 +909,153 @@
   }
 
   .header-inner{
-    gap: 20%;
+    gap: 32%;
+  }
+  
+    .thankyou-section{
+    padding: 0 4% 0 4%
+  }
+  
+  .hero {
+    background-attachment: scroll;
+    background-position: center center;
+  }
+  
+  .hero.hero-urgent{
+    background-position: 45% center;
+    background-attachment: scroll;
+  }
+  
+  .hero.hero-buyback {
+      background-size: cover;
+    background-position: 50% center;
+    background-attachment: scroll;
+}
+
+  /*.gallery-prev,*/
+  /*.gallery-next {*/
+  /*  display: none !important;*/
+  /*}*/
+
+  /*.fs-touch-wrapper {*/
+  /*  overflow: hidden;*/
+  /*  touch-action: pan-y pinch-zoom;*/
+  /*}*/
+
+  /*.fullscreen-image {*/
+  /*  width: 100%;*/
+  /*  height: auto;*/
+  /*  max-height: 100vh;*/
+  /*  object-fit: contain;*/
+  /*}*/
+
+
+
+
+
+}
+
+
+@media (max-width: 767px) {
+  .fullscreen-gallery {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
   }
 
+  .fs-touch-wrapper {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    overflow: hidden;
+    touch-action: pan-y pinch-zoom;
+  }
 
+  .fullscreen-image {
+    width: 100%;
+    height: auto;
+    max-height: 100vh;
+    object-fit: contain;
+    border-radius: 0;
+    touch-action: pinch-zoom;
+  }
+
+  .gallery-close {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    font-size: 26px;
+    color: white;
+    background: rgba(0,0,0,0.6);
+    border: none;
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    text-align: center;
+    line-height: 42px;
+    z-index: 10001;
+  }
+
+  .gallery-counter {
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    z-index: 10001;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    align-self: center;
+    width: 100%;
+  }
+
+  .fullscreen-overlay {
+    position: absolute;
+    inset: 0;
+    background: transparent;
+  }
+
+  .gallery-prev,
+  .gallery-next {
+    display: none !important;
+  }
+  
+  .car-action-buttons .car-call-btn, .car-action-buttons .car-whatsapp-btn{
+    padding: 3% 11.8%;
+  }
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+body.no-scroll,
+html.no-scroll {
+  overflow: hidden !important;
+  height: 100% !important;
+  touch-action: none !important;
 }
 
 
 
 
+/* @media (max-width: 1200px) {*/
+/*    .header-inner{*/
+/*        gap: 70%;*/
+/*    }*/
+/*}*/
 
+/*@media (max-width: 900px) {}*/
 
+/*@media (max-width: 900px) {}*/
 
-
-/* @media (max-width: 900px) {
-    
-}
-
-@media (max-width: 900px) {}
-
-@media (max-width: 900px) {}
-
-@media (max-width: 900px) {} */
+/*@media (max-width: 900px) {}*/

@@ -169,6 +169,19 @@ if (show && activeFlags['fuel'] && activeFlags['fuel'].length) {
       // Показываем или скрываем
       card.style.display = show ? '' : 'none';
     });
+    
+// === Показывать или скрывать секции, если нет видимых карточек ===
+['prokat', 'arenda', 'buyout'].forEach(section => {
+  const grid = document.getElementById(section + 'Grid');
+  const wrapper = document.getElementById(section + 'Section'); // Убедись, что этот ID есть!
+  if (!grid || !wrapper) return;
+
+  const visibleCards = Array.from(grid.querySelectorAll('.car-card'))
+    .filter(card => card.style.display !== 'none');
+
+  wrapper.style.display = visibleCards.length > 0 ? '' : 'none';
+});
+
   }
 
   // Сохраняем изначальный порядок карточек после первого рендера
@@ -280,7 +293,7 @@ function resetFilters() {
   }
 
   // Сразу после загрузки показываем все карточки
-  applyFilters();
+//   applyFilters();
 });
 
 // ==============================

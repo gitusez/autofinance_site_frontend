@@ -315,12 +315,14 @@ body.scale-fade-in {
     animation: arrow-bounce 1.2s infinite alternate;
 }
 
+/*center center/cover no-repeat fixed*/
+
 /* Заявка (Request) */
 .request-hero {
   position: relative;
   width: 100%;
   min-height: 70vh;
-  background: url('/img/tank/tank5.jpeg') center center/cover no-repeat fixed;
+  background: url('/img/tank/tank5.jpeg')center center/cover no-repeat fixed;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -440,12 +442,14 @@ body.scale-fade-in {
   text-align: center;
 }
 
+
+/*center center/cover no-repeat fixed*/
 /* Контакты (Contacts Hero) */
 .contacts-hero {
   position: relative;
   width: 100%;
   min-height: 70vh;
-  background: url('/img/lambo2.jpg') center center/cover no-repeat fixed;
+  background: url('/img/lambo2.jpg')center center/cover no-repeat fixed;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1414,16 +1418,16 @@ body.scale-fade-in {
 }
 
 /* Car‐detail modal specific */
-.car-modal-content {
-  width: 95vw;
-  max-width: 900px;
-  padding: 32px;
-  background: #232323;
-  border-radius: 18px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.35);
-  position: relative;
-  margin: 5vh auto;
-}
+/*.car-modal-content {*/
+/*  width: 95vw;*/
+/*  max-width: 900px;*/
+/*  padding: 32px;*/
+/*  background: #232323;*/
+/*  border-radius: 18px;*/
+/*  box-shadow: 0 8px 32px rgba(0,0,0,0.35);*/
+/*  position: relative;*/
+/*  margin: 5vh auto;*/
+/*}*/
 
 /* Layout inside car modal */
 .car-modal-split {
@@ -1647,6 +1651,7 @@ body.scale-fade-in {
 
 .order-form input {
   padding: 14px 12px;
+  margin: 10px 0px 0px 0px;
   border-radius: 8px;
   border: none;
   font-size: 1.1rem;
@@ -1796,8 +1801,8 @@ body.scale-fade-in {
   box-shadow: 0 8px 32px rgba(0,0,0,0.35);
   z-index: 9001; */
   position: relative;
-  max-width: 85vw;
-  max-height: 85vh;
+  max-width: 100vw;
+  max-height: 100vh;
   width: auto;
   height: auto;
   object-fit: contain;
@@ -1836,26 +1841,27 @@ body.scale-fade-in {
 
 .gallery-counter {
   position: absolute;
-  bottom: 20px;
+  bottom: 92%;
   left: 50%;
   transform: translateX(-50%);
   background: rgba(0,0,0,0.7);
   color: #fff;
-  padding: 0.5em 1.2em;
+  padding: 0.3em 1em;
   border-radius: 20px;
   font-weight: bold;
   z-index: 9001;
   pointer-events: none;
+  max-width: fit-content;
 }
 
 .gallery-close {
   position: fixed;
-  top: 40px;
-  left: 40px;
-  width: 44px;
-  height: 44px;
-  background: #fff;
-  color: #222;
+  top: 2%;
+  left: 2%;
+  width: 40px;
+  height: 40px;
+  background: #000000;
+  color: #fff;
   font-size: 2.2em;
   border: none;
   border-radius: 50%;
@@ -1864,7 +1870,7 @@ body.scale-fade-in {
   align-items: center;
   justify-content: center;
   transition: background 0.3s, color 0.3s;
-  z-index: 10000;
+  z-index: 999999;
 }
 
 .gallery-close:hover {
@@ -2331,6 +2337,7 @@ body.scale-fade-in {
   box-shadow: 0 4px 24px rgba(0,0,0,0.18);
 }
 
+/*no-repeat center/contain*/
 .catalog-search-wrap::before {
   content: '';
   position: absolute;
@@ -2339,7 +2346,7 @@ body.scale-fade-in {
   transform: translateY(-50%);
   width: 22px;
   height: 22px;
-  background: url('/img/search.svg') no-repeat center/contain;
+  background: url('/img/search.svg')no-repeat center/contain;
   opacity: 0.7;
   pointer-events: none;
 }
@@ -2725,6 +2732,7 @@ body.scale-fade-in {
   text-align: center;
 }
 
+/*center center/cover no-repeat fixed*/
 .buyout-cta {
   position: relative;
   background: url('/img/tank/tank4.jpeg') center center/cover no-repeat fixed;
@@ -2799,8 +2807,8 @@ body.scale-fade-in {
   overflow: hidden;
   background-image: url('/img/vesta1/vesta1.jpg');
   background-size: cover;
-  background-position: 40% center;
-  background-attachment: fixed;
+  background-position:50% center;
+  background-attachment: scroll;
 }
 
 .how-works-bg {
@@ -3359,7 +3367,7 @@ body.scale-fade-in {
 
 .catalog-content.grid-view .car-grid {
   display: grid;
-  gap: 10px 2%;
+  gap: 20px 2%;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   padding: 0 10px;
 }
@@ -3371,23 +3379,36 @@ body.scale-fade-in {
 /* =============================
    ️️️Стиль для кнопки «Поделиться»
    ============================= */
+/*.car-share-btn {*/
+/*  width: 40px;*/
+/*  height: 40px;*/
+/*  background-color: #2e2e2e; */
+/*  border: none;*/
+/*  border: 2px solid transparent;*/
+/*  border-radius: 50%;      */
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  justify-content: center;*/
+/*  margin-top: 12px;*/
+/*  cursor: pointer;*/
+
+/*  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);*/
+/*  transition: background-color 0.2s ease;*/
+/*}*/
+
 .car-share-btn {
-  /* Фиксируем размер круга */
   width: 40px;
   height: 40px;
-  /* Делаем фон похожим на фон модалки */
-  background-color: #2e2e2e; /* или другой тёмный цвет, подберите свой */
-  border: none;
-  border-radius: 50%;       /* полностью круглая кнопка */
+  background-color: #2e2e2e;
+  border: 2px solid transparent; /* ✅ заменили */
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 12px;         /* отступ сверху от кнопки «Оставить заявку» */
+  margin-top: 12px;
   cursor: pointer;
-
-  /* Немного тени для «приподнятого» эффекта */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, border 0.2s ease;
 }
 
 .car-share-btn svg {
@@ -3423,20 +3444,28 @@ body.scale-fade-in {
   outline: 2px solid #ffc107; /* жёлтая обводка при фокусе (опционально) */
 }
 
+.car-share-btn.clicked {
+  background-color: #f4c900 !important;
+  border: 2px solid #ffc107 !important;
+  box-shadow: 0 0 0 2px #ffc107 inset !important;
+}
 
-/* ——— Карусель ——— */
+
+
+
+ /*——— Карусель ——— */
 .cars-marquee {
   overflow: hidden;
-  /* background: #000; */
   padding: 60px 0;
 }
 
 .cars-marquee .marquee {
   display: flex;
-  gap: 24px;               /* расстояние между карточками */
-  transform: translateX(0); /* стартовая позиция */
-  will-change: transform;   /* для плавной анимации */
+  gap: 24px;               
+  transform: translateX(0);
+  will-change: transform;  
 }
+
 
 
 
@@ -3507,5 +3536,116 @@ body.scale-fade-in {
 }
 
 
+.loader-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 6px solid #fff;
+  border-top-color: #fbd100;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+body.no-scroll {
+  overflow: hidden !important;
+  position: fixed;
+  width: 100%;
+}
+
+
+
+.thankyou-section {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    margin-top: 120px;
+}
+.thankyou-block {
+    background: rgba(30,30,30,0.75);
+    border-radius: 22px;
+    box-shadow: 0 8px 40px 0 rgba(244,201,0,0.10), 0 1.5px 12px 0 rgba(0,0,0,0.10);
+    padding: 48px 36px 40px 36px;
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+    margin: 48px auto;
+    border: 1.5px solid rgba(244,201,0,0.13);
+    animation: fadeIn 0.7s cubic-bezier(.4,1.4,.6,1);
+}
+.thankyou-icon {
+    font-size: 3.5rem;
+    color: #f4c900;
+    margin-bottom: 18px;
+}
+.thankyou-btn {
+    display: inline-block;
+    margin-top: 28px;
+    background: linear-gradient(90deg, #f4c900, #ffb347 90%);
+    color: #222;
+    font-weight: 700;
+    padding: 14px 38px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    box-shadow: 0 2px 12px rgba(244,201,0,0.13);
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.18s;
+}
+.thankyou-btn:hover {
+    background: linear-gradient(90deg, #ffb347, #f4c900 90%);
+    color: #000;
+    box-shadow: 0 4px 24px 0 rgba(244,201,0,0.18);
+    transform: translateY(-2px) scale(1.04);
+}
+
+
+.car-action-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.car-action-buttons .car-call-btn,
+.car-action-buttons .car-whatsapp-btn {
+  padding: 3% 13.6%;
+  font-weight: 600;
+  font-size: 15px;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 10px;
+  background: #28a745;
+  display: inline-block;
+  white-space: nowrap;
+  transition: background 0.2s ease;
+}
+
+.car-action-buttons .car-call-btn {
+  background: #f4c900;
+}
+.car-action-buttons .car-call-btn:hover {
+  background: #c4a202;
+}
+
+.car-action-buttons .car-whatsapp-btn {
+  background: #25d366;
+}
+.car-action-buttons .car-whatsapp-btn:hover {
+  background: #1ebe57;
+}
 
 
